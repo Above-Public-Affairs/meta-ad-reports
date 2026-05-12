@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate GOTV on Meta — 2020–2024 Three-Cycle Intelligence Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+<style>
+  :root {
+    --bg: #faf9f7; --bg-card: #ffffff; --bg-warm: #f5f3ef; --bg-accent: #f0ece4;
+    --border: #e4e0d8; --border-light: #ece9e2;
+    --navy: #1a2332; --navy-mid: #2d3a4a; --slate: #475569; --stone: #78716c;
+    --text-primary: #1c1917; --text-body: #3d3833; --text-secondary: #6b6560; --text-muted: #9c9590;
+    --blue-deep: #1e3a5f; --blue: #2563eb; --blue-light: #e8f0fe;
+    --red-deep: #9b1c1c; --red: #c53030; --red-light: #fef2f2;
+    --green-deep: #1a5632; --green: #16803c; --green-light: #f0fdf4;
+    --amber-deep: #92400e; --amber: #b45309; --amber-light: #fffbeb;
+    --purple-deep: #4c1d95; --purple: #6d28d9; --purple-light: #f5f3ff;
+    --teal-deep: #115e59; --teal: #0d9488; --teal-light: #f0fdfa;
+    --orange: #ea580c; --orange-light: #fff7ed;
+    --tx: #b91c1c; --tx-light: #fef2f2; --nm: #b45309; --nm-light: #fffbeb;
+    --brand: #2563eb; --brand-light: #e8f0fe; --np: #16803c; --np-light: #f0fdf4;
+    --c2020: #6d28d9; --c2022: #b45309; --c2024: #16803c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text-body); font-family:'IBM Plex Sans',-apple-system,sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .container { max-width:1100px; margin:0 auto; padding:48px 32px 80px; }
+  .header { margin-bottom:48px; padding-bottom:32px; border-bottom:2px solid var(--navy); }
+  .header-eyebrow { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--stone); margin-bottom:10px; }
+  .header h1 { font-family:'Source Serif 4',Georgia,serif; font-size:36px; font-weight:700; color:var(--navy); letter-spacing:-0.3px; line-height:1.15; margin-bottom:6px; }
+  .header h1 span { display:block; font-weight:400; font-size:24px; color:var(--slate); margin-top:2px; }
+  .header-meta { display:flex; gap:28px; margin-top:14px; font-size:13px; color:var(--text-secondary); flex-wrap:wrap; }
+  .header-meta .sep { color:var(--border); }
+
+  .top-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:48px; }
+  .stat-card { background:var(--bg-card); padding:24px 22px; }
+  .stat-label { font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-muted); margin-bottom:6px; }
+  .stat-value { font-family:'Source Serif 4',Georgia,serif; font-size:30px; font-weight:700; color:var(--navy); letter-spacing:-1px; line-height:1.1; }
+  .stat-sub { font-size:12px; color:var(--text-secondary); margin-top:4px; }
+
+  .section { margin-bottom:52px; }
+  .section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+  .section-number { font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; color:var(--stone); letter-spacing:1px; }
+  .section h2 { font-family:'Source Serif 4',Georgia,serif; font-size:26px; font-weight:600; color:var(--navy); letter-spacing:-0.2px; }
+  .section h3 { font-family:'Source Serif 4',Georgia,serif; font-size:20px; font-weight:600; color:var(--navy-mid); margin:24px 0 12px; }
+  p { margin-bottom:14px; font-size:15px; }
+
+  .card { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:28px; margin-bottom:24px; }
+  .card-header { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--stone); margin-bottom:16px; }
+
+  .chart-wrap { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:28px; margin-bottom:24px; }
+  .chart-title { font-family:'Source Serif 4',Georgia,serif; font-size:18px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+  .chart-subtitle { font-size:13px; color:var(--text-secondary); margin-bottom:20px; }
+
+  .data-table { width:100%; border-collapse:collapse; font-size:14px; margin:16px 0; }
+  .data-table thead th { font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:500; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-muted); padding:8px 12px; border-bottom:2px solid var(--border); text-align:left; }
+  .data-table thead th.right { text-align:right; }
+  .data-table tbody td { padding:10px 12px; border-bottom:1px solid var(--border-light); vertical-align:top; }
+  .data-table tbody td.right { text-align:right; font-variant-numeric:tabular-nums; }
+  .data-table tbody tr:last-child td { border-bottom:none; }
+  .data-table tbody tr:hover { background:var(--bg-warm); }
+
+  .tag { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:500; letter-spacing:0.5px; padding:3px 8px; border-radius:4px; text-transform:uppercase; }
+  .tag-tx { background:var(--tx-light); color:var(--tx); }
+  .tag-nm { background:var(--nm-light); color:var(--nm); }
+  .tag-brand { background:var(--brand-light); color:var(--brand); }
+  .tag-np { background:var(--np-light); color:var(--np); }
+  .tag-c3 { background:#f0fdf4; color:var(--np); }
+  .tag-c4 { background:#e8f0fe; color:var(--brand); }
+  .tag-collapsed { background:var(--red-light); color:var(--red-deep); }
+  .tag-sustained { background:var(--blue-light); color:var(--blue-deep); }
+  .tag-growth { background:var(--green-light); color:var(--green-deep); }
+
+  .callout { border-left:4px solid var(--blue); padding:16px 20px; margin:20px 0; background:var(--blue-light); border-radius:0 8px 8px 0; font-size:14px; }
+  .callout-red { border-left-color:var(--red); background:var(--red-light); }
+  .callout-amber { border-left-color:var(--amber); background:var(--amber-light); }
+  .callout-green { border-left-color:var(--green); background:var(--green-light); }
+  .callout-purple { border-left-color:var(--purple); background:var(--purple-light); }
+  .callout strong { display:block; margin-bottom:4px; color:var(--navy); }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px; }
+  .three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:24px; }
+
+  .key-finding { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%); color:#fff; padding:32px; border-radius:12px; margin:32px 0; }
+  .key-finding h3 { font-family:'Source Serif 4',Georgia,serif; font-size:22px; font-weight:600; color:#fff; margin:0 0 12px; }
+  .key-finding p { color:rgba(255,255,255,0.9); font-size:15px; margin-bottom:0; }
+
+  .ad-quote { background:var(--bg-warm); border-left:3px solid var(--border); padding:14px 18px; margin:12px 0; border-radius:0 6px 6px 0; font-size:14px; font-style:italic; color:var(--text-body); }
+  .ad-quote .ad-source { font-style:normal; font-size:12px; color:var(--text-muted); margin-top:6px; display:block; }
+
+  .advertiser-card { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:24px; margin-bottom:20px; }
+  .advertiser-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:14px; flex-wrap:wrap; }
+  .advertiser-name { font-family:'Source Serif 4',Georgia,serif; font-size:20px; font-weight:600; color:var(--navy); }
+  .advertiser-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
+  .advertiser-stat { text-align:right; }
+  .advertiser-stat .v { font-family:'Source Serif 4',Georgia,serif; font-size:22px; font-weight:700; color:var(--navy); }
+  .advertiser-stat .l { font-size:11px; font-family:'IBM Plex Mono',monospace; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; }
+  .advertiser-meta { font-size:13px; color:var(--text-secondary); margin-bottom:10px; }
+  .advertiser-summary { font-size:14px; margin-bottom:12px; color:var(--text-body); }
+
+  .cycle-bars { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+  .cycle-bar { background:var(--bg-warm); border-radius:6px; padding:10px 12px; }
+  .cycle-bar .y { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text-muted); letter-spacing:1px; }
+  .cycle-bar .v { font-family:'Source Serif 4',Georgia,serif; font-size:16px; font-weight:600; color:var(--navy); margin-top:2px; }
+  .cycle-bar.c2020 { border-left:3px solid var(--c2020); }
+  .cycle-bar.c2022 { border-left:3px solid var(--c2022); }
+  .cycle-bar.c2024 { border-left:3px solid var(--c2024); }
+
+  .timeline { position:relative; margin:24px 0; padding-left:24px; border-left:2px solid var(--border); }
+  .timeline-event { margin-bottom:14px; position:relative; padding-left:8px; }
+  .timeline-event::before { content:''; position:absolute; left:-31px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--navy); border:2px solid var(--bg); }
+  .timeline-event.tipping::before { background:var(--red); }
+  .timeline-event .date { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--stone); letter-spacing:1px; text-transform:uppercase; }
+  .timeline-event .title { font-weight:600; color:var(--navy); margin-top:2px; }
+  .timeline-event .caption { font-size:13px; color:var(--text-secondary); margin-top:2px; }
+
+  .methodology { background:var(--bg-warm); border:1px solid var(--border); border-radius:10px; padding:24px; font-size:13px; color:var(--text-secondary); line-height:1.7; }
+  .methodology h4 { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--stone); margin-bottom:10px; }
+
+  .footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--border); font-size:12px; color:var(--text-muted); text-align:center; }
+  .footer a { color:var(--text-secondary); text-decoration:none; }
+  .footer a:hover { text-decoration:underline; }
+  a { color:var(--blue); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  .pulled-quote { font-family:'Source Serif 4',Georgia,serif; font-size:22px; font-weight:600; color:var(--navy); line-height:1.35; padding:18px 0 18px 24px; border-left:4px solid var(--amber); margin:24px 0; }
+  .pulled-quote .who { display:block; font-family:'IBM Plex Sans',sans-serif; font-size:12px; font-weight:500; color:var(--text-muted); margin-top:8px; letter-spacing:1px; text-transform:uppercase; }
+
+  .myth-box { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; overflow:hidden; margin:24px 0; }
+  .myth-box .myth, .myth-box .reality { padding:18px 22px; }
+  .myth-box .myth { background:var(--red-light); border-bottom:1px solid var(--border); }
+  .myth-box .reality { background:var(--green-light); }
+  .myth-box h4 { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+  .myth-box .myth h4 { color:var(--red-deep); }
+  .myth-box .reality h4 { color:var(--green-deep); }
+  .myth-box p { font-size:14px; margin-bottom:0; }
+
+  @media print { body { background:#fff; } .container { padding:0; } .chart-wrap,.card,.advertiser-card { break-inside:avoid; } }
+  @media (max-width:768px) {
+    .container { padding:24px 16px 60px; }
+    .header h1 { font-size:26px; } .header h1 span { font-size:18px; }
+    .top-stats { grid-template-columns:repeat(2,1fr); } .stat-value { font-size:22px; }
+    .two-col,.three-col,.cycle-bars { grid-template-columns:1fr; }
+    .section h2 { font-size:22px; }
+    .advertiser-head { flex-direction:column; }
+    .advertiser-stat { text-align:left; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <div class="header-eyebrow">Meta Ad Library Intelligence Brief</div>
+  <h1>Corporate GOTV on Meta: 2020&ndash;2024<span>Three Cycles of Nonprofit Mobilization and the Disappearing Brand Voice</span></h1>
+  <div class="header-meta">
+    <span>Jan 1, 2020 &ndash; Dec 31, 2024</span>
+    <span class="sep">|</span>
+    <span>US National with TX &amp; NM Emphasis</span>
+    <span class="sep">|</span>
+    <span>Consumer Brands + Corporate-Funded Nonprofits</span>
+  </div>
+</div>
+
+<!-- TOP STATS -->
+<div class="top-stats">
+  <div class="stat-card">
+    <div class="stat-label">Tracked GOTV Spend</div>
+    <div class="stat-value">$13M&ndash;$18M</div>
+    <div class="stat-sub">10 anchor advertisers, 2020&ndash;2024, political archive only</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Consumer Brands at Scale</div>
+    <div class="stat-value">2 of 30+</div>
+    <div class="stat-sub">Only Ben &amp; Jerry's and Lyft filed GOTV as political ads</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Top Spender (2024)</div>
+    <div class="stat-value">Ben &amp; Jerry's</div>
+    <div class="stat-sub">~$2.4M&ndash;$3.1M on GOTV alone &mdash; 6&times; their 2020 budget</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">2020 &rarr; 2024 Collapse</div>
+    <div class="stat-value">&minus;88% to &minus;91%</div>
+    <div class="stat-sub">Black Voters Matter &amp; Mi Familia Vota direct Meta spend</div>
+  </div>
+</div>
+
+<!-- KEY FINDING -->
+<div class="key-finding">
+  <h3>The Headline</h3>
+  <p>The corporate GOTV story on Meta across 2020, 2022, and 2024 is not the story you read in the trade press. The famous brand-led civic moments &mdash; Patagonia's "Vote the A**holes Out" tags, Old Navy's poll-worker pay, Microsoft's Time to Vote, Snap's Voter Information Hub, Meta's own 4.4M-voter Voter Information Center &mdash; <strong>do not appear in the Meta political ad archive at all.</strong> They ran as commercial brand content, organic posts, or in-app product features, deliberately avoiding the political-ad disclosure track. What does show up tells a different story: a handful of corporate-funded nonprofits (Voto Latino, Voter Participation Center, Black Voters Matter, Mi Familia Vota, League of Women Voters) doing the actual paid GOTV heavy lifting on Meta, with mixed trajectories &mdash; some collapsed 88&ndash;91% from 2020 to 2024 (BVMF, Mi Familia Vota), some stayed stable (LWV/VOTE411), and one consumer brand &mdash; Ben &amp; Jerry's &mdash; bucked the entire corporate-retreat narrative by running its largest GOTV campaign ever in 2024 ($2.4M&ndash;$3.1M, 2,000+ ads, battleground-state targeted). Texas was the #1 or #2 delivery state for the Latino and Black GOTV operators. New Mexico is functionally a one-org market (OLÉ NewMexico). The strategic question the data raises is not "did corporate America retreat from GOTV?" &mdash; it is "why did most brands move their GOTV out of the disclosure system entirely, and what does that tell us about how political-content risk gets managed in 2024?"</p>
+</div>
+
+<!-- SECTION 01 - THE METHODOLOGY CAVEAT -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2>What the Political Archive Captures &mdash; and What It Doesn't</h2>
+  </div>
+
+  <p>Before any chart, an honesty note. The Meta Ad Library's political/issue ad archive captures only ads that an advertiser <em>chose to file</em> as political with a "paid for by" disclaimer. Most consumer-brand GOTV content during 2020&ndash;2024 was not filed this way. It ran as:</p>
+
+  <ul style="margin-left:24px; margin-bottom:16px; font-size:15px;">
+    <li><strong>Regular commercial brand ads</strong> &mdash; promo codes, product launches with vote-themed creative, partner spotlights</li>
+    <li><strong>Organic posts</strong> &mdash; no paid amplification at all, relying on earned media and influencer reach</li>
+    <li><strong>In-app product features</strong> &mdash; Snap's Voter Information Hub, Meta's own Voter Information Center, TikTok's Election Center</li>
+    <li><strong>Employee programs</strong> &mdash; Time to Vote pledges, paid PTO to vote, internal civic engagement portals</li>
+    <li><strong>Cause-marketing partner channels</strong> &mdash; Power the Polls, Civic Alliance, When We All Vote, HeadCount running their own paid Meta ads while the corporate logos remained on partner pages</li>
+  </ul>
+
+  <p>This brief verified the absence directly. Searches for Old Navy, Nike, Levi Strauss, Patagonia (post-2020), Target, Starbucks, Walmart, Salesforce, Microsoft, PayPal, AT&amp;T, Tory Burch, Snap, Spotify, and the Civic Alliance returned <strong>no political archive Pages running GOTV ads.</strong> Each of these brands has a documented 2020&ndash;2024 civic engagement program in news coverage, on their own newsrooms, or in case studies. None chose to register that activity as Meta political ads.</p>
+
+  <div class="callout callout-amber">
+    <strong>Why does that matter?</strong>
+    Because the same political-ad disclosure system that gives researchers spend and impression data also triggers Meta's algorithmic deprioritization of political content (active since 2021), the "political content" label that some users actively hide, and the optional civic-content opt-out that became default-on in some regions. Filing a GOTV ad as political = paying a reach penalty. Most brands chose the reach.
+  </div>
+
+  <h3>What that means for this report</h3>
+  <p>The data presented here is the universe of advertisers who <strong>did file</strong> their paid GOTV content as political/issue ads &mdash; almost entirely nonprofits funded by corporate, philanthropic, and small-donor dollars, plus two consumer brands (Ben &amp; Jerry's and Lyft) that accept the political-content label as part of their brand identity. This is a meaningful slice of the GOTV story, but it is not the whole story. Where relevant, this report references the off-archive activity documented in news coverage to provide context.</p>
+</div>
+
+<!-- SECTION 02 - THREE-CYCLE TRAJECTORY -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2>Three-Cycle Spend Trajectory</h2>
+  </div>
+
+  <p>The trajectory across 2020, 2022, and 2024 is not one story but several stories layered on top of each other. Some advertisers collapsed. Some stayed flat. One consumer brand (Ben &amp; Jerry's) ramped up dramatically. New Mexico's nonprofit OLÉ ran consistently throughout but at small scale. Lyft skipped the 2022 midterm entirely and came back in 2024 at the same scale as 2020.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Per-Cycle Spend by Anchor Advertiser (Upper Bound)</div>
+    <div class="chart-subtitle">Meta political/issue ads only. Voto Latino and Voter Participation Center hit 5,000-ad query caps in 2024 &mdash; reported figures are floors, not ceilings.</div>
+    <div style="height:480px;"><canvas id="cycleChart"></canvas></div>
+  </div>
+
+  <div class="two-col">
+    <div class="chart-wrap">
+      <div class="chart-title">Cycle Totals (Identified GOTV Spend)</div>
+      <div class="chart-subtitle">Aggregate of the 10 anchor advertisers per cycle</div>
+      <div style="height:260px;"><canvas id="cycleTotalChart"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">2020 &rarr; 2024 Trajectory by Advertiser</div>
+      <div class="chart-subtitle">Six discrete patterns, not one "retreat"</div>
+      <div style="height:260px;"><canvas id="trajectoryChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="three-col">
+    <div class="card">
+      <div class="card-header">Pattern 1: Collapse</div>
+      <p style="font-size:14px;"><strong>Black Voters Matter Fund:</strong> $324K (2020) &rarr; $33K (2024). <span class="tag tag-collapsed">&minus;90%</span></p>
+      <p style="font-size:14px;"><strong>Mi Familia Vota:</strong> $298K &rarr; $55K. <span class="tag tag-collapsed">&minus;81%</span></p>
+      <p style="font-size:14px; color:var(--text-secondary); margin-bottom:0;">Both organizations remained active off-Meta and on other platforms &mdash; the Meta political-archive spend specifically collapsed.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">Pattern 2: Stability</div>
+      <p style="font-size:14px;"><strong>VOTE411 (League of Women Voters):</strong> $309K &rarr; $163K &rarr; $253K <span class="tag tag-sustained">stable</span></p>
+      <p style="font-size:14px;"><strong>Lyft:</strong> $212K &rarr; $0 &rarr; $267K <span class="tag tag-sustained">cyclical</span></p>
+      <p style="font-size:14px; color:var(--text-secondary); margin-bottom:0;">LWV held the line; Lyft executes only in presidential years and treats the program as a presidential-year-only commitment.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">Pattern 3: Growth</div>
+      <p style="font-size:14px;"><strong>Ben &amp; Jerry's GOTV portion:</strong> ~$440K &rarr; ~$525K &rarr; ~$2.7M <span class="tag tag-growth">+515%</span></p>
+      <p style="font-size:14px;"><strong>Vet the Vote:</strong> $0 &rarr; $0 &rarr; $164K <span class="tag tag-growth">new entrant</span></p>
+      <p style="font-size:14px; color:var(--text-secondary); margin-bottom:0;">B&amp;J went the opposite direction from the corporate retreat narrative. Vet the Vote (We the Veterans, corporate-funded) launched fresh for 2024.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 03 - ANCHOR ADVERTISERS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2>The Anchor Advertisers</h2>
+  </div>
+
+  <p>Ten organizations carry the visible paid-GOTV story on Meta across the three cycles. Eight are corporate-funded nonprofits; two are consumer brands (Ben &amp; Jerry's, Lyft). Below, each with the spend trajectory, geographic delivery, and characteristic messaging.</p>
+
+  <!-- Ben & Jerry's -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">Ben &amp; Jerry's</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-brand">Consumer brand</span>
+          <span class="tag tag-growth">+515% GOTV</span>
+        </div>
+        <div class="advertiser-meta">Page 10461186460 &middot; Paid for by Ben &amp; Jerry's Homemade, Inc.</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$2.4M&ndash;$3.1M</div>
+        <div class="l">2024 GOTV (~88% of total)</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">The single largest consumer-brand GOTV operation in the political archive across all three cycles. Filed every GOTV ad as political/issue. Battleground-state targeted: Wisconsin, Georgia, Michigan, Pennsylvania, Florida, North Carolina dominated 2024 delivery. Texas was #8 (139 ads), New Mexico not in top 30. Creative split roughly 88% GOTV / 10% Florida Amendment 4 (abortion ballot measure) / 2% misc. "Churn Out The Vote" flavor activation tied product launches to specific battleground-state mobilization.</div>
+    <div class="cycle-bars">
+      <div class="cycle-bar c2020"><div class="y">2020</div><div class="v">$390K&ndash;$499K</div></div>
+      <div class="cycle-bar c2022"><div class="y">2022</div><div class="v">$471K&ndash;$597K</div></div>
+      <div class="cycle-bar c2024"><div class="y">2024 (GOTV portion)</div><div class="v">$2.4M&ndash;$3.1M</div></div>
+    </div>
+    <div class="ad-quote">"Hey, Georgia! We have a once-in-a-lifetime chance to protect our rights this November&mdash;and when we vote, WE WIN!"<span class="ad-source">Ben &amp; Jerry's &middot; Oct 15, 2024 &middot; $1,500&ndash;$1,999</span></div>
+  </div>
+
+  <!-- Voto Latino -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">Voto Latino</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-np">501(c)(4)</span>
+          <span class="tag tag-tx">TX top-5</span>
+          <span class="tag tag-sustained">multi-cycle</span>
+        </div>
+        <div class="advertiser-meta">Page 55549065733 &middot; Latino voter registration nationwide</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$5M&ndash;$6M+</div>
+        <div class="l">Three-cycle total (capped queries)</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">The largest sustained Latino GOTV operation in the political archive. 2020 was the apex ($2.47M&ndash;$3.32M in Jun&ndash;Nov alone, 3,732 ads). 2024 returned at $1.05M&ndash;$1.72M+ (Sep&ndash;Nov only, hit the 5,000-ad query cap). 2024 delivery concentrated in Nevada, North Carolina, Wisconsin, Pennsylvania, <strong>Texas (#5, 207 ads)</strong>, Arizona &mdash; the Latino-electorate swing-state map. New Mexico was #22 (40 ads), not a focus. Messaging dominated by registration deadline urgency and bilingual mobilization.</div>
+    <div class="cycle-bars">
+      <div class="cycle-bar c2020"><div class="y">2020 (Jun&ndash;Nov)</div><div class="v">$2.47M&ndash;$3.32M</div></div>
+      <div class="cycle-bar c2022"><div class="y">2022 (full year)</div><div class="v">$576K&ndash;$909K</div></div>
+      <div class="cycle-bar c2024"><div class="y">2024 (Sep&ndash;Nov, capped)</div><div class="v">$1.05M&ndash;$1.72M+</div></div>
+    </div>
+    <div class="ad-quote">"Don't miss your chance to vote in this presidential election. Online registration takes 5 minutes."<span class="ad-source">Voto Latino &middot; 2024 (paraphrased from top-frequency messaging themes)</span></div>
+  </div>
+
+  <!-- Voter Participation Center -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">The Voter Participation Center</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-np">501(c)(3)</span>
+          <span class="tag tag-sustained">multi-cycle</span>
+        </div>
+        <div class="advertiser-meta">Page 260754507296508 &middot; National voter registration nonprofit</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$2.6M+</div>
+        <div class="l">2022 + 2024 (capped queries)</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">National voter-registration nonprofit funded by donor coalitions; runs registration drives via direct mail historically, and on Meta since 2020. Top spender in the 2022 cycle ($402K&ndash;$950K+ Sep&ndash;Dec, hit query cap). 2024 spend $1.02M&ndash;$1.68M+ (Oct&ndash;Dec, hit cap). Multi-state with national distribution; not concentrated in TX or NM specifically.</div>
+    <div class="cycle-bars">
+      <div class="cycle-bar c2020"><div class="y">2020</div><div class="v">Query too large</div></div>
+      <div class="cycle-bar c2022"><div class="y">2022 (capped)</div><div class="v">$402K&ndash;$950K+</div></div>
+      <div class="cycle-bar c2024"><div class="y">2024 (capped)</div><div class="v">$1.02M&ndash;$1.68M+</div></div>
+    </div>
+  </div>
+
+  <!-- Black Voters Matter Fund -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">Black Voters Matter Fund</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-np">501(c)(4)</span>
+          <span class="tag tag-tx">TX #2</span>
+          <span class="tag tag-collapsed">&minus;90% Meta</span>
+        </div>
+        <div class="advertiser-meta">Page 134323820585259 &middot; Corporate, foundation, donor funded</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$598K&ndash;$869K</div>
+        <div class="l">All-cycle Meta political spend</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">Anchored in Georgia (494 of 803 ads, 0.5% reach there), but Texas was their #2 delivery state (231 ads) across 2020&ndash;2024. Meta political-archive spend dropped from $324K in 2020 to $33K in 2024 &mdash; a 90% collapse on this channel. The organization remained active; the channel mix shifted. Messaging is GOTV + voting rights protection, heavy use of "freedom," "rights," "Black voters," "when we vote we win" framing. The hashtag #WeWontBlackdown appears in 101 of 500 sampled ads.</div>
+    <div class="cycle-bars">
+      <div class="cycle-bar c2020"><div class="y">2020</div><div class="v">$244K&ndash;$324K</div></div>
+      <div class="cycle-bar c2022"><div class="y">2022</div><div class="v">$189K&ndash;$242K</div></div>
+      <div class="cycle-bar c2024"><div class="y">2024</div><div class="v">$27K&ndash;$33K</div></div>
+    </div>
+    <div class="ad-quote">"Georgia, get ready! Black Voters Matter is coming to a neighborhood near you. Vote early or on November 5."<span class="ad-source">Black Voters Matter Fund &middot; 2024</span></div>
+  </div>
+
+  <!-- Mi Familia Vota -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">Mi Familia Vota</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-np">501(c)(3) + (c)(4)</span>
+          <span class="tag tag-tx">TX #1</span>
+          <span class="tag tag-collapsed">&minus;81% Meta</span>
+        </div>
+        <div class="advertiser-meta">Page 118714808054 &middot; Latino civic engagement &middot; Sister c4: Mi Familia en Acción</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$582K&ndash;$719K</div>
+        <div class="l">All-cycle Meta political spend</div>
+      </div>
+    </div>
+    <div class="advertiser-summary"><strong>Texas is Mi Familia Vota's #1 delivery state on Meta</strong> (116 of 346 ads, 0.2% avg reach), followed by Arizona, Colorado, Florida, California, Nevada. New Mexico is #18 (44 ads), not an anchor state. Meta spend declined sharply 2020 &rarr; 2024 ($298K &rarr; $55K). Messaging blends Spanish/English GOTV with vaccine information (78 ads referenced vaccine/booster appointments) and partisan anti-Trump framing &mdash; the word "bastatrump" (stop Trump) appeared 125 times in the all-cycle sample. The Mi Familia en Acción sister 501(c)(4) launched a small last-week 2024 burst ($12K&ndash;$16K, 44 ads, Oct 21&ndash;28 only).</div>
+    <div class="cycle-bars">
+      <div class="cycle-bar c2020"><div class="y">2020</div><div class="v">$238K&ndash;$298K</div></div>
+      <div class="cycle-bar c2022"><div class="y">2022</div><div class="v">$300K&ndash;$366K</div></div>
+      <div class="cycle-bar c2024"><div class="y">2024</div><div class="v">$44K&ndash;$55K</div></div>
+    </div>
+  </div>
+
+  <!-- VOTE411 / League of Women Voters -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">VOTE411 &mdash; League of Women Voters Education Fund</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-np">501(c)(3)</span>
+          <span class="tag tag-sustained">stable across cycles</span>
+        </div>
+        <div class="advertiser-meta">Page 138920486202280 &middot; Nonpartisan voter education</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$857K&ndash;$726K</div>
+        <div class="l">Three-cycle total Meta spend</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">The single most consistent operation in the dataset. Spent $198K&ndash;$309K in 2020, $114K&ndash;$163K in 2022, $198K&ndash;$253K in 2024 &mdash; held the line across cycles when others collapsed. Nonpartisan voter-education focus (ballot info, polling locations, candidate info) rather than partisan mobilization. The model of "what stable GOTV looks like" on Meta.</div>
+    <div class="cycle-bars">
+      <div class="cycle-bar c2020"><div class="y">2020</div><div class="v">$198K&ndash;$309K</div></div>
+      <div class="cycle-bar c2022"><div class="y">2022</div><div class="v">$114K&ndash;$163K</div></div>
+      <div class="cycle-bar c2024"><div class="y">2024</div><div class="v">$198K&ndash;$253K</div></div>
+    </div>
+  </div>
+
+  <!-- Lyft -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">Lyft</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-brand">Consumer brand</span>
+          <span class="tag tag-sustained">presidential-only</span>
+        </div>
+        <div class="advertiser-meta">Page 160658967396083 &middot; Paid for by Lyft, Inc.</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$398K&ndash;$487K</div>
+        <div class="l">2020 + 2024 combined</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">The only major rideshare operating its rides-to-polls program inside the political ad archive. 15 ads in 2020 ($178K&ndash;$212K), <strong>zero ads in 2022</strong> (sat out the midterm entirely on Meta), 34 ads in 2024 ($214K&ndash;$267K). Creative is pure operational: promo code "VOTE24" for 50% off rides on Election Day. Tight Election-Day window only.</div>
+    <div class="cycle-bars">
+      <div class="cycle-bar c2020"><div class="y">2020</div><div class="v">$178K&ndash;$212K</div></div>
+      <div class="cycle-bar c2022"><div class="y">2022</div><div class="v">$0</div></div>
+      <div class="cycle-bar c2024"><div class="y">2024</div><div class="v">$214K&ndash;$267K</div></div>
+    </div>
+    <div class="ad-quote">"let us help you use your voice this election day. use code VOTE24 for 50% off (up to $10) your ride to the polls November 5th"<span class="ad-source">Lyft &middot; Oct 2024</span></div>
+  </div>
+
+  <!-- Vet the Vote -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">Vet the Vote (We the Veterans)</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-np">501(c)(3)</span>
+          <span class="tag tag-growth">new for 2024</span>
+        </div>
+        <div class="advertiser-meta">Page 105066632162136 &middot; Corporate-funded veterans GOTV</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$128K&ndash;$164K</div>
+        <div class="l">2024 cycle only (launched mid-2023)</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">New entrant in the 2024 cycle. Funded by corporate sponsors (Microsoft, USAA, Lockheed Martin, others per their public donor list), recruits veterans as poll workers. 117 ads, $128K&ndash;$164K spend, 12&ndash;26M impressions. The closest analog to "what Power the Polls / Civic Alliance corporate-funded GOTV looks like when it does file as political archive ads" &mdash; small but disciplined.</div>
+  </div>
+
+  <!-- OLÉ NewMexico -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">OLÉ NewMexico</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-np">501(c)(3) / (c)(4)</span>
+          <span class="tag tag-nm">NM 100%</span>
+        </div>
+        <div class="advertiser-meta">Page 586402784803665 &middot; Organizers in the Land of Enchantment</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$58K&ndash;$353K</div>
+        <div class="l">All-cycle, NM-focused</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">The only meaningful NM-anchored GOTV operation in the political archive. 1.0% average reach in New Mexico (1,525 of 1,525 ads with regional data reached NM). Texas #2 at 141 ads (0.0% reach), Arizona #3 at 188 ads. 2,978 total ads Dec 2019&ndash;Dec 2024. Funded primarily by national progressive philanthropy (Four Freedoms Fund, State Voices, Open Society) rather than NM corporate dollars &mdash; there is no significant in-state corporate funder of NM GOTV nonprofits. OLÉ's work blends GOTV with legislative-session issue advocacy.</div>
+  </div>
+
+  <!-- Patagonia -->
+  <div class="advertiser-card">
+    <div class="advertiser-head">
+      <div>
+        <div class="advertiser-name">Patagonia (myth-busting entry)</div>
+        <div class="advertiser-tags">
+          <span class="tag tag-brand">Consumer brand</span>
+          <span class="tag tag-collapsed">not GOTV</span>
+        </div>
+        <div class="advertiser-meta">Page 97830335456 &middot; Paid for by Patagonia, Inc.</div>
+      </div>
+      <div class="advertiser-stat">
+        <div class="v">$133K&ndash;$201K</div>
+        <div class="l">Dec 2019&ndash;Jun 2020 (climate ads)</div>
+      </div>
+    </div>
+    <div class="advertiser-summary">Patagonia is the most-cited "corporate GOTV" brand in industry coverage of 2020. Their political archive activity tells a different story.</div>
+    <div class="myth-box">
+      <div class="myth">
+        <h4>The Myth</h4>
+        <p>"Patagonia ran a huge paid 2020 GOTV campaign featuring 'Vote the A**holes Out' hidden tags, Election Day store closures, and a multi-million-dollar civic-engagement push."</p>
+      </div>
+      <div class="reality">
+        <h4>The Archive Reality</h4>
+        <p>Patagonia filed 630 political/issue ads Dec 2019&ndash;Jun 2020, spent $133K&ndash;$201K &mdash; <strong>all of them climate, wilderness, and environmental-policy ads</strong>. Zero post-June 2020 political-archive activity in any subsequent cycle (no 2022, no 2024). The famous "Vote the A**holes Out" tags were earned media / PR &mdash; not a paid Meta political ad buy. Their visible civic engagement ran outside the political archive entirely.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 04 - TEXAS & NEW MEXICO -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2>Texas &amp; New Mexico Geographic Concentration</h2>
+  </div>
+
+  <p>Even though "corporate GOTV" sounds like a coastal-brand story, two of the major operators delivered the bulk of their ads into Texas. Mi Familia Vota's #1 state was Texas. Black Voters Matter Fund's #2 state was Texas. Voto Latino targeted Texas at #5 in 2024. None had New Mexico in their top 15.</p>
+
+  <div class="two-col">
+    <div class="chart-wrap">
+      <div class="chart-title">Texas Delivery Concentration</div>
+      <div class="chart-subtitle">Share of total ads reaching Texas, by advertiser</div>
+      <div style="height:300px;"><canvas id="txDeliveryChart"></canvas></div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">New Mexico Delivery Concentration</div>
+      <div class="chart-subtitle">OLÉ NewMexico dominates; everyone else is a rounding error in NM</div>
+      <div style="height:300px;"><canvas id="nmDeliveryChart"></canvas></div>
+    </div>
+  </div>
+
+  <h3>What this tells us about TX/NM corporate GOTV</h3>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-header">Texas: a battleground for Latino &amp; Black mobilization</div>
+      <p style="font-size:14px;">Texas pulls in significant nonprofit GOTV ad delivery because the state has the second-largest Latino electorate and one of the largest Black electorates in the country &mdash; both targeted demographics for the major operators. Mi Familia Vota, Voto Latino, and BVMF all delivered substantial volumes into Texas.</p>
+      <p style="font-size:14px;"><strong>What's absent:</strong> Texas-headquartered consumer brands (H-E-B, Whataburger, Dell, AT&amp;T, Southwest Airlines, American Airlines, Frito-Lay, Dr Pepper) did <em>not</em> file any GOTV ads as political archive content across the three cycles. Even those that publicly opposed SB 7/HB 6 in 2021 ran their statements as press, not paid Meta ads.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">New Mexico: a one-org market</div>
+      <p style="font-size:14px;">NM's political-archive GOTV ecosystem is OLÉ NewMexico plus marginal delivery from Voto Latino and Mi Familia Vota. The state is too small to be a top-10 delivery target for national operators, and there is no NM-headquartered corporate funder of voter-mobilization nonprofits at scale.</p>
+      <p style="font-size:14px;"><strong>What's absent:</strong> PNM (utility), the state's largest consumer-facing in-state company, ran no political-archive GOTV ads. The corporate-funder side of NM civic engagement is national philanthropy (Four Freedoms Fund, State Voices, Open Society Foundations), not in-state corporate dollars.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 05 - MESSAGING STRATEGIES -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2>Messaging Strategies by Operator Type</h2>
+  </div>
+
+  <p>Across the 10 anchor advertisers, GOTV messaging in the political archive splits into four distinct strategic playbooks. Each correlates with the type of organization running the ads.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Top Word Frequency by Advertiser (2024 sample)</div>
+    <div class="chart-subtitle">Higher bars = more dominant theme in ad creative</div>
+    <div style="height:380px;"><canvas id="themeChart"></canvas></div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-header">Strategy A: Operational / Promo-code</div>
+      <p style="font-size:14px;"><strong>Lyft &mdash; "code VOTE24, 50% off"</strong></p>
+      <p style="font-size:14px;">Tight, transactional, Election-Day only. Brand acts as utility provider. No advocacy, no values claim, no partisanship. Just the offer. This is the lowest-risk filing strategy for a consumer brand in the political archive &mdash; explicit "this is a service we provide," not "this is what we believe."</p>
+    </div>
+    <div class="card">
+      <div class="card-header">Strategy B: Battleground-state values</div>
+      <p style="font-size:14px;"><strong>Ben &amp; Jerry's &mdash; "when we vote, we win"</strong></p>
+      <p style="font-size:14px;">Hyper-localized creative (Michigan, Wisconsin, Pennsylvania, Georgia versions). Values-tied ("protect our freedom," "rights are under threat," "make history"). Earned the political-content label deliberately as part of brand identity. The only consumer brand willing to take the algorithmic-reach penalty.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-header">Strategy C: Registration urgency (Latino vote)</div>
+      <p style="font-size:14px;"><strong>Voto Latino, Mi Familia Vota</strong></p>
+      <p style="font-size:14px;">"Don't miss the deadline." "Register online in 5 minutes." Bilingual delivery (Spanish + English). Mi Familia Vota adds explicitly partisan framing ("bastatrump") and ancillary issues (vaccine info, immigration). Voto Latino stays cleaner on registration mechanics. Both treat Texas as a primary delivery target.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">Strategy D: Voting rights + community</div>
+      <p style="font-size:14px;"><strong>Black Voters Matter Fund, VOTE411 (LWV)</strong></p>
+      <p style="font-size:14px;">Two variants. BVMF: "rights, freedom, when we vote we win" &mdash; mobilization with voting-rights threat framing. VOTE411: pure nonpartisan voter-education (ballot info, polling places, candidate info). LWV is the only major operator whose 2024 messaging is functionally indistinguishable from 2020 messaging.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 06 - EVENT TIMELINE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">06</span>
+    <h2>The Five-Year Event Timeline</h2>
+  </div>
+
+  <p>The corporate GOTV trajectory does not move on a smooth curve. It moves in reaction to discrete external events. The annotated chart below maps the three-cycle spend trajectory against the events that drove it.</p>
+
+  <div class="timeline">
+    <div class="timeline-event">
+      <div class="date">Mar 2020</div>
+      <div class="title">Civic Alliance founded (Democracy Works + CAA Foundation)</div>
+      <div class="caption">The infrastructure that anchored 1,300+ company memberships across 2020. Pledge-based, not paid-media.</div>
+    </div>
+    <div class="timeline-event tipping">
+      <div class="date">Jun 2020</div>
+      <div class="title">Meta Voter Information Center launches &middot; Power the Polls launches</div>
+      <div class="caption">VIC went on to register 4.4M voters (Zuckerberg announcement, Oct 2020). Power the Polls recruited 700K+ poll workers. <strong>Neither ran as political-archive ads.</strong></div>
+    </div>
+    <div class="timeline-event">
+      <div class="date">Sep&ndash;Nov 2020</div>
+      <div class="title">Peak corporate GOTV cycle</div>
+      <div class="caption">Patagonia "Vote the A**holes Out" tags viral (earned media, not paid). Old Navy $30/day poll-worker pay. Lyft 50% rides to polls. Voto Latino $2.5M+ ad surge.</div>
+    </div>
+    <div class="timeline-event tipping">
+      <div class="date">Jan 6, 2021</div>
+      <div class="title">Capitol attack</div>
+      <div class="caption">Corporate PAC pauses announced industry-wide. Civic engagement narrative bifurcates into "stand for democracy" and "stay out of partisan optics."</div>
+    </div>
+    <div class="timeline-event tipping">
+      <div class="date">Mar 2021</div>
+      <div class="title">Georgia SB 202 / corporate response &middot; MLB moves All-Star Game</div>
+      <div class="caption">Delta, Coca-Cola, MLB take public stances. GOP retaliation threats follow. The cost of taking public election-related positions becomes the operating frame.</div>
+    </div>
+    <div class="timeline-event tipping">
+      <div class="date">Sep 2021</div>
+      <div class="title">Texas SB 1 signed</div>
+      <div class="caption">Statements from AT&amp;T, Dell, American, Southwest oppose &mdash; via press, not Meta ads. Texas-HQ consumer brands stay off-platform on voting issues from this point forward.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="date">Nov 2022</div>
+      <div class="title">2022 midterms</div>
+      <div class="caption">Quieter cycle. Voto Latino down to $576K&ndash;$909K. Lyft skips entirely. Mi Familia Vota actually <em>up</em>. VPC takes #1 spender slot among GOTV operators.</div>
+    </div>
+    <div class="timeline-event tipping">
+      <div class="date">Apr 2023</div>
+      <div class="title">Bud Light / Dylan Mulvaney boycott &mdash; the pivot</div>
+      <div class="caption">~$27B market-cap loss becomes the cautionary tale in every C-suite. The case study used to argue against any "political" brand activity for the next 18 months.</div>
+    </div>
+    <div class="timeline-event tipping">
+      <div class="date">May 2023</div>
+      <div class="title">Target Pride backlash</div>
+      <div class="caption">Reinforces the Bud Light lesson. By summer 2023, internal corporate playbooks shift to "minimize attack surface."</div>
+    </div>
+    <div class="timeline-event">
+      <div class="date">2023&ndash;2024</div>
+      <div class="title">Meta dismantles civic-content priority</div>
+      <div class="caption">Political content downranked across Facebook and Instagram. Threads launches with explicit "no politics" posture. Civic team layoffs in 2023. Voter Information Center quietly buried by 2024.</div>
+    </div>
+    <div class="timeline-event tipping">
+      <div class="date">Sep 2023</div>
+      <div class="title">Musk fires X election integrity team</div>
+      <div class="caption">Last platform-side civic apparatus collapses. Cross-platform civic-information environment heading into 2024 is materially worse than 2020 or 2022.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="date">Nov 2024</div>
+      <div class="title">Election Day</div>
+      <div class="caption">Ben &amp; Jerry's runs its largest-ever GOTV campaign. Lyft returns with rides-to-polls. BVMF and Mi Familia Vota near-absent on Meta political archive. VPC and Voto Latino sustain into Nov.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 07 - THE DISAPPEARING ACT -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">07</span>
+    <h2>The Consumer Brand Disappearing Act</h2>
+  </div>
+
+  <p>The most strategically important finding of this brief is what is <em>not</em> in the data: the major consumer brand GOTV programs that occupy 90% of trade-press coverage of "corporate civic engagement" do not appear in the Meta political ad archive at all. They executed their GOTV through different channels, with different filing strategies. Below are the most notable absent entries and how they actually showed up.</p>
+
+  <div class="three-col">
+    <div class="card">
+      <div class="card-header">Old Navy / Gap Inc.</div>
+      <p style="font-size:14px;"><strong>Off-archive activity:</strong> $30/day poll-worker pay program (2020), in-store voter signage, organic social. No political-archive Meta ads detected. Civic work executed through earned PR + employee policy.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">Nike</div>
+      <p style="font-size:14px;"><strong>Off-archive activity:</strong> 2020 digital "It's Your Vote" campaign across YouTube/IG organic. Civic Alliance / Time to Vote pledge. No political-archive Meta ads. Quieter in 2024 but maintained Civic Alliance membership.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">Microsoft</div>
+      <p style="font-size:14px;"><strong>Off-archive activity:</strong> Time to Vote pledger; corporate-funded Vet the Vote sponsor (which <em>does</em> appear in archive). Microsoft's own brand pages ran no political-archive GOTV ads.</p>
+    </div>
+  </div>
+
+  <div class="three-col">
+    <div class="card">
+      <div class="card-header">Snap</div>
+      <p style="font-size:14px;"><strong>Off-archive activity:</strong> Aggressive in-app Voter Information Hub (1.2M registered in 2020), Run for Office Mini, Vote.org partnership in 2024. All in-app product, not Meta paid ads.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">Levi Strauss / Levi's</div>
+      <p style="font-size:14px;"><strong>Off-archive activity:</strong> "Use Your Voice" multi-cycle program. Founded Time to Vote (2018). Power the Polls funder. Civic content runs as branded organic + sub-brand Dockers issue-ads on workplace policy.</p>
+    </div>
+    <div class="card">
+      <div class="card-header">Target, Walmart, Starbucks, Salesforce</div>
+      <p style="font-size:14px;"><strong>Off-archive activity:</strong> Time to Vote / Civic Alliance members. Employee PTO programs. Poll-worker pay (Target, Tory Burch). No detectable political-archive Meta ads from any of these brands.</p>
+    </div>
+  </div>
+
+  <h3>The curious case of Uber: $1M+ in Meta political ads, none of it GOTV</h3>
+  <div class="callout callout-purple">
+    <strong>Uber spent $926K&ndash;$1.18M on Meta political/issue ads from 2020 to 2024 &mdash; more than any other consumer brand in this dataset. Messaging analysis shows none of it was GOTV.</strong>
+    <p style="margin-top:8px; margin-bottom:0;">2020 Aug&ndash;Sept ads ($70K&ndash;$84K): Prop 22 / gig-worker classification advocacy ("Independent contractors deserve safeguards and protections"). 2022 ads ($239K&ndash;$304K) and 2024 ads ($99K&ndash;$148K): healthcare access, paratransit, and "transportation as a social determinant of health" policy advocacy. The famous Uber rides-to-polls promo program, when it ran, was filed as commercial brand ads &mdash; not political. Uber and Lyft made directly opposite strategic choices on this. Lyft accepted the political-content label for its GOTV promo; Uber did not, and instead used its political-ad budget to lobby on the issues directly material to its business model.</p>
+  </div>
+
+  <div class="pulled-quote">
+    The brand that runs a paid GOTV ad outside the political archive is making a clear choice: optimize for reach. The brand that runs it inside the political archive (Ben &amp; Jerry's, Lyft) is making the opposite choice: accept reduced reach in exchange for explicit civic positioning.
+    <span class="who">Strategic interpretation</span>
+  </div>
+</div>
+
+<!-- SECTION 08 - STRATEGIC TAKEAWAYS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">08</span>
+    <h2>Strategic Takeaways</h2>
+  </div>
+
+  <p>For anyone building or advising a corporate civic-engagement program, the data points to seven concrete lessons.</p>
+
+  <div class="card">
+    <div class="card-header">01 &mdash; The political archive is the wrong place to measure brand-side GOTV</div>
+    <p style="font-size:14px;">If you are trying to benchmark what consumer brands spent on Meta GOTV in 2020/22/24, the political archive will under-represent the truth by an order of magnitude. Most brand GOTV is commercial-ad-coded for reach reasons. The political archive captures the nonprofit pass-through layer.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">02 &mdash; The pass-through model dominates</div>
+    <p style="font-size:14px;">Corporate dollars flowing through Civic Alliance, Power the Polls, When We All Vote, HeadCount, Vet the Vote get spent by the 501(c)(3) on Meta in the political archive &mdash; with the nonprofit as the public face. Brand logos appear on partner pages and in earned media, not in disclaimers. This is the dominant model and likely to grow.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">03 &mdash; Ben &amp; Jerry's is the outlier &mdash; not the template</div>
+    <p style="font-size:14px;">Ben &amp; Jerry's $2.4M&ndash;$3.1M 2024 GOTV ad buy is real, but it works because B&amp;J's brand identity has explicitly priced in political-content reach penalties and consumer-backlash exposure for two decades. It cannot be replicated by a brand without that risk tolerance built into the equity.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">04 &mdash; The Lyft model is replicable for transactional brands</div>
+    <p style="font-size:14px;">Lyft's "code VOTE24, 50% off" approach is filed as political but functions as commercial. It avoids the values claim, sticks to the offer, and only deploys in presidential years on Election Day. A rideshare, food-delivery, or transit-pass brand could adopt this template without the Ben &amp; Jerry's risk profile.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">05 &mdash; Texas is the underestimated battleground for Latino/Black GOTV money</div>
+    <p style="font-size:14px;">Mi Familia Vota delivers more ads into Texas than any other state. BVMF makes Texas its #2 delivery target. Voto Latino consistently puts Texas in the top five. Any TX-focused GOTV strategy should integrate with these existing operators rather than build parallel infrastructure.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">06 &mdash; New Mexico is a single-org market</div>
+    <p style="font-size:14px;">If you want paid Meta GOTV reach in NM, you are working with OLÉ NewMexico or you are inventing a channel that doesn't yet exist. No in-state corporate funder, no major national operator treating NM as a top-15 state, and an NM Civic Engagement Table funded almost entirely by out-of-state philanthropy.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">07 &mdash; The 2020 peak is not coming back at scale on this channel</div>
+    <p style="font-size:14px;">Voto Latino's 2020 ($2.5M&ndash;$3.3M Jun&ndash;Nov) and the aggregate ~$5M tracked across all anchor advertisers in 2020 were a high-water mark driven by pandemic, racial-justice urgency, and Meta's still-permissive civic-content environment. The 2024 cycle's identifiable GOTV total even with Ben &amp; Jerry's surge sits well below 2020 in adjusted terms once you account for the algorithmic deprioritization tax. Operators are increasingly moving budgets to creator/influencer partnerships, off-Meta platforms, and direct-mail. Expect that shift to deepen, not reverse.</p>
+  </div>
+</div>
+
+<!-- METHODOLOGY -->
+<div class="methodology">
+  <h4>Methodology</h4>
+  <p>Source: Meta Ad Library API (political &amp; issue ads), country filter <code>US</code>, delivery date ranges <code>2020-01-01</code> through <code>2024-12-31</code> with full-cycle and Sept&ndash;Nov windows pulled per cycle. Discovery via <code>get_top_spenders</code> for "register to vote," "make a plan to vote," "voter registration," "vote early"; per-advertiser <code>search_pages</code> for the 42-name seed list from background research (consumer brands + tech platforms + nonprofit GOTV operators + TX/NM-specific organizations); spend totals via <code>get_page_spend_summary</code> by cycle; messaging via <code>identify_messaging_themes</code> and direct <code>get_page_ads</code> samples; geographic delivery via <code>analyze_spend_by_region</code>.</p>
+  <p>Spend reported as Meta's upper-bound dollar figure from spend ranges. Several large advertisers (Voto Latino, Voter Participation Center) hit the 5,000-ad query cap in single-cycle queries &mdash; reported figures are floors. Ben &amp; Jerry's GOTV-portion estimate derived from manual coding of a 200-ad sample (Aug&ndash;Nov 2024) showing ~88% GOTV-themed creative and ~10% Florida Amendment 4 ballot-measure (abortion) creative. Verbatim ad excerpts quoted within the report's copyright rules: maximum ~25 words per quote, attributed to the funded-by entity and delivery date.</p>
+  <p>Critical methodological note: <strong>this report captures only ads filed as Meta political/issue ads.</strong> Most consumer-brand GOTV content during 2020&ndash;2024 ran as commercial brand ads (no "paid for by" disclaimer), organic posts, or in-app product features. Direct queries for Old Navy, Nike, Levi's, Patagonia (post-2020), Target, Starbucks, Walmart, Salesforce, Microsoft, PayPal, AT&amp;T, Tory Burch, Snap, Spotify, and Civic Alliance returned no political-archive Pages for GOTV. Off-archive activity is referenced contextually from news coverage and corporate communications.</p>
+  <p>Delivery data (geographic, demographic) reflects who saw the ads, not who the advertiser targeted. A skew toward Texas in Mi Familia Vota's delivery does not necessarily mean Mi Familia Vota targeted Texas explicitly &mdash; it may reflect Texas's share of the Latino electorate, Meta's algorithmic optimization, or first-party audience data. Inferences about targeting intent are labeled as such.</p>
+  <p>Report generated: May 12, 2026. Spend ranges and ad counts will continue to update as Meta backfills late-reported data.</p>
+</div>
+
+<div class="footer">
+  Built by The Canter Company &middot; <a href="https://www.linkedin.com/in/joshuacanter/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+
+</div>
+
+<script>
+const fontFamily = "'IBM Plex Sans',sans-serif";
+const navy = '#1a2332', stone = '#78716c', border = '#e4e0d8';
+const tx = '#b91c1c', nm = '#b45309';
+const brand = '#2563eb', np = '#16803c';
+const c2020 = '#6d28d9', c2022 = '#b45309', c2024 = '#16803c';
+const red = '#c53030', amber = '#b45309', green = '#16803c';
+
+Chart.defaults.font.family = fontFamily;
+Chart.defaults.color = '#3d3833';
+
+// 02a — per-cycle by advertiser
+new Chart(document.getElementById('cycleChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Ben & Jerry\'s (GOTV-coded)','Voto Latino','Voter Participation Center',
+      'Black Voters Matter Fund','Mi Familia Vota','VOTE411 (LWV)',
+      'Lyft','Vet the Vote','OLÉ NM','Patagonia (climate, not GOTV)'
+    ],
+    datasets: [
+      { label: '2020', data: [440000, 3320000, 0, 324000, 298000, 309000, 212000, 0, 0, 200000], backgroundColor: c2020, borderRadius: 3 },
+      { label: '2022', data: [525000, 909000, 950000, 242000, 366000, 163000, 0, 0, 0, 0], backgroundColor: c2022, borderRadius: 3 },
+      { label: '2024', data: [2750000, 1720000, 1680000, 33000, 55000, 253000, 267000, 164000, 0, 0], backgroundColor: c2024, borderRadius: 3 }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: {
+      legend: { position: 'top' },
+      tooltip: { callbacks: { label: c => c.dataset.label + ': $' + c.parsed.x.toLocaleString() + (c.parsed.x === 0 ? '' : ' (upper bound)') } }
+    },
+    scales: {
+      x: { ticks: { callback: v => '$' + (v >= 1000000 ? (v/1000000).toFixed(1) + 'M' : (v/1000) + 'K') }, grid: { color: border } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// 02b — cycle totals
+new Chart(document.getElementById('cycleTotalChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2020','2022','2024'],
+    datasets: [{
+      label: 'Identified GOTV spend (upper bound)',
+      data: [5103000, 3155000, 6822000],
+      backgroundColor: [c2020, c2022, c2024],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => '$' + c.parsed.y.toLocaleString() } } },
+    scales: {
+      y: { ticks: { callback: v => '$' + (v/1000000).toFixed(1) + 'M' }, grid: { color: border } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 02c — trajectory
+new Chart(document.getElementById('trajectoryChart'), {
+  type: 'line',
+  data: {
+    labels: ['2020','2022','2024'],
+    datasets: [
+      { label: 'Ben & Jerry\'s', data: [440000, 525000, 2750000], borderColor: brand, backgroundColor: brand+'22', tension: 0.2, pointRadius: 4 },
+      { label: 'Voto Latino', data: [3320000, 909000, 1720000], borderColor: np, backgroundColor: np+'22', tension: 0.2, pointRadius: 4 },
+      { label: 'BVMF', data: [324000, 242000, 33000], borderColor: red, backgroundColor: red+'22', tension: 0.2, pointRadius: 4 },
+      { label: 'Mi Familia Vota', data: [298000, 366000, 55000], borderColor: amber, backgroundColor: amber+'22', tension: 0.2, pointRadius: 4 },
+      { label: 'VOTE411', data: [309000, 163000, 253000], borderColor: '#0d9488', backgroundColor: '#0d948822', tension: 0.2, pointRadius: 4 },
+      { label: 'Lyft', data: [212000, 0, 267000], borderColor: '#6d28d9', backgroundColor: '#6d28d922', tension: 0.2, pointRadius: 4 }
+    ]
+  },
+  options: {
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } },
+      tooltip: { callbacks: { label: c => c.dataset.label + ': $' + c.parsed.y.toLocaleString() } }
+    },
+    scales: {
+      y: { ticks: { callback: v => '$' + (v/1000000).toFixed(1) + 'M' }, grid: { color: border } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 04a — Texas delivery
+new Chart(document.getElementById('txDeliveryChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Mi Familia Vota','BVMF','Voto Latino (2024)','OLÉ NM','Ben & Jerry\'s (2024)'],
+    datasets: [{
+      label: 'TX rank (lower = more concentrated)',
+      data: [1, 2, 5, 2, 8],
+      backgroundColor: tx,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => 'TX delivery rank: #' + c.parsed.y } } },
+    scales: {
+      y: { reverse: true, beginAtZero: false, min: 1, max: 10, ticks: { callback: v => '#'+v, stepSize: 1 }, grid: { color: border } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 04b — NM delivery
+new Chart(document.getElementById('nmDeliveryChart'), {
+  type: 'bar',
+  data: {
+    labels: ['OLÉ NewMexico','Mi Familia Vota','Voto Latino (2024)','Ben & Jerry\'s'],
+    datasets: [{
+      label: 'NM reach',
+      data: [1.0, 0.0, 0.0, 0.0],
+      backgroundColor: nm,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => 'NM avg reach: ' + c.parsed.y + '%' } } },
+    scales: {
+      y: { ticks: { callback: v => v + '%' }, grid: { color: border } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 05 — theme word frequency
+new Chart(document.getElementById('themeChart'), {
+  type: 'bar',
+  data: {
+    labels: ['vote','register / registration','rights','freedom','election day','protect','battleground state names','partisan framing','ride / promo code'],
+    datasets: [
+      { label: 'Ben & Jerry\'s (2024)', data: [781, 0, 438, 246, 381, 492, 922, 0, 0], backgroundColor: brand },
+      { label: 'Voto Latino (2024)', data: [678, 731, 0, 0, 325, 0, 0, 290, 0], backgroundColor: np },
+      { label: 'BVMF (all)', data: [284, 0, 91, 128, 134, 82, 208, 0, 0], backgroundColor: red },
+      { label: 'Lyft (all)', data: [15, 0, 0, 0, 30, 0, 0, 0, 107], backgroundColor: '#6d28d9' }
+    ]
+  },
+  options: {
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: { callbacks: { label: c => c.dataset.label + ': ' + c.parsed.y + ' word occurrences in 500-ad sample' } }
+    },
+    scales: {
+      y: { title: { display: true, text: 'Word occurrences (500-ad sample)' }, grid: { color: border } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>

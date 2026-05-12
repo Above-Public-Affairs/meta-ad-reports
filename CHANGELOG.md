@@ -2,6 +2,11 @@
 
 All notable changes to Meta Ad Library Research Tool will be documented in this file.
 
+## [2026-05-12]
+
+### Added
+- Corporate GOTV on Meta 2020–2024 intelligence brief — three-cycle analysis of consumer brand and corporate-funded nonprofit GOTV advertising on Meta's political ad archive. Covers 10 anchor advertisers (Ben & Jerry's, Voto Latino, Voter Participation Center, Black Voters Matter Fund, Mi Familia Vota, VOTE411/LWV, Lyft, Vet the Vote, OLÉ NewMexico, Patagonia) with per-cycle spend trajectories, Texas & New Mexico regional delivery, messaging strategies by operator type, and a 5-year event timeline. Documents the central methodological finding that most consumer-brand GOTV (Patagonia, Old Navy, Nike, Snap, Microsoft, etc.) runs outside the political archive as commercial brand content — and analyzes what the archive does capture.
+
 ## [2026-05-05]
 
 ### Added
