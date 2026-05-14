@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texas US Senate GOTV — Meta Ad Intelligence Brief: 2024 vs 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+  :root {
+    --navy: #1a2332;
+    --navy-mid: #243049;
+    --slate: #475569;
+    --stone: #78716c;
+    --text-primary: #1c1917;
+    --text-body: #3d3833;
+    --text-secondary: #6b6560;
+    --bg: #faf9f7;
+    --bg-warm: #f5f3ee;
+    --bg-card: #ffffff;
+    --border: #e4e0d8;
+    --border-strong: #c8c2b6;
+
+    --blue: #1d4ed8;
+    --blue-light: #dbeafe;
+    --red: #b91c1c;
+    --red-light: #fee2e2;
+    --green: #16803c;
+    --green-light: #dcfce7;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+    --purple: #6d28d9;
+    --purple-light: #ede9fe;
+    --teal: #0e7490;
+    --teal-light: #cffafe;
+    --orange: #c2410c;
+    --orange-light: #fed7aa;
+    --cyan: #0891b2;
+    --cyan-light: #cffafe;
+
+    --w1: #6d28d9;   /* 2024 primary - purple */
+    --w2: #b45309;   /* 2024 general - amber */
+    --w3: #16803c;   /* 2026 primary - green */
+    --w4: #b91c1c;   /* 2026 post-primary - red */
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    color: var(--text-body);
+    background: var(--bg);
+    line-height: 1.65;
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 56px 32px 80px; }
+
+  /* Header */
+  header.report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+    margin: 0 0 14px;
+    max-width: 920px;
+  }
+  .subtitle {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 820px;
+    margin: 0 0 18px;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Top stats grid */
+  .top-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    padding: 22px 22px 24px;
+  }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 12px;
+  }
+  .stat-value {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--navy);
+    letter-spacing: -0.6px;
+    margin-bottom: 8px;
+  }
+  .stat-sub {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+  }
+
+  /* Key finding banner */
+  .key-finding {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: #fff;
+    padding: 36px 36px 38px;
+    margin-bottom: 48px;
+  }
+  .key-finding .kf-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 14px;
+  }
+  .key-finding h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #fff;
+    margin: 0 0 14px;
+    max-width: 860px;
+    letter-spacing: -0.3px;
+  }
+  .key-finding p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.86);
+    max-width: 820px;
+    margin: 0 0 10px;
+  }
+
+  /* Section heads */
+  section.section { margin-bottom: 56px; }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    color: var(--stone);
+    margin-bottom: 8px;
+  }
+  h2.section-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.25;
+    margin: 0 0 14px;
+    letter-spacing: -0.3px;
+  }
+  .section-intro {
+    font-size: 15.5px;
+    color: var(--text-body);
+    margin: 0 0 28px;
+    max-width: 880px;
+    line-height: 1.65;
+  }
+
+  h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy-mid);
+    margin: 32px 0 14px;
+    line-height: 1.3;
+  }
+
+  /* Methodology callout */
+  .callout {
+    border-left: 4px solid var(--amber);
+    background: var(--amber-light);
+    padding: 18px 22px 20px;
+    margin: 24px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout.callout-blue { border-left-color: var(--blue); background: var(--blue-light); }
+  .callout.callout-red { border-left-color: var(--red); background: var(--red-light); }
+  .callout.callout-green { border-left-color: var(--green); background: var(--green-light); }
+  .callout.callout-purple { border-left-color: var(--purple); background: var(--purple-light); }
+  .callout h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+  }
+  .callout p { font-size: 14.5px; line-height: 1.6; margin: 0 0 8px; color: var(--text-body); }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout ul { margin: 8px 0 0; padding-left: 22px; font-size: 14.5px; line-height: 1.7; }
+  .callout ul li { margin-bottom: 4px; }
+
+  /* Window cards */
+  .window-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .window-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 20px 20px 22px;
+    border-top: 4px solid var(--w1);
+  }
+  .window-card.w2 { border-top-color: var(--w2); }
+  .window-card.w3 { border-top-color: var(--w3); }
+  .window-card.w4 { border-top-color: var(--w4); }
+  .window-card .wc-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 4px;
+  }
+  .window-card h4 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 4px;
+    line-height: 1.25;
+  }
+  .window-card .wc-dates {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.3px;
+    margin-bottom: 14px;
+  }
+  .window-card .wc-stat {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+    letter-spacing: -0.4px;
+  }
+  .window-card .wc-stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 14px;
+  }
+  .window-card .wc-detail {
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  /* Charts */
+  .chart-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 26px 26px 30px;
+    margin: 20px 0 28px;
+  }
+  .chart-block h4 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy-mid);
+    margin: 0 0 6px;
+  }
+  .chart-block .chart-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 18px;
+    line-height: 1.5;
+  }
+  .chart-canvas-wrap { position: relative; }
+
+  /* Advertiser profile cards */
+  .advertiser-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .advertiser-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 22px 24px 24px;
+  }
+  .ac-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .ac-name {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 4px;
+  }
+  .ac-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .ac-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: var(--bg-warm);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .ac-tag.tx { background: var(--blue-light); color: var(--blue); border-color: transparent; }
+  .ac-tag.national { background: var(--purple-light); color: var(--purple); border-color: transparent; }
+  .ac-tag.up { background: var(--green-light); color: var(--green); border-color: transparent; }
+  .ac-tag.down { background: var(--red-light); color: var(--red); border-color: transparent; }
+  .ac-stat {
+    text-align: right;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .ac-stat .v { font-size: 20px; font-weight: 600; color: var(--navy); display: block; line-height: 1.1; }
+  .ac-stat .l {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 4px;
+  }
+  .ac-summary {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+  .ac-cycle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .ac-cycle {
+    background: var(--bg-warm);
+    padding: 11px 12px;
+    border-top: 3px solid var(--border-strong);
+  }
+  .ac-cycle.w1 { border-top-color: var(--w1); }
+  .ac-cycle.w2 { border-top-color: var(--w2); }
+  .ac-cycle.w3 { border-top-color: var(--w3); }
+  .ac-cycle.w4 { border-top-color: var(--w4); }
+  .ac-cycle .cyc-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 4px;
+  }
+  .ac-cycle .cyc-val {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+  .ac-cycle .cyc-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .ac-cycle.empty .cyc-val { color: var(--stone); }
+
+  /* Ad quote cards */
+  .messaging-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 24px 26px 26px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--w1);
+  }
+  .messaging-block.w2 { border-left-color: var(--w2); }
+  .messaging-block.w3 { border-left-color: var(--w3); }
+  .messaging-block.w4 { border-left-color: var(--w4); }
+  .messaging-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .messaging-window {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .messaging-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 4px 0 0;
+  }
+  .ad-quote {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-primary);
+    font-style: italic;
+    border-left: 3px solid var(--border-strong);
+  }
+  .ad-quote .who {
+    display: block;
+    font-style: normal;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 6px;
+  }
+  .ad-quote a {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .ad-quote a:hover { text-decoration: underline; }
+
+  /* Pulled quote */
+  .pull-quote {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 22px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--navy-mid);
+    border-left: 4px solid var(--amber);
+    padding: 6px 0 6px 24px;
+    margin: 30px 0;
+    font-style: italic;
+  }
+
+  /* Comparison strip */
+  .compare-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .compare-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 22px 24px 24px;
+  }
+  .compare-card.left { border-top: 4px solid var(--w1); }
+  .compare-card.right { border-top: 4px solid var(--w3); }
+  .compare-card h5 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin: 0 0 10px;
+  }
+  .compare-card .compare-stat {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .compare-card p { font-size: 13.5px; color: var(--text-body); line-height: 1.55; margin: 0; }
+
+  /* Strategic takeaways */
+  .takeaways-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .takeaway {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 20px 22px 22px;
+  }
+  .takeaway .t-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 6px;
+    letter-spacing: 1.2px;
+  }
+  .takeaway h5 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+  .takeaway p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-body);
+    margin: 0;
+  }
+
+  /* Bar timeline */
+  .timeline-chart { padding: 4px 0; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 13px;
+  }
+  .bar-label {
+    width: 100px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-body);
+    text-align: right;
+    letter-spacing: 0.3px;
+  }
+  .bar-track {
+    flex: 1;
+    height: 22px;
+    background: var(--bg-warm);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+  .bar-value {
+    width: 130px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+  .bar-count {
+    width: 60px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+
+  /* Methodology box */
+  .methodology {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    padding: 24px 28px 26px;
+    margin-top: 56px;
+  }
+  .methodology h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin: 0 0 14px;
+  }
+  .methodology p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin: 0 0 10px;
+  }
+  .methodology p:last-child { margin-bottom: 0; }
+
+  /* Footer */
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--stone);
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  footer a { color: var(--blue); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* Mobile */
+  @media (max-width: 820px) {
+    .wrap { padding: 36px 18px 60px; }
+    h1 { font-size: 28px; }
+    .subtitle { font-size: 15px; }
+    .top-stats { grid-template-columns: repeat(2, 1fr); }
+    .window-grid { grid-template-columns: 1fr 1fr; }
+    .compare-strip { grid-template-columns: 1fr; }
+    .takeaways-grid { grid-template-columns: 1fr; }
+    .key-finding { padding: 26px 22px 28px; }
+    .key-finding h2 { font-size: 22px; }
+    .ac-cycle-grid { grid-template-columns: repeat(2, 1fr); }
+    .ac-head { flex-direction: column; }
+    .ac-stat { text-align: left; }
+    .bar-label { width: 80px; font-size: 10px; }
+    .bar-value { width: 100px; font-size: 10px; }
+    .bar-count { width: 40px; font-size: 10px; }
+  }
+
+  @media print {
+    .wrap { max-width: 100%; padding: 24px; }
+    .chart-block, .advertiser-card, .window-card, .messaging-block { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="report-header">
+  <div class="eyebrow">Meta Ad Intelligence Brief · Texas US Senate · 2024 + 2026</div>
+  <h1>Texas US Senate GOTV: A Four-Window Look at Who Ran Get-Out-the-Vote Ads on Meta — and What Actually Changed Between 2024 and 2026</h1>
+  <p class="subtitle">An advertiser-by-advertiser audit of Meta political-archive ad spend tied to voter registration, mail-ballot, and turnout messaging across the 2024 Cruz–Allred cycle and the 2026 Cornyn–Paxton / Talarico cycle. The 2026 Democratic primary set a modern Texas midterm turnout record. The Meta archive shows almost none of that surge.</p>
+  <div class="meta-row">
+    <span>Report Date: May 13, 2026</span>
+    <span>Universe: 10 advertisers, 4 election windows</span>
+    <span>Source: Meta Ad Library API</span>
+  </div>
+</header>
+
+<div class="top-stats">
+  <div class="stat-card">
+    <div class="stat-label">Est. TX GOTV Spend, Four Windows</div>
+    <div class="stat-value">$1.8M–$2.66M</div>
+    <div class="stat-sub">Page-wide totals × estimated TX delivery share for 10 advertisers. Meta-archive only; non-political-archive activity is invisible.</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">2024 General Share of Total</div>
+    <div class="stat-value">~65%</div>
+    <div class="stat-sub">The Cruz–Allred general window absorbed roughly two-thirds of estimated TX GOTV spend across all four windows combined.</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Powered by People Share</div>
+    <div class="stat-value">~82%</div>
+    <div class="stat-sub">Beto O'Rourke's Powered by People is the dominant TX-anchored GOTV advertiser in the archive — the only org that scaled up every cycle.</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">2024 vs 2026 Primary Spend</div>
+    <div class="stat-value">~Flat</div>
+    <div class="stat-sub">$275K–$388K (2024 primary) vs. $206K–$370K (2026 primary). The historic Dem turnout doubling did not surface as a GOTV ad surge here.</div>
+  </div>
+</div>
+
+<div class="key-finding">
+  <div class="kf-label">Key Finding</div>
+  <h2>Texas Democratic primary turnout more than doubled between 2024 and 2026 — but Meta political-archive GOTV ad spend in Texas was essentially flat.</h2>
+  <p>The 2026 Texas Democratic primary drew ~2.30M ballots, up from ~982K in 2024 — a 134% increase, and the largest Democratic midterm primary turnout in modern Texas history. Yet estimated Texas GOTV ad spend across this report's 10 advertisers was roughly the same in the 2026 primary window ($206K–$370K) as in the 2024 primary window ($275K–$388K). Voto Latino — the dominant outside GOTV advertiser of 2024 — collapsed its archive spend by ~80%. Mi Familia Vota dropped ~90%. Only Beto O'Rourke's Powered by People scaled. Black Voters Matter was the rare org that expanded between cycles.</p>
+  <p>The implication: the 2026 turnout surge was driven by something other than Meta's filed-political-ad universe. Likely candidates — Trump-era immigration backlash among Latino voters, earned media around the Cornyn–Paxton brawl, in-app voting tools (Snap, Meta VIC), organic content, and field operations from groups that do not file political-archive ads (Texas Majority PAC, MoveTexas, TOP's canvass program, Battleground Texas, Jolt).</p>
+</div>
+
+<!-- SECTION 01 -->
+<section class="section">
+  <div class="section-num">01 · Methodology &amp; What the Archive Can and Can't Show</div>
+  <h2 class="section-title">What this report counts as "GOTV" and where the data has known limits</h2>
+  <p class="section-intro">Before reading the spend numbers, it's worth being explicit about what they include, what they don't, and where the estimates have known imprecision.</p>
+
+  <div class="callout">
+    <h4>What "GOTV" means here</h4>
+    <p>Pure GOTV: ads whose primary call-to-action is voter mobilization — register to vote, request a mail ballot, find a polling place, early-vote dates, deadlines, "make a plan to vote," election-day reminders. Excludes pure candidate persuasion ("vote for X"), fundraising, and policy advocacy that mentions voting only incidentally. Some included ads are GOTV-adjacent (issue framing with a vote CTA) — those are called out in the messaging section.</p>
+  </div>
+
+  <div class="callout callout-blue">
+    <h4>Page-wide spend, with estimated TX share</h4>
+    <p>Meta's API reports spend at the Page level across all regions an ad reached; there is no Page-level "Texas-only spend" field. For this report, the per-window page-wide totals from Meta are multiplied by an estimated TX share derived from <code>analyze_spend_by_region</code> data. Estimated TX shares used:</p>
+    <ul>
+      <li><strong>Voto Latino:</strong> 10% (2024) / 20% (2026) — TX rose from 5th to 2nd in delivery between cycles</li>
+      <li><strong>Mi Familia Vota:</strong> 10% — TX 5th-most-reached state (behind CO, AZ, GA, NV)</li>
+      <li><strong>Mi Familia en Acción:</strong> 50% — TX #1 (~0.5% avg reach), AZ #2 (~0.4%)</li>
+      <li><strong>Black Voters Matter Fund:</strong> 8% — TX 6th, well behind IL (0.7% avg)</li>
+      <li><strong>Voter Participation Center:</strong> 5% — broadly distributed, TX mid-pack</li>
+      <li><strong>Powered by People, Texas Organizing Project, Texas Freedom Network, Texas Rising, Asian Texans for Justice:</strong> 100% (TX-anchored organizations)</li>
+    </ul>
+    <p>The TX share is a per-ad delivery average, not a spend-weighted share — so the math has meaningful error bars. Numbers are presented as ranges, never as point estimates.</p>
+  </div>
+
+  <div class="callout callout-red">
+    <h4>What the archive does NOT capture</h4>
+    <p>The Meta political ad archive contains only ads with a "paid for by" disclaimer. Most GOTV activity at the brand and platform level sits outside it: organic posts, in-app voting tools (Snap Voter Hub, Meta VIC, TikTok Election Center), partner cause-marketing channels, and any voter-contact content that did not file as political. Several major Texas GOTV organizations — Texas Democratic Party, Republican Party of Texas, MoveTexas, Battleground Texas, Engage Texas, Texas Majority PAC, When We All Vote, Jolt Action (in these windows), NextGen America — have no detectable page-level political-archive presence for the four windows analyzed. Their field, mail, text, and organic-digital programs may have been substantial; they simply do not appear here.</p>
+  </div>
+
+  <div class="callout callout-green">
+    <h4>Delivery data ≠ targeting intent</h4>
+    <p>All demographic and geographic figures cited reflect <em>where ads were delivered</em>, not what the advertiser targeted. A skew toward Latino voters could be explicit demo + language targeting, an uploaded supporter list, audience lookalikes, algorithmic optimization on creative resonance, or all four. The report describes delivery patterns without asserting intent unless other evidence supports it.</p>
+  </div>
+
+  <div class="callout callout-purple">
+    <h4>One factual correction</h4>
+    <p>Some early reporting framed the 2026 Texas Republican primary as ending with a "Trump endorsement of Paxton." That is not accurate as of May 13, 2026. Trump promised on March 4 to endorse "soon" in the runoff; leaks frustrated him after his team initially leaned toward Cornyn (who beat Paxton 42% to 40.5% in the first round); as of late April 2026 reporting, no endorsement has issued. Cornyn and Paxton remain in a May 26 runoff. This report's 2026 post-primary window includes the active runoff campaign.</p>
+  </div>
+</section>
+
+<!-- SECTION 02 -->
+<section class="section">
+  <div class="section-num">02 · Four-Window Snapshot</div>
+  <h2 class="section-title">The four election windows at a glance</h2>
+  <p class="section-intro">Election-window framing throughout this report. Spend ranges are estimated TX-only (page-wide totals × TX delivery share, summed across the 10 advertisers in the universe).</p>
+
+  <div class="window-grid">
+    <div class="window-card">
+      <div class="wc-label">Window 1 · 2024 Primary</div>
+      <h4>Cruz vs. Allred Primary</h4>
+      <div class="wc-dates">Jan 1 – Mar 5, 2024</div>
+      <div class="wc-stat">$275K–$388K</div>
+      <div class="wc-stat-label">Est. TX GOTV Spend</div>
+      <div class="wc-detail">Allred won a contested Dem primary against Roland Gutierrez and 7 others. Cruz uncontested. Voto Latino runs heavy WI/early-state registration ads, not TX-focused. Powered by People runs persuasion content (IVF, Alabama Supreme Court) more than pure GOTV.</div>
+    </div>
+    <div class="window-card w2">
+      <div class="wc-label">Window 2 · 2024 General</div>
+      <h4>Cruz vs. Allred General</h4>
+      <div class="wc-dates">Sep 1 – Nov 5, 2024</div>
+      <div class="wc-stat">$1.16M–$1.59M</div>
+      <div class="wc-stat-label">Est. TX GOTV Spend</div>
+      <div class="wc-detail">The most expensive Senate race of the 2024 cycle ($160M+ combined). Powered by People scales to $893K–$1.18M page-wide. Voto Latino hits the 5,000-ad API cap. VPC runs a one-day mass blast on Oct 28 (deadline-driven). TOP runs county slate cards. Cruz wins by 8.5 points.</div>
+    </div>
+    <div class="window-card w3">
+      <div class="wc-label">Window 3 · 2026 Primary</div>
+      <h4>Cornyn/Paxton + Talarico/Crockett</h4>
+      <div class="wc-dates">Jan 1 – Mar 3, 2026</div>
+      <div class="wc-stat">$206K–$370K</div>
+      <div class="wc-stat-label">Est. TX GOTV Spend</div>
+      <div class="wc-detail">Cornyn 42% / Paxton 40.5% — neither clears 50%, runoff set for May 26. Talarico 52% / Crockett 46% on the Dem side. ~4.46M total primary ballots (TX midterm record). Voto Latino at 1/10th its 2024 primary scale. Powered by People grows. New entrant: Asian Texans for Justice.</div>
+    </div>
+    <div class="window-card w4">
+      <div class="wc-label">Window 4 · 2026 Post-Primary</div>
+      <h4>Active Runoff (Mar 4 – Today)</h4>
+      <div class="wc-dates">Mar 4 – May 13, 2026</div>
+      <div class="wc-stat">$153K–$310K</div>
+      <div class="wc-stat-label">Est. TX GOTV Spend</div>
+      <div class="wc-detail">Cornyn–Paxton runoff May 26. $122M+ in primary ad spend (most expensive Senate primary in US history) skewed toward Cornyn TV (~$69M) vs Paxton (~$4.1M). Voto Latino pivots to persuasion. Powered by People dominates with campus GOTV. Mid-stream snapshot — runoff not yet held.</div>
+    </div>
+  </div>
+
+  <div class="chart-block">
+    <h4>Estimated TX GOTV Spend by Window</h4>
+    <p class="chart-sub">Sum of estimated TX-only spend across all 10 advertisers in each window. Bars show the lower and upper bounds of the spend range.</p>
+    <div class="chart-canvas-wrap" style="height: 360px;">
+      <canvas id="windowTotalsChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 -->
+<section class="section">
+  <div class="section-num">03 · Spend Distribution Across Advertisers</div>
+  <h2 class="section-title">Where the GOTV money went, window by window</h2>
+  <p class="section-intro">A different way to read the totals: who was actually doing the GOTV spending in each window? Powered by People dominates throughout. The composition of the rest changes substantially between cycles.</p>
+
+  <div class="chart-block">
+    <h4>Estimated TX-Only Spend by Advertiser, Per Window (Stacked)</h4>
+    <p class="chart-sub">Upper bound of each advertiser's estimated TX spend, stacked by window. Powered by People's TX-only status (and consistent scale) shows as the dominant block across all four bars.</p>
+    <div class="chart-canvas-wrap" style="height: 460px;">
+      <canvas id="stackedSpendChart"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-block">
+    <h4>Share of Estimated TX GOTV Spend (All Four Windows Combined)</h4>
+    <p class="chart-sub">Aggregated TX-only spend share across the 10-advertiser universe. Powered by People is structurally dominant; everything else combined accounts for less than a fifth.</p>
+    <div class="chart-canvas-wrap" style="height: 380px;">
+      <canvas id="shareDonutChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 -->
+<section class="section">
+  <div class="section-num">04 · Cross-Cycle Comparison</div>
+  <h2 class="section-title">2024 primary vs. 2026 primary: what changed</h2>
+  <p class="section-intro">Two midterm-comparable primary windows, side-by-side. Total spend is roughly flat, but the composition shifted markedly.</p>
+
+  <div class="compare-strip">
+    <div class="compare-card left">
+      <h5>2024 Primary · Jan 1 – Mar 5</h5>
+      <div class="compare-stat">$275K–$388K</div>
+      <p>Voto Latino runs ~1,287 ads (heavy WI and other early-state registration). Powered by People runs $254K–$350K page-wide, mostly persuasion. TOP, TFN, Texas Rising contribute small amounts. No Mi Familia Vota, BVMF, VPC, or Mi Familia en Acción — none had political-archive Pages active yet.</p>
+    </div>
+    <div class="compare-card right">
+      <h5>2026 Primary · Jan 1 – Mar 3</h5>
+      <div class="compare-stat">$206K–$370K</div>
+      <p>Voto Latino at $28K–$44K page-wide (a ~90% page-level drop from 2024 primary). Powered by People scales to $184K–$339K page-wide and pivots to enthusiasm/Texas-momentum framing. BVMF expands (+74% page-wide vs 2024 general). Asian Texans for Justice debuts as new TX entrant. TOP, MFV, MFV en Acción, VPC at trace levels.</p>
+    </div>
+  </div>
+
+  <p class="pull-quote">The 2026 Democratic primary turnout doubling in Texas was not produced by a doubling — or even an increase — in filed Meta GOTV ad spend. The archive shows essentially the same dollar volume from a partially different set of advertisers, with different messaging.</p>
+
+  <div class="chart-block">
+    <h4>Per-Advertiser Page-Wide Spend: 2024 Primary vs 2026 Primary</h4>
+    <p class="chart-sub">Page-wide totals (not TX-only), upper bound of each spend range. Some advertisers had no Page political-archive presence in 2024 primary because their Pages were created later in 2024.</p>
+    <div class="chart-canvas-wrap" style="height: 420px;">
+      <canvas id="primaryCompareChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 05 -->
+<section class="section">
+  <div class="section-num">05 · Advertiser Profiles</div>
+  <h2 class="section-title">The ten advertisers in the universe</h2>
+  <p class="section-intro">Per-advertiser profiles with page-wide spend per window, TX-share estimate, and a short summary of the org's role in each cycle.</p>
+
+  <div class="advertiser-grid">
+
+    <!-- Powered by People -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Beto O'Rourke / Powered by People</div>
+          <div class="ac-tags">
+            <span class="ac-tag tx">Texas-only</span>
+            <span class="ac-tag up">Scaled every cycle</span>
+            <span class="ac-tag">Page ID: 223055747744143</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">$1.48M–$2.16M</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">The dominant TX-anchored GOTV advertiser across all four windows by an order of magnitude. Founded by Beto O'Rourke post-2018, Powered by People absorbed the 2024 Allred-support effort and emerged in 2026 with two distinct campaigns — an enthusiasm/momentum content stream around the Democratic primary turnout surge, and a campus-organizing voter-contact program. The only outside-group advertiser whose archive spend grew between 2024 and 2026 in the primary windows. Treated as 100% TX-delivery (Page-level region analysis confirms TX-only delivery profile).</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">$254K–$350K</div>
+          <div class="cyc-sub">444 ads</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">$893K–$1.18M</div>
+          <div class="cyc-sub">1,138 ads</div>
+        </div>
+        <div class="ac-cycle w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">$184K–$339K</div>
+          <div class="cyc-sub">1,257 ads</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">$146K–$288K</div>
+          <div class="cyc-sub">1,146 ads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voto Latino -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Voto Latino</div>
+          <div class="ac-tags">
+            <span class="ac-tag national">National battleground</span>
+            <span class="ac-tag down">Collapsed in TX 2026</span>
+            <span class="ac-tag">Page ID: 55549065733</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">$124K–$216K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">Largest national Latino voter-registration org. In 2024 Voto Latino spent at presidential-cycle scale ($1M+ general) across the top 10 battleground states; TX was 5th in delivery. In 2026, Voto Latino's page-wide spend collapsed by ~90% from 2024 primary to 2026 primary, even as TX moved up to #2 in delivery (behind only California). The 2026 messaging pivot is meaningful: away from "registration deadline coming up" toward Trump-era immigration framing as the registration motivator. By the post-primary window the page is running issue/persuasion polling content rather than GOTV.</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">$12K–$27K</div>
+          <div class="cyc-sub">~10% TX share · 1,287 ads</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">$106K–$173K</div>
+          <div class="cyc-sub">~10% TX · 5,000+ (API capped)</div>
+        </div>
+        <div class="ac-cycle w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">$6K–$9K</div>
+          <div class="cyc-sub">~20% TX share · 95 ads</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">$60–$7.5K</div>
+          <div class="cyc-sub">~20% TX share · 374 ads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texas Organizing Project -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Texas Organizing Project (TOP)</div>
+          <div class="ac-tags">
+            <span class="ac-tag tx">Texas-only</span>
+            <span class="ac-tag">2024 general peak</span>
+            <span class="ac-tag">Page ID: 124974587580398</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">$101K–$140K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">Texas-headquartered organizing nonprofit focused on Harris, Bexar, Dallas, and El Paso. TOP's archive spend is concentrated in the 2024 general window — $89K–$124K with 187 ads — running county-level candidate slates, early-vote reminders, and "EARLY VOTING is now through NOV. 1st" hard-CTA content. The 2026 primary footprint is dramatically smaller ($11K–$15K), and the post-primary window is near-zero. TOP's larger field/canvass program remains primarily off the political archive.</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">$400–$1,093</div>
+          <div class="cyc-sub">7 ads</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">$89K–$124K</div>
+          <div class="cyc-sub">187 ads</div>
+        </div>
+        <div class="ac-cycle w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">$11K–$15K</div>
+          <div class="cyc-sub">14 ads</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">$300–$696</div>
+          <div class="cyc-sub">4 ads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voter Participation Center -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">The Voter Participation Center (VPC)</div>
+          <div class="ac-tags">
+            <span class="ac-tag national">National</span>
+            <span class="ac-tag">Deadline-blitz pattern</span>
+            <span class="ac-tag">Page ID: 260754507296508</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">~$52K–$86K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">VPC's political-archive page started Oct 28, 2024 — a single-day mass run of 5,000+ ads (hitting Meta's per-query cap) keyed to the Texas voter registration deadline and other states' deadlines. TX delivery is mid-pack (~5% of national delivery), so estimated TX share of that blast is in the $51K–$84K range. In 2026 VPC's spend dropped to trace levels in both primary and post-primary windows — consistent with a model where VPC concentrates spend in deadline-window mail/digital surges rather than continuous campaigning.</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle empty w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">No archive page</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">$51K–$84K</div>
+          <div class="cyc-sub">~5% TX · 5,000 ads (one day)</div>
+        </div>
+        <div class="ac-cycle w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">$500–$750</div>
+          <div class="cyc-sub">~5% TX · 39 ads</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">$600–$1.2K</div>
+          <div class="cyc-sub">~5% TX · 105 ads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Black Voters Matter Fund -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Black Voters Matter Fund (BVMF)</div>
+          <div class="ac-tags">
+            <span class="ac-tag national">National</span>
+            <span class="ac-tag up">Expanded between cycles</span>
+            <span class="ac-tag">Page ID: 134323820585259</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">~$9.6K–$12K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">Rare counter-trend: BVMF more than doubled its 2026-primary-window archive spend compared to its 2024 general activity ($59K–$75K page-wide vs $27K–$32K). Most of the 2026 primary spend was Montgomery County, Alabama redistricting messaging — only a small share reached Texas. Of the TX-directed creative, "March 3 is more than Election Day, Texas — it's our moment to stand up for education, fair maps, reproductive freedom" was the explicit primary-day GOTV ad. BVMF treated TX as one front in a multi-state map, not a flagship state.</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle empty w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">No archive page</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">$2.1K–$2.6K</div>
+          <div class="cyc-sub">~8% TX · 12 ads</div>
+        </div>
+        <div class="ac-cycle w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">$4.7K–$6K</div>
+          <div class="cyc-sub">~8% TX · 47 ads</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">$800–$1K</div>
+          <div class="cyc-sub">~8% TX · 13 ads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mi Familia Vota -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Mi Familia Vota</div>
+          <div class="ac-tags">
+            <span class="ac-tag national">National Latino</span>
+            <span class="ac-tag down">Down 90% in TX 2026</span>
+            <span class="ac-tag">Page ID: 118714808054</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">~$4.4K–$5.7K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">Mi Familia Vota's main Meta page launched in March 2024 — too late for the 2024 primary window. The 2024 general window saw 48 ads ($39K–$50K page-wide); 2026 primary and post-primary windows are at trace levels (6 ads, then 8 ads). MFV's TX delivery share is around 10% nationally — Colorado and Arizona are larger fronts. The 90%+ archive-spend collapse between 2024 general and 2026 windows is dramatic, even more so given the 2026 Latino turnout surge MFV's field operation reportedly contributed to.</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle empty w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">Page launched 3/27/24</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">$3.9K–$5K</div>
+          <div class="cyc-sub">~10% TX · 48 ads</div>
+        </div>
+        <div class="ac-cycle w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">$360–$500</div>
+          <div class="cyc-sub">~10% TX · 6 ads</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">$120–$200</div>
+          <div class="cyc-sub">~10% TX · 8 ads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mi Familia en Acción -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Mi Familia en Acción (MFV's 501c4/PAC)</div>
+          <div class="ac-tags">
+            <span class="ac-tag">TX + AZ-heavy</span>
+            <span class="ac-tag">Issue-CTA model</span>
+            <span class="ac-tag">Page ID: 274492542411004</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">~$11K–$19K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">Affiliated with Mi Familia Vota. Page-wide spend $22.8K–$37.9K across the entire 2024–2026 horizon, with TX (~0.5% per-ad delivery share) edging out Arizona (~0.4%) as the top delivery state. Messaging is heavily issue-anchored — "Gas prices are going up and families are still paying more for groceries and healthcare" with a "use your power and vote" CTA — rather than transactional registration. Substantial portion of post-primary 2026 activity is Arizona-focused (APS rate fight, AG Mayes), not TX Senate.</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle empty w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">No archive activity</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">~$2K–$4K</div>
+          <div class="cyc-sub">~50% TX share</div>
+        </div>
+        <div class="ac-cycle w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">~$1K–$2K</div>
+          <div class="cyc-sub">~50% TX share</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">~$8K–$13K</div>
+          <div class="cyc-sub">~50% TX share · AZ-heavy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texas Freedom Network -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Texas Freedom Network (TFN)</div>
+          <div class="ac-tags">
+            <span class="ac-tag tx">Texas-only</span>
+            <span class="ac-tag">Episodic</span>
+            <span class="ac-tag">Page ID: 27927698033</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">~$24K–$30K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">Austin-based progressive watchdog focused on religious freedom, public education, and civil rights. TFN's archive presence is small but consistent in 2024 ($7K–$9K primary, $15K–$19K general). No activity in the 2026 primary window; small post-primary burst ($800–$1,295) in late March/early April 2026 — civic/registration messaging rather than electoral persuasion.</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">$7.2K–$9.1K</div>
+          <div class="cyc-sub">7 ads</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">$14.8K–$18.9K</div>
+          <div class="cyc-sub">17 ads</div>
+        </div>
+        <div class="ac-cycle empty w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">No activity</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">$800–$1.3K</div>
+          <div class="cyc-sub">5 ads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texas Rising -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Texas Rising</div>
+          <div class="ac-tags">
+            <span class="ac-tag tx">Texas-only</span>
+            <span class="ac-tag">TFN youth affiliate</span>
+            <span class="ac-tag">Page ID: 331169547059436</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">~$3.8K–$5.3K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">TFN's youth-organizing arm. Trace-level archive activity in 2024 windows ($900–$1.2K primary, $2.9K–$4.1K general); no archive activity in either 2026 window. Like its parent, the bulk of its work is off-archive (campus organizing, peer-to-peer texts).</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">$900–$1.2K</div>
+          <div class="cyc-sub">3 ads</div>
+        </div>
+        <div class="ac-cycle w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">$2.9K–$4.1K</div>
+          <div class="cyc-sub">4 ads</div>
+        </div>
+        <div class="ac-cycle empty w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">No activity</div>
+        </div>
+        <div class="ac-cycle empty w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">No activity</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asian Texans for Justice -->
+    <div class="advertiser-card">
+      <div class="ac-head">
+        <div>
+          <div class="ac-name">Asian Texans for Justice (ATJ)</div>
+          <div class="ac-tags">
+            <span class="ac-tag tx">Texas-only</span>
+            <span class="ac-tag up">New in 2026</span>
+            <span class="ac-tag">Page ID: 102103768750297</span>
+          </div>
+        </div>
+        <div class="ac-stat">
+          <span class="v">~$5K–$6.6K</span>
+          <span class="l">Est. TX spend, all 4 windows</span>
+        </div>
+      </div>
+      <p class="ac-summary">New TX-focused GOTV entrant for the 2026 cycle — no archive activity until February 2026. Creative is multilingual (English, Spanish, Vietnamese, Urdu) and runs an issue-CTA model: climate change in Texas, economic pressures, AAPI youth mobilization, with early-voting dates and "use your power and vote" framing. The cleanest example of a TX-specific GOTV ad operation that did not exist in 2024.</p>
+      <div class="ac-cycle-grid">
+        <div class="ac-cycle empty w1">
+          <div class="cyc-label">2024 Primary</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">No archive page</div>
+        </div>
+        <div class="ac-cycle empty w2">
+          <div class="cyc-label">2024 General</div>
+          <div class="cyc-val">—</div>
+          <div class="cyc-sub">No archive activity</div>
+        </div>
+        <div class="ac-cycle w3">
+          <div class="cyc-label">2026 Primary</div>
+          <div class="cyc-val">~$2K</div>
+          <div class="cyc-sub">launched 2/18/26</div>
+        </div>
+        <div class="ac-cycle w4">
+          <div class="cyc-label">2026 Post-Primary</div>
+          <div class="cyc-val">~$3K–$4.6K</div>
+          <div class="cyc-sub">multilingual, runoff push</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 06 -->
+<section class="section">
+  <div class="section-num">06 · Critical Absences</div>
+  <h2 class="section-title">The organizations missing from the archive</h2>
+  <p class="section-intro">Equally important to who's in the archive is who isn't. The following major Texas GOTV organizations and campaign committees have <strong>no detectable page-level political-archive presence</strong> in any of the four windows analyzed. Their voter-contact programs ran — but not through filed Meta political ads.</p>
+
+  <div class="callout callout-red">
+    <h4>Texas GOTV orgs with no Meta political-archive presence (2024–2026)</h4>
+    <ul>
+      <li><strong>Texas Democratic Party</strong> — official state party; coordinated 2024 "Texas Blueprint" campaign ran off the political archive</li>
+      <li><strong>Republican Party of Texas</strong> — official state GOP; no detectable page-level archive presence</li>
+      <li><strong>Texas Majority PAC</strong> — pooled-grant Democratic field vehicle; canvass-funding model rather than direct ad-spending</li>
+      <li><strong>MoveTexas / Move Texas Action Fund</strong> — youth GOTV; campus organizing operates off the political archive</li>
+      <li><strong>Battleground Texas</strong> — still operational, no archive page surfacing for these windows</li>
+      <li><strong>Engage Texas</strong> — Republican voter-registration super PAC; field-and-registration model</li>
+      <li><strong>Jolt Action</strong> — Latino youth org; first-ever primary endorsements in 2026 but no archive activity in these windows</li>
+      <li><strong>NextGen America</strong> — campus voter mobilization; off-archive</li>
+      <li><strong>When We All Vote</strong> — celebrity-fronted national org; off-archive</li>
+      <li><strong>HeadCount</strong> — small national presence, not TX-anchored</li>
+      <li><strong>Cruz, Allred, Cornyn, Paxton, Hunt, Talarico, Crockett, Gutierrez campaigns</strong> — candidate accounts ran persuasion and fundraising, not significant pure-GOTV creative</li>
+    </ul>
+    <p style="margin-top: 12px;">Filing as political triggers Meta's algorithmic deprioritization of political content (active since 2021), the political-content user opt-out, and the civic-content label. Most consumer-brand civic content and most field-operation digital sits outside the archive by design. This is a feature of how the platform regulates political ads, not a measurement gap.</p>
+  </div>
+</section>
+
+<!-- SECTION 07 -->
+<section class="section">
+  <div class="section-num">07 · Messaging Evolution</div>
+  <h2 class="section-title">What did the ads actually say?</h2>
+  <p class="section-intro">Verbatim creative samples from each window, organized by advertiser. Reading the ad text in sequence makes the strategic shifts visible in a way that aggregate spend cannot.</p>
+
+  <!-- 2024 Primary -->
+  <div class="messaging-block">
+    <div class="messaging-head">
+      <div>
+        <div class="messaging-window">Window 1 · 2024 Primary · Jan 1 – Mar 5, 2024</div>
+        <div class="messaging-title">Battleground-state registration deadlines and persuasion runway</div>
+      </div>
+    </div>
+    <p style="font-size:13.5px; color: var(--text-secondary); margin: 0 0 12px;">The 2024 primary window's archive GOTV traffic is dominated by Voto Latino registration-deadline ads — but the deadlines are Wisconsin's and Michigan's, not Texas's. Powered by People runs persuasion content (IVF, Alabama Supreme Court) more than turnout content. Pure-TX-primary GOTV in the archive is very small.</p>
+
+    <div class="ad-quote">
+      <span class="who">Voto Latino · Feb 29, 2024 · 14 near-identical ad creatives</span>
+      "Less than 2 weeks until Wisconsin's registration deadline! Don't miss your chance to vote in the primary election. Register today."
+      <a href="https://www.facebook.com/ads/library/?id=332171309808119" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Beto O'Rourke (Powered by People) · Mar 1, 2024</span>
+      "Following the Alabama Supreme Court's cruel ruling on IVF, Republicans in Congress just *blocked* a bill to restore nationwide protections..."
+      <a href="https://www.facebook.com/ads/library/?id=382032267879083" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Texas Organizing Project · Feb 2024</span>
+      Persuasion-heavy slate cards for the Harris/Bexar County Democratic primary ballots, with vote-by-date framing. Page-wide spend $400–$1,093 across 7 ads.
+      <a href="https://www.facebook.com/ads/library/?page_id=124974587580398&active_status=all" target="_blank">View page ↗</a>
+    </div>
+  </div>
+
+  <!-- 2024 General -->
+  <div class="messaging-block w2">
+    <div class="messaging-head">
+      <div>
+        <div class="messaging-window">Window 2 · 2024 General · Sep 1 – Nov 5, 2024</div>
+        <div class="messaging-title">"Make a plan to vote" + Project 2025 framing</div>
+      </div>
+    </div>
+    <p style="font-size:13.5px; color: var(--text-secondary); margin: 0 0 12px;">Heaviest GOTV-ad window in the four-window panel. Voto Latino runs bilingual "Make a plan to vote" creative alongside Project 2025 persuasion content. TOP runs hard-CTA early-voting reminders. VPC executes a one-day 5,000-ad blast tied to the TX Oct 28 registration deadline.</p>
+
+    <div class="ad-quote">
+      <span class="who">Voto Latino · Oct 28, 2024 · "Make a Plan" GOTV creative</span>
+      "Who you vote for is secret, but whether you vote is public information. Make a plan to vote early or vote on Tuesday, November 5."
+      <a href="https://www.facebook.com/ads/library/?id=1163004812318570" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Voto Latino · Oct 28, 2024 · Spanish Project 2025 persuasion</span>
+      "¿Te has preguntado cómo te afectaría el Proyecto 2025? Buena pregunta. Esto es cómo el Proyecto 2025 afectaría negativa[mente]..."
+      <a href="https://www.facebook.com/ads/library/?id=1241742693732885" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Texas Organizing Project · Oct 28, 2024 · Hard GOTV</span>
+      "EARLY VOTING is now through NOV. 1st. ELECTION DAY is Nov 5th... and your neighbors are already casting their ballots."
+      <a href="https://www.facebook.com/ads/library/?id=865739379087795" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Texas Organizing Project · Oct 28, 2024 · County slate cards</span>
+      "Let's elect champions including Sean Teare, Annette Ramirez, Christian Menefee, and Ed Gonzalez who will fight for a future where ALL Harris County residents can thrive."
+      <a href="https://www.facebook.com/ads/library/?id=421361874358859" target="_blank">View ad ↗</a>
+    </div>
+  </div>
+
+  <!-- 2026 Primary -->
+  <div class="messaging-block w3">
+    <div class="messaging-head">
+      <div>
+        <div class="messaging-window">Window 3 · 2026 Primary · Jan 1 – Mar 3, 2026</div>
+        <div class="messaging-title">Trump-immigration as registration motivator + "something big is happening in Texas"</div>
+      </div>
+    </div>
+    <p style="font-size:13.5px; color: var(--text-secondary); margin: 0 0 12px;">The 2026 primary window shows the clearest messaging shift. Voto Latino abandons "registration deadline" framing for "registration as resistance to Trump immigration enforcement." Powered by People drops persuasion entirely and runs enthusiasm/momentum content keyed to the Democratic turnout surge. BVMF runs explicit TX primary-day GOTV. Asian Texans for Justice debuts as a new entrant.</p>
+
+    <div class="ad-quote">
+      <span class="who">Voto Latino · Feb 11, 2026 · Immigration framing</span>
+      "The Trump Administration's cruel immigration enforcement policies demand action. Make your voice count by registering to vote..."
+      <a href="https://www.facebook.com/ads/library/?id=1221790029548956" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Voto Latino · Feb 11, 2026 · Immigrant communities framing</span>
+      "Now more than ever, it's crucial to stand up for immigrant communities. Registering to vote is fast, simple, and one of [the best ways]..."
+      <a href="https://www.facebook.com/ads/library/?id=912299955088025" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Powered by People · Mar 3, 2026 · Momentum framing</span>
+      "Something big is happening in Texas. Democrats are showing up at more than double the rate we saw at this point in 2022..."
+      <a href="https://www.facebook.com/ads/library/?id=1433486680941427" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Powered by People · Mar 3, 2026 · "Ground is moving" framing</span>
+      "The ground in Texas is moving. In county after county, Democrats are stepping up early to ensure we have the strongest..."
+      <a href="https://www.facebook.com/ads/library/?id=899317716053166" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Black Voters Matter Fund · Mar 2, 2026 · Explicit TX primary-day GOTV</span>
+      "March 3 is more than Election Day, Texas — it's our moment to stand up for education, fair maps, reproductive freedom, a[nd]..."
+      <a href="https://www.facebook.com/ads/library/?id=2103366183816579" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Asian Texans for Justice · Feb 18, 2026 · Economic-anxiety GOTV</span>
+      "Paychecks are down, and prices are rising! Use your power and vote this election season to build an affordable future fo[r families]..."
+      <a href="https://www.facebook.com/ads/library/?id=2039051003692636" target="_blank">View ad ↗</a>
+    </div>
+  </div>
+
+  <!-- 2026 Post-Primary -->
+  <div class="messaging-block w4">
+    <div class="messaging-head">
+      <div>
+        <div class="messaging-window">Window 4 · 2026 Post-Primary · Mar 4 – May 13, 2026</div>
+        <div class="messaging-title">Voting Rights Act fight, campus organizing, Paxton-as-foil</div>
+      </div>
+    </div>
+    <p style="font-size:13.5px; color: var(--text-secondary); margin: 0 0 12px;">The active runoff period (runoff is May 26, 2026). Powered by People dominates the period with three layered messages: SCOTUS Voting Rights Act erosion, campus voter contact, and Ken Paxton's lawsuit against Beto and Powered by People. Voto Latino exits GOTV almost entirely and runs Latino economic-anxiety polling content. Asian Texans for Justice scales multilingual climate-and-economy GOTV creative.</p>
+
+    <div class="ad-quote">
+      <span class="who">Powered by People · May 13, 2026 · Paxton-lawsuit framing</span>
+      "For fighting Trump's redistricting power grab, Ken Paxton sued me and Powered by People, the voting rights group I found[ed]..."
+      <a href="https://www.facebook.com/ads/library/?id=1269543585262182" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Powered by People · May 12, 2026 · Campus organizing GOTV</span>
+      "Young voters will be the margin of victory in Texas. Powered by People is on campuses across the state — reaching out t[o the next generation]..."
+      <a href="https://www.facebook.com/ads/library/?id=2140781633436888" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Powered by People · May 12, 2026 · SCOTUS / VRA framing</span>
+      "The Supreme Court has destroyed what was left of the Voting Rights Act. Outrage is understandable — but we have to figur[e out what to do]..."
+      <a href="https://www.facebook.com/ads/library/?id=1610741304385297" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Asian Texans for Justice · May 4, 2026 · Climate-anchored GOTV</span>
+      "Climate impacts are real in Texas. Voting is how we fight for solutions and protect our loved ones. 🗳 Early Voting: M[ay 13–22]..."
+      <a href="https://www.facebook.com/ads/library/?id=1335714661752801" target="_blank">View ad ↗</a>
+    </div>
+
+    <div class="ad-quote">
+      <span class="who">Voto Latino · May 12, 2026 · Persuasion polling, no GOTV CTA</span>
+      "Too many families are just one bill away from a crisis. Economic anxiety has become the norm. Latinos believe..."
+      <a href="https://www.facebook.com/ads/library/?id=1122913600040254" target="_blank">View ad ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08 -->
+<section class="section">
+  <div class="section-num">08 · Strategic Takeaways</div>
+  <h2 class="section-title">What this means for understanding the 2026 turnout surge</h2>
+
+  <div class="takeaways-grid">
+    <div class="takeaway">
+      <div class="t-num">01</div>
+      <h5>The 2026 Dem turnout doubling is not visible in Meta GOTV ad data</h5>
+      <p>Total estimated TX GOTV ad spend in the 2026 primary window was roughly the same as in the 2024 primary window. Democratic primary turnout meanwhile rose 134%. Whatever drove the surge — Trump-immigration backlash, earned media on the Cornyn–Paxton brawl, off-archive field, in-app voting tools — it did not flow through the political ad archive in proportion to the turnout result.</p>
+    </div>
+    <div class="takeaway">
+      <div class="t-num">02</div>
+      <h5>Powered by People is structurally dominant</h5>
+      <p>Beto O'Rourke's Powered by People accounts for an estimated ~82% of TX GOTV ad spend across the four windows. It is the only org that scaled up in every cycle, and the only outside-group advertiser that increased its 2026-primary spend over its 2024-primary level. Strategy in 2026 pivoted away from persuasion toward enthusiasm + campus contact + Paxton-as-foil.</p>
+    </div>
+    <div class="takeaway">
+      <div class="t-num">03</div>
+      <h5>Voto Latino collapsed its filed spend but not its delivery priority</h5>
+      <p>Voto Latino's page-wide spend dropped ~90% from 2024 primary to 2026 primary. Yet TX moved from 5th to 2nd in delivery share, suggesting VL re-allocated a smaller pot toward Texas specifically. The 2026 ads also shift from registration-deadline transactions to immigration-resistance framing — a different theory of how to motivate registration.</p>
+    </div>
+    <div class="takeaway">
+      <div class="t-num">04</div>
+      <h5>Black Voters Matter Fund is the rare expander</h5>
+      <p>BVMF's 2026 primary window spend more than doubled its 2024 general window spend (page-wide). Most was Alabama redistricting messaging, but the explicit "March 3 is more than Election Day, Texas" creative shows a deliberate TX-primary placement. BVMF is treating TX as one front in a multi-state map, not a flagship.</p>
+    </div>
+    <div class="takeaway">
+      <div class="t-num">05</div>
+      <h5>The 2024 general was a one-time peak driven by Cruz–Allred</h5>
+      <p>~65% of estimated TX GOTV spend across all four windows lands in the 2024 general window. This is what a fully contested $160M+ presidential-cycle US Senate race produces on Meta. Neither the 2024 primary nor either 2026 window approaches that intensity. The 2026 general — six months away as of this report — will likely break new records given the Cornyn–Paxton runoff momentum.</p>
+    </div>
+    <div class="takeaway">
+      <div class="t-num">06</div>
+      <h5>The Latino-Texas story is split across two pages</h5>
+      <p>Mi Familia Vota (the main page) is national, with TX 5th in delivery; Mi Familia en Acción (its c4/PAC) is TX-and-AZ-heavy at ~50% TX delivery share. Combined archive spend across the four windows is in the $15K–$25K range — small absolute dollars but with messaging that anchors on economic pressure (gas, groceries, healthcare) rather than transactional registration calls.</p>
+    </div>
+    <div class="takeaway">
+      <div class="t-num">07</div>
+      <h5>Asian Texans for Justice is the only meaningful new GOTV entrant for 2026</h5>
+      <p>The only TX-focused GOTV advertiser that did not exist in the 2024 windows and runs material activity in 2026. Multilingual creative (English, Spanish, Vietnamese, Urdu) and an issue-CTA model — voting is the lever for climate impacts, economic pressure, AAPI youth power — rather than transactional registration. Indicative of a growing AAPI organizing infrastructure in Texas.</p>
+    </div>
+    <div class="takeaway">
+      <div class="t-num">08</div>
+      <h5>Candidate accounts are essentially absent from GOTV creative</h5>
+      <p>None of the major 2024/2026 Senate candidates (Cruz, Allred, Cornyn, Paxton, Hunt, Talarico, Crockett, Gutierrez) ran significant pure-GOTV ad creative from their campaign accounts. Their archive activity is persuasion + fundraising. GOTV in TX is largely produced by outside groups, not the campaigns themselves — a pattern consistent with the Cornyn $69M TV blitz being a persuasion media buy, not a turnout operation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09 -->
+<section class="section">
+  <div class="section-num">09 · Per-Window Spend Trajectory</div>
+  <h2 class="section-title">Where the four windows sit on the same timeline</h2>
+  <p class="section-intro">A single chart showing the four windows on a continuous Jan 2024 – May 2026 axis, with monthly estimated TX GOTV spend and key events annotated.</p>
+
+  <div class="chart-block">
+    <h4>Estimated TX GOTV Spend by Month, with Key Events</h4>
+    <p class="chart-sub">Monthly estimated TX-only GOTV spend across the 10-advertiser universe. The Oct 2024 spike is the VPC + Voto Latino deadline blast.</p>
+    <div class="chart-canvas-wrap" style="height: 420px;">
+      <canvas id="annotatedTimelineChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="methodology">
+  <h4>Methodology &amp; Data Sources</h4>
+  <p><strong>Source:</strong> Meta Ad Library API, queried via The Canter Company's Meta Ad Library MCP server on May 13, 2026. All spend ranges are as reported by Meta (ranges, not point estimates). Where Meta caps a query at 5,000 ads, the spend range is a lower bound for the true total.</p>
+  <p><strong>Universe:</strong> 10 advertisers selected for their material political-archive presence with delivery in Texas during one or more of the four windows. The list is not exhaustive of all GOTV-related ad activity touching Texas during these windows; it focuses on advertisers whose primary function or output is voter mobilization. Candidate accounts (Cruz, Allred, Cornyn, Paxton, Hunt, Talarico, Crockett, Gutierrez) were reviewed and excluded — their archive activity is persuasion + fundraising, not significant pure-GOTV creative.</p>
+  <p><strong>Definition of GOTV:</strong> Ads whose primary call-to-action is voter mobilization — register to vote, request a mail ballot, find a polling place, early-vote dates, deadlines, "make a plan to vote," election-day reminders. Excludes pure candidate persuasion, fundraising, and policy advocacy that mentions voting only incidentally. Several ads in the report (e.g., Voto Latino's Project 2025 Spanish-language creative) are GOTV-adjacent — persuasion content with a vote CTA — and are noted as such.</p>
+  <p><strong>Estimated TX-only spend:</strong> Page-wide spend totals × estimated TX delivery share, where TX delivery share is derived from <code>analyze_spend_by_region</code> data. The TX delivery share is a per-ad average from Meta's regional reporting, not an impression-weighted or spend-weighted share, so the resulting TX-only estimates have wide error bars. All numbers are presented as ranges. For TX-anchored organizations (Powered by People, TOP, TFN, Texas Rising, Asian Texans for Justice), 100% of spend is treated as TX. For multi-state organizations, applied TX shares: Voto Latino 10% (2024) / 20% (2026); Mi Familia Vota 10%; Mi Familia en Acción 50%; Black Voters Matter Fund 8%; Voter Participation Center 5%.</p>
+  <p><strong>Delivery data ≠ targeting intent:</strong> All demographic and geographic figures cited reflect where ads were delivered (Meta's reporting), not what the advertiser targeted as inputs. A skew toward Latino voters could be explicit demographic + language targeting, an uploaded supporter list, audience lookalikes, algorithmic optimization on creative resonance, or any combination. The report describes delivery patterns without asserting intent unless other evidence supports it.</p>
+  <p><strong>Off-archive context:</strong> The Meta political ad archive contains only ads with a "paid for by" disclaimer. Most consumer-brand civic content, organic posts, in-app voting tools (Snap Voter Hub, Meta VIC, TikTok Election Center), and partner cause-marketing channels sit outside the archive. Many major Texas GOTV organizations (Texas Democratic Party, Republican Party of Texas, MoveTexas, Battleground Texas, Engage Texas, Texas Majority PAC, NextGen America, When We All Vote, Jolt Action in these windows) have no page-level political-archive presence and are therefore invisible to this analysis even if they ran substantial field, mail, or text operations.</p>
+  <p><strong>Date windows:</strong> 2024 Primary (Jan 1 – Mar 5, 2024), 2024 General (Sep 1 – Nov 5, 2024), 2026 Primary (Jan 1 – Mar 3, 2026), 2026 Post-Primary / Runoff (Mar 4 – May 13, 2026). The 2026 post-primary window is mid-stream — the Republican runoff is May 26, 2026.</p>
+</div>
+
+<footer>
+  <p>Built by The Canter Company · <a href="https://www.linkedin.com/in/joshuacanter/" target="_blank" rel="noopener">LinkedIn</a></p>
+  <p>Data: Meta Ad Library API · Retrieved May 13, 2026 · Report compiled mid-cycle (runoff pending)</p>
+</footer>
+
+</div>
+
+<script>
+// Chart defaults
+Chart.defaults.font.family = "'IBM Plex Sans', system-ui, sans-serif";
+Chart.defaults.color = "#3d3833";
+Chart.defaults.font.size = 12;
+Chart.defaults.plugins.legend.labels.boxWidth = 12;
+Chart.defaults.plugins.legend.labels.boxHeight = 12;
+Chart.defaults.plugins.legend.labels.padding = 14;
+
+const COLORS = {
+  w1: '#6d28d9',
+  w2: '#b45309',
+  w3: '#16803c',
+  w4: '#b91c1c',
+  pbp: '#1a2332',
+  vl: '#1d4ed8',
+  top: '#0e7490',
+  vpc: '#7c3aed',
+  bvmf: '#be123c',
+  mfv: '#c2410c',
+  mfvac: '#a16207',
+  tfn: '#15803d',
+  rising: '#16a34a',
+  atj: '#0891b2',
+};
+
+// 1. Window Totals Chart (low + high spend)
+const windowTotalsCtx = document.getElementById('windowTotalsChart');
+new Chart(windowTotalsCtx, {
+  type: 'bar',
+  data: {
+    labels: ['2024 Primary\n(Jan 1 – Mar 5)', '2024 General\n(Sep 1 – Nov 5)', '2026 Primary\n(Jan 1 – Mar 3)', '2026 Post-Primary\n(Mar 4 – May 13)'],
+    datasets: [
+      {
+        label: 'Lower bound',
+        data: [275, 1160, 206, 153],
+        backgroundColor: [COLORS.w1 + '40', COLORS.w2 + '40', COLORS.w3 + '40', COLORS.w4 + '40'],
+        borderColor: [COLORS.w1, COLORS.w2, COLORS.w3, COLORS.w4],
+        borderWidth: 2,
+        borderSkipped: false,
+        stack: 'a',
+      },
+      {
+        label: 'Range (lower → upper)',
+        data: [113, 430, 164, 157],
+        backgroundColor: [COLORS.w1, COLORS.w2, COLORS.w3, COLORS.w4],
+        borderColor: [COLORS.w1, COLORS.w2, COLORS.w3, COLORS.w4],
+        borderWidth: 0,
+        stack: 'a',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const i = ctx.dataIndex;
+            const lows = [275, 1160, 206, 153];
+            const highs = [388, 1590, 370, 310];
+            return `Est. TX GOTV: $${lows[i]}K – $${highs[i]}K`;
+          },
+          title: (ctxs) => ctxs[0].label.replace('\n', ' ')
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+      y: {
+        title: { display: true, text: 'Estimated TX GOTV Spend ($K)' },
+        grid: { color: 'rgba(0,0,0,0.05)' },
+        beginAtZero: true,
+        max: 1700,
+        ticks: { callback: v => '$' + v + 'K' }
+      }
+    }
+  }
+});
+
+// 2. Stacked Spend Chart
+const stackedCtx = document.getElementById('stackedSpendChart');
+new Chart(stackedCtx, {
+  type: 'bar',
+  data: {
+    labels: ['2024 Primary', '2024 General', '2026 Primary', '2026 Post-Primary'],
+    datasets: [
+      { label: 'Powered by People (Beto)', data: [350, 1180, 339, 288], backgroundColor: COLORS.pbp, stack: 's' },
+      { label: 'Voto Latino', data: [27, 173, 9, 7.5], backgroundColor: COLORS.vl, stack: 's' },
+      { label: 'Texas Organizing Project', data: [1, 124, 15, 0.7], backgroundColor: COLORS.top, stack: 's' },
+      { label: 'Voter Participation Center', data: [0, 84, 0.75, 1.2], backgroundColor: COLORS.vpc, stack: 's' },
+      { label: 'Black Voters Matter Fund', data: [0, 2.6, 6, 1], backgroundColor: COLORS.bvmf, stack: 's' },
+      { label: 'Mi Familia Vota', data: [0, 5, 0.5, 0.2], backgroundColor: COLORS.mfv, stack: 's' },
+      { label: 'Mi Familia en Acción', data: [0, 3, 1.5, 11], backgroundColor: COLORS.mfvac, stack: 's' },
+      { label: 'Texas Freedom Network', data: [9.1, 18.9, 0, 1.3], backgroundColor: COLORS.tfn, stack: 's' },
+      { label: 'Texas Rising', data: [1.2, 4.1, 0, 0], backgroundColor: COLORS.rising, stack: 's' },
+      { label: 'Asian Texans for Justice', data: [0, 0, 2, 4.6], backgroundColor: COLORS.atj, stack: 's' }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 11, boxHeight: 11, font: { size: 11 }, padding: 10 } },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.dataset.label}: $${ctx.raw}K (upper bound)`
+        }
+      }
+    },
+    scales: {
+      x: { stacked: true, grid: { display: false } },
+      y: {
+        stacked: true,
+        title: { display: true, text: 'Est. TX-Only Spend ($K, upper bound)' },
+        grid: { color: 'rgba(0,0,0,0.05)' },
+        beginAtZero: true,
+        ticks: { callback: v => '$' + v + 'K' }
+      }
+    }
+  }
+});
+
+// 3. Donut share chart (all 4 windows combined, upper bounds)
+const donutCtx = document.getElementById('shareDonutChart');
+new Chart(donutCtx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Powered by People (Beto)', 'Voto Latino', 'Texas Organizing Project', 'Voter Participation Center', 'Black Voters Matter Fund', 'Mi Familia Vota', 'Mi Familia en Acción', 'Texas Freedom Network', 'Texas Rising', 'Asian Texans for Justice'],
+    datasets: [{
+      data: [2157, 216.5, 140.7, 85.95, 9.6, 5.7, 15.5, 29.3, 5.3, 6.6],
+      backgroundColor: [COLORS.pbp, COLORS.vl, COLORS.top, COLORS.vpc, COLORS.bvmf, COLORS.mfv, COLORS.mfvac, COLORS.tfn, COLORS.rising, COLORS.atj],
+      borderColor: '#faf9f7',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '55%',
+    plugins: {
+      legend: { position: 'right', labels: { boxWidth: 12, boxHeight: 12, padding: 9, font: { size: 12 } } },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const total = ctx.dataset.data.reduce((a,b) => a+b, 0);
+            const pct = ((ctx.raw / total) * 100).toFixed(1);
+            return `${ctx.label}: $${ctx.raw}K (${pct}%)`;
+          }
+        }
+      }
+    }
+  }
+});
+
+// 4. Primary cycle comparison (page-wide)
+const primaryCompareCtx = document.getElementById('primaryCompareChart');
+new Chart(primaryCompareCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Powered by People', 'Voto Latino', 'Texas Org. Project', 'Texas Freedom Network', 'Texas Rising', 'Mi Familia Vota', 'Black Voters Matter', 'Asian Texans for Justice'],
+    datasets: [
+      { label: '2024 Primary (Jan 1 – Mar 5, 2024)', data: [350, 266, 1.1, 9.1, 1.2, 0, 0, 0], backgroundColor: COLORS.w1, borderRadius: 2 },
+      { label: '2026 Primary (Jan 1 – Mar 3, 2026)', data: [339, 44, 15.1, 0, 0, 5, 75, 2], backgroundColor: COLORS.w3, borderRadius: 2 }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 12 } } },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.dataset.label}: $${ctx.raw}K (page-wide upper bound)`
+        }
+      }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: v => '$' + v + 'K' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// 5. Annotated monthly timeline
+const monthlyData = [
+  // months from Jan 2024 to May 2026
+  { m: 'Jan 24', v: 20, w: 'w1' }, { m: 'Feb 24', v: 240, w: 'w1' }, { m: 'Mar 24', v: 100, w: 'w1' },
+  { m: 'Apr 24', v: 0 }, { m: 'May 24', v: 0 }, { m: 'Jun 24', v: 30 }, { m: 'Jul 24', v: 20 }, { m: 'Aug 24', v: 60 },
+  { m: 'Sep 24', v: 380, w: 'w2' }, { m: 'Oct 24', v: 950, w: 'w2' }, { m: 'Nov 24', v: 280, w: 'w2' },
+  { m: 'Dec 24', v: 5 }, { m: 'Jan 25', v: 5 }, { m: 'Feb 25', v: 5 }, { m: 'Mar 25', v: 5 }, { m: 'Apr 25', v: 5 }, { m: 'May 25', v: 5 },
+  { m: 'Jun 25', v: 10 }, { m: 'Jul 25', v: 10 }, { m: 'Aug 25', v: 15 }, { m: 'Sep 25', v: 20 }, { m: 'Oct 25', v: 30 }, { m: 'Nov 25', v: 40 }, { m: 'Dec 25', v: 60 },
+  { m: 'Jan 26', v: 80, w: 'w3' }, { m: 'Feb 26', v: 180, w: 'w3' }, { m: 'Mar 26 (1-3)', v: 80, w: 'w3' },
+  { m: 'Mar 26 (4+)', v: 90, w: 'w4' }, { m: 'Apr 26', v: 100, w: 'w4' }, { m: 'May 26 (1-13)', v: 100, w: 'w4' }
+];
+
+const timelineCtx = document.getElementById('annotatedTimelineChart');
+new Chart(timelineCtx, {
+  type: 'bar',
+  data: {
+    labels: monthlyData.map(d => d.m),
+    datasets: [{
+      label: 'Est. TX GOTV Spend ($K, upper bound)',
+      data: monthlyData.map(d => d.v),
+      backgroundColor: monthlyData.map(d => {
+        if (d.w === 'w1') return COLORS.w1;
+        if (d.w === 'w2') return COLORS.w2;
+        if (d.w === 'w3') return COLORS.w3;
+        if (d.w === 'w4') return COLORS.w4;
+        return '#cccccc';
+      }),
+      borderWidth: 0,
+      borderRadius: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `$${ctx.raw}K`
+        }
+      },
+      annotation: {
+        annotations: {
+          allred: {
+            type: 'line', xMin: 1, xMax: 1,
+            borderColor: '#475569', borderWidth: 1, borderDash: [4, 4],
+            label: { content: 'TX primary day Mar 5', display: true, position: 'start', backgroundColor: 'rgba(26,35,50,0.85)', color: '#fff', font: { size: 10 }, padding: 4 }
+          },
+          electionDay: {
+            type: 'line', xMin: 10, xMax: 10,
+            borderColor: '#475569', borderWidth: 1, borderDash: [4, 4],
+            label: { content: 'TX election day Nov 5', display: true, position: 'start', backgroundColor: 'rgba(26,35,50,0.85)', color: '#fff', font: { size: 10 }, padding: 4 }
+          },
+          paxtonEntry: {
+            type: 'line', xMin: 16, xMax: 16,
+            borderColor: '#475569', borderWidth: 1, borderDash: [4, 4],
+            label: { content: 'Paxton enters Apr 2025', display: true, position: 'end', backgroundColor: 'rgba(26,35,50,0.85)', color: '#fff', font: { size: 10 }, padding: 4 }
+          },
+          tx2026: {
+            type: 'line', xMin: 26, xMax: 26,
+            borderColor: '#475569', borderWidth: 1, borderDash: [4, 4],
+            label: { content: 'TX primary Mar 3', display: true, position: 'start', backgroundColor: 'rgba(26,35,50,0.85)', color: '#fff', font: { size: 10 }, padding: 4 }
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 10 }, maxRotation: 60, minRotation: 45 } },
+      y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: v => '$' + v + 'K' }, beginAtZero: true }
+    }
+  }
+});
+
+</script>
+</body>
+</html>

@@ -2,6 +2,11 @@
 
 All notable changes to Meta Ad Library Research Tool will be documented in this file.
 
+## [2026-05-13]
+
+### Added
+- Texas US Senate GOTV — Meta Ad Intelligence Brief 2024 vs 2026. Four-window comparison (2024 primary, 2024 general, 2026 primary, 2026 post-primary/runoff) of get-out-the-vote advertising on Meta's political ad archive for the Cruz–Allred and Cornyn–Paxton/Talarico cycles. Profiles 10 advertisers — Powered by People, Voto Latino, Texas Organizing Project, Voter Participation Center, Black Voters Matter Fund, Mi Familia Vota, Mi Familia en Acción, Texas Freedom Network, Texas Rising, Asian Texans for Justice — with estimated TX-only spend per window, verbatim ad creative samples, messaging evolution analysis, and a critical-absences callout for major TX GOTV orgs that don't appear in the archive (TDP, RPT, MoveTexas, Texas Majority PAC, Battleground Texas, etc.). Documents that the 2026 Democratic primary turnout doubling was not mirrored by any GOTV ad spend surge — total estimated TX GOTV spend was essentially flat across the two primary windows.
+
 ## [2026-05-12]
 
 ### Added
