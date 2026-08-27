@@ -2,6 +2,11 @@
 
 All notable changes to Meta Ad Library Research Tool will be documented in this file.
 
+## [2026-08-26]
+
+### Added
+- LESSONS.md — captures a methodology gap found during EDF New Mexico ad-targeting research: page-level regional delivery averages can mask a small, genuinely-targeted campaign when an advertiser also runs high volumes of untargeted national ads. Documents the fix (cluster ads by creative before checking regional delivery, search geographic proxies alongside place names, and use a monthly rank sweep as a backstop) for future targeting-analysis requests.
+
 ## [2026-05-13]
 
 ### Added
