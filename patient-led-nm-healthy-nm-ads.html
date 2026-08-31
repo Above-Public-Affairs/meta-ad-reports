@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient-Led NM &amp; Citizens for a Healthy New Mexico — One Year of Malpractice-Reform Advocacy</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+<style>
+:root {
+  --bg: #faf9f7;
+  --bg-card: #ffffff;
+  --bg-warm: #f5f3ef;
+  --bg-accent: #f0ece4;
+  --border: #e4e0d8;
+  --border-light: #ece9e2;
+  --text-primary: #1c1917;
+  --text-body: #3d3833;
+  --text-secondary: #6b6560;
+  --text-muted: #9c9590;
+  --navy: #1a2332;
+  --navy-mid: #2d3a4a;
+  --slate: #475569;
+  --blue-deep: #1e3a5f;
+  --blue: #2563eb;
+  --blue-light: #e8f0fe;
+  --teal-deep: #115e59;
+  --teal: #0d9488;
+  --teal-light: #f0fdfa;
+  --amber-deep: #92400e;
+  --amber: #b45309;
+  --amber-light: #fffbeb;
+  --purple-deep: #5b21b6;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --green-deep: #1a5632;
+  --green: #16803c;
+  --green-light: #f0fdf4;
+  --red-deep: #9b1c1c;
+  --red: #c53030;
+  --red-light: #fef2f2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-body);
+  line-height: 1.65;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1140px; margin: 0 auto; padding: 48px 32px 64px; }
+
+/* ---------- Header ---------- */
+.header { border-bottom: 2px solid var(--navy); padding-bottom: 24px; margin-bottom: 36px; }
+.header-eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2px; color: var(--slate); margin-bottom: 12px;
+}
+.header h1 {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 38px; font-weight: 700;
+  color: var(--navy); line-height: 1.18; margin-bottom: 8px; letter-spacing: -0.4px;
+}
+.header h1 span {
+  display: block; font-size: 23px; font-weight: 400; color: var(--navy-mid); margin-top: 8px; letter-spacing: 0;
+}
+.header-meta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--text-muted); margin-top: 14px;
+}
+.header-meta span { margin-right: 20px; white-space: nowrap; }
+
+/* ---------- Executive summary ---------- */
+.exec {
+  background: var(--navy); color: #e8eaed; border-radius: 12px;
+  padding: 32px 34px; margin-bottom: 36px;
+}
+.exec h2 {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2px; color: #8ba3c7; margin-bottom: 16px;
+}
+.exec p {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.62; margin-bottom: 14px;
+}
+.exec p:last-child { margin-bottom: 0; }
+.exec strong { color: #fff; font-weight: 600; }
+.exec .hl { color: #7dd3c0; font-weight: 600; }
+
+/* ---------- Stat cards ---------- */
+.top-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden; margin-bottom: 40px;
+}
+.stat-card { background: var(--bg-card); padding: 22px 20px; }
+.stat-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); margin-bottom: 10px;
+}
+.stat-value {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 27px; font-weight: 700;
+  color: var(--navy); line-height: 1.1; margin-bottom: 6px;
+}
+.stat-value.zero { color: var(--red-deep); }
+.stat-sub { font-size: 12.5px; color: var(--text-secondary); line-height: 1.45; }
+
+/* ---------- Sections ---------- */
+section { margin-bottom: 48px; }
+.section-num {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  color: var(--teal); letter-spacing: 1.5px; margin-bottom: 6px;
+}
+h2.sec {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 27px; font-weight: 700;
+  color: var(--navy); margin-bottom: 10px; line-height: 1.25;
+}
+h3.sub {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; font-weight: 600;
+  color: var(--navy-mid); margin: 28px 0 10px;
+}
+.lede { font-size: 16px; color: var(--text-body); margin-bottom: 22px; max-width: 78ch; }
+p { margin-bottom: 14px; max-width: 82ch; }
+a { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(37,99,235,0.3); }
+a:hover { border-bottom-color: var(--blue); }
+
+/* ---------- Charts ---------- */
+.chart-box {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 24px 26px; margin: 22px 0;
+}
+.chart-title {
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 600;
+  color: var(--navy); margin-bottom: 4px;
+}
+.chart-note { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 18px; }
+.chart-wrap { position: relative; height: 340px; }
+.chart-wrap.tall { height: 420px; }
+.chart-wrap.short { height: 260px; }
+
+/* ---------- Callouts ---------- */
+.callout {
+  border-left: 4px solid var(--amber); background: var(--amber-light);
+  padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 24px 0;
+}
+.callout.red { border-left-color: var(--red); background: var(--red-light); }
+.callout.teal { border-left-color: var(--teal); background: var(--teal-light); }
+.callout.purple { border-left-color: var(--purple); background: var(--purple-light); }
+.callout h4 {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 10px; color: var(--amber-deep);
+}
+.callout.red h4 { color: var(--red-deep); }
+.callout.teal h4 { color: var(--teal-deep); }
+.callout.purple h4 { color: var(--purple-deep); }
+.callout p { margin-bottom: 10px; font-size: 14.5px; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ---------- Org profile cards ---------- */
+.org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.org-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 24px 26px; border-top: 4px solid var(--teal);
+}
+.org-card.silent { border-top-color: var(--stone, #78716c); }
+.org-name {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 21px;
+  font-weight: 700; color: var(--navy); margin-bottom: 3px;
+}
+.org-url {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;
+  color: var(--text-muted); margin-bottom: 16px; word-break: break-all;
+}
+.org-row {
+  display: flex; gap: 12px; padding: 9px 0; border-top: 1px solid var(--border-light); font-size: 13.5px;
+}
+.org-row:first-of-type { border-top: none; }
+.org-key {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted);
+  flex: 0 0 108px; padding-top: 2px;
+}
+.org-val { flex: 1; color: var(--text-body); }
+.org-val strong { color: var(--navy); font-weight: 600; }
+.badge {
+  display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+  padding: 3px 9px; border-radius: 20px; margin-bottom: 12px;
+}
+.badge.active { background: var(--teal-light); color: var(--teal-deep); border: 1px solid #99f6e4; }
+.badge.none { background: #f1f0ee; color: var(--text-secondary); border: 1px solid var(--border); }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; margin: 22px 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 13.5px; }
+th {
+  background: var(--bg-warm); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary);
+  text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td.num { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; white-space: nowrap; }
+td.name { font-weight: 600; color: var(--navy); }
+.pill {
+  display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  font-weight: 600; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.6px;
+}
+.pill.pro { background: var(--teal-light); color: var(--teal-deep); }
+.pill.anti { background: var(--red-light); color: var(--red-deep); }
+.pill.neutral { background: var(--bg-accent); color: var(--text-secondary); }
+.pill.elect { background: var(--purple-light); color: var(--purple-deep); }
+
+/* ---------- Timeline ---------- */
+.timeline { margin: 26px 0; position: relative; padding-left: 30px; }
+.timeline::before {
+  content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px;
+  width: 2px; background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 22px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -27px; top: 6px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--bg-card); border: 2px solid var(--slate);
+}
+.tl-item.pro::before { border-color: var(--teal); background: var(--teal); }
+.tl-item.anti::before { border-color: var(--red); background: var(--red); }
+.tl-item.leg::before { border-color: var(--amber); background: var(--amber); }
+.tl-date {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
+}
+.tl-title { font-weight: 600; color: var(--navy); margin-bottom: 3px; font-size: 15px; }
+.tl-body { font-size: 13.5px; color: var(--text-body); max-width: 76ch; }
+
+/* ---------- Ad quotes ---------- */
+.ad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
+.ad-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px 22px; border-left: 3px solid var(--teal);
+}
+.ad-card.anti { border-left-color: var(--red); }
+.ad-meta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--text-muted);
+  margin-bottom: 10px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+}
+.ad-text {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 15px;
+  line-height: 1.55; color: var(--text-primary); margin-bottom: 12px;
+}
+.ad-link { font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+
+/* ---------- Compare bars ---------- */
+.vs-row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; align-items: center; margin-bottom: 10px; }
+.vs-label { font-size: 13px; font-weight: 600; color: var(--navy); text-align: right; line-height: 1.3; }
+.vs-bar-wrap { display: flex; align-items: center; gap: 10px; }
+.vs-bar { height: 26px; border-radius: 4px; min-width: 2px; }
+.vs-val { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
+
+/* ---------- Methodology ---------- */
+.method {
+  background: var(--bg-warm); border: 1px solid var(--border);
+  border-radius: 10px; padding: 26px 28px; margin-top: 40px;
+}
+.method h3 {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.6px; color: var(--slate); margin-bottom: 14px;
+}
+.method p, .method li { font-size: 13.5px; color: var(--text-body); }
+.method ul { margin: 10px 0 14px 20px; }
+.method li { margin-bottom: 7px; }
+
+footer {
+  margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--border);
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--text-muted); line-height: 1.7;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .container { padding: 30px 18px 48px; }
+  .header h1 { font-size: 28px; }
+  .header h1 span { font-size: 18px; }
+  .top-stats { grid-template-columns: repeat(2, 1fr); }
+  .org-grid, .ad-grid { grid-template-columns: 1fr; }
+  .exec { padding: 24px 22px; }
+  .exec p { font-size: 16px; }
+  .chart-box { padding: 18px 16px; }
+  .chart-wrap { height: 300px; }
+  .chart-wrap.tall { height: 380px; }
+  .vs-row { grid-template-columns: 1fr; gap: 4px; }
+  .vs-label { text-align: left; }
+  .org-key { flex: 0 0 92px; }
+}
+
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  .container { max-width: 100%; padding: 0; }
+  .chart-box, .org-card, .callout, .method { break-inside: avoid; }
+  .exec { background: #fff; color: #000; border: 2px solid #000; }
+  .exec p, .exec strong, .exec .hl { color: #000; }
+  a { color: #000; border-bottom: none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+  <div class="header-eyebrow">Meta Ad Library Intelligence Brief</div>
+  <h1>Two Groups, One Message, One Ad Budget
+    <span>Patient-Led NM and Citizens for a Healthy New Mexico in the HB 99 malpractice fight</span>
+  </h1>
+  <div class="header-meta">
+    <span>Window: Aug 30, 2025 – Aug 30, 2026</span>
+    <span>Geography: New Mexico</span>
+    <span>Retrieved: Aug 30, 2026</span>
+  </div>
+</header>
+
+<div class="exec">
+  <h2>Executive Summary</h2>
+  <p>Over the past year, <strong>patientlednm.org</strong> and <strong>healthynm.org</strong> ran what reads as a single, coordinated campaign to reshape New Mexico's medical malpractice law — but only one of them bought a single ad. <strong>Patient-Led NM</strong> spent <span class="hl">$22,100–$31,450</span> across 50 Meta ads and 2.8–3.3 million impressions between September 2025 and March 2026. <strong>Citizens for a Healthy New Mexico</strong> spent <span class="hl">$0</span>. It has no ads of any kind — political or commercial — on either of its Facebook pages.</p>
+  <p>That division of labor is the story. Patient-Led NM carried the paid air war under a disclosed "paid for by" filing and a published list of four founding organizations. Citizens for a Healthy New Mexico carried the earned-media and research track — seven op-eds, a physician survey, and a statewide voter poll — while disclosing <strong>no funders, no staff, and no board</strong>. The two share a statistic ("248 physicians lost"), a villain (the trial bar), and a sourcing base: the survey CHNM commissioned was fielded to members of the Greater Albuquerque Medical Association and the New Mexico Medical Society, two of Patient-Led NM's four founders.</p>
+  <p>The reform side won. <strong>HB 99</strong> passed the House 66–3 and the Senate 40–2 and was signed March 6, 2026. Patient-Led NM ran a one-week victory lap, then went dark on <strong>March 12, 2026</strong> — and has not run an ad in the <span class="hl">171 days</span> since. Its organized opposition, New Mexico Safety Over Profit, was outspent roughly <span class="hl">3.3 to 1</span> on Meta during the fight and is the only participant still advertising in New Mexico today.</p>
+</div>
+
+<div class="top-stats">
+  <div class="stat-card">
+    <div class="stat-label">Patient-Led NM spend</div>
+    <div class="stat-value">$22.1K–$31.5K</div>
+    <div class="stat-sub">50 ads · Sep 8, 2025 – Mar 12, 2026</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Citizens for a Healthy NM</div>
+    <div class="stat-value zero">$0</div>
+    <div class="stat-sub">Zero ads of any type, both Pages</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Impressions delivered</div>
+    <div class="stat-value">2.8M–3.3M</div>
+    <div class="stat-sub">NM reached by 50 of 50 ads</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Days dark since last ad</div>
+    <div class="stat-value">171</div>
+    <div class="stat-sub">Silent since HB 99 was signed</div>
+  </div>
+</div>
+
+<!-- ============ 1. THE TWO ENTITIES ============ -->
+<section>
+  <div class="section-num">01</div>
+  <h2 class="sec">The Two Entities</h2>
+  <p class="lede">Both organizations argue the same case in nearly the same words: New Mexico is losing doctors faster than any other state, malpractice liability is why, and the legislature must act. They differ almost entirely in what they disclose and how they spend.</p>
+
+  <div class="org-grid">
+    <div class="org-card">
+      <span class="badge active">Paid advertiser</span>
+      <div class="org-name">Patient-Led NM</div>
+      <div class="org-url">patientlednm.org · Page ID 605251816012837</div>
+      <div class="org-row"><div class="org-key">Meta spend</div><div class="org-val"><strong>$22,100 – $31,450</strong> across 50 ads</div></div>
+      <div class="org-row"><div class="org-key">Disclaimer</div><div class="org-val">"Paid for by Patient-Led NM" — filed on 49 of 50 ads</div></div>
+      <div class="org-row"><div class="org-key">Founders</div><div class="org-val">New Mexico Medical Society · New Mexico Hospital Association · Sacramento Mountains Foundation · Greater Albuquerque Medical Association</div></div>
+      <div class="org-row"><div class="org-key">Leadership</div><div class="org-val">Annie Jung, executive director</div></div>
+      <div class="org-row"><div class="org-key">Tactics</div><div class="org-val">Digital advertising, regional healthcare summits, patient-story video series, "Myth vs. Fact" explainers, White Coat Day mobilization</div></div>
+      <div class="org-row"><div class="org-key">Status</div><div class="org-val">No new ads since March 12, 2026</div></div>
+    </div>
+
+    <div class="org-card silent">
+      <span class="badge none">No ad footprint</span>
+      <div class="org-name">Citizens for a Healthy New Mexico</div>
+      <div class="org-url">healthynm.org · FB 61580293619597 &amp; 61576981851399</div>
+      <div class="org-row"><div class="org-key">Meta spend</div><div class="org-val"><strong>$0</strong> — no ads returned for either Page under any ad type or status</div></div>
+      <div class="org-row"><div class="org-key">Disclaimer</div><div class="org-val">None on file; no archived ads exist</div></div>
+      <div class="org-row"><div class="org-key">Founders</div><div class="org-val">Not disclosed. Describes itself only as "a nonpartisan coalition of healthcare professionals, community leaders, and concerned residents"</div></div>
+      <div class="org-row"><div class="org-key">Leadership</div><div class="org-val">No staff, board, or officers named on the site</div></div>
+      <div class="org-row"><div class="org-key">Tactics</div><div class="org-val">Op-ed placement (7 items), commissioned voter poll, commissioned physician survey, explainer video, donation page under "Citizens for Healthy New Mexico Policy"</div></div>
+      <div class="org-row"><div class="org-key">Status</div><div class="org-val">Last published item: Feb 2, 2026</div></div>
+    </div>
+  </div>
+
+  <div class="callout purple">
+    <h4>The connective tissue</h4>
+    <p>Citizens for a Healthy New Mexico's physician survey — fielded online November 11 to December 15, 2025, n=223 — drew its entire sample from members of the <strong>Greater Albuquerque Medical Association</strong> and the <strong>New Mexico Medical Society</strong>. Both are founding organizations of Patient-Led NM. The two groups therefore share a research base even though they present as independent entities and only one of them discloses who is behind it.</p>
+    <p>This is an inference about organizational proximity drawn from disclosed sourcing, not evidence of common control or common funding. No public filing reviewed for this brief establishes a legal or financial relationship between the two.</p>
+  </div>
+</section>
+
+<!-- ============ 2. THE SPENDING ASYMMETRY ============ -->
+<section>
+  <div class="section-num">02</div>
+  <h2 class="sec">Who Actually Bought Ads</h2>
+  <p class="lede">Six advertisers touched the New Mexico malpractice fight on Meta during the window. Patient-Led NM accounted for roughly three of every four dollars.</p>
+
+  <div class="chart-box">
+    <div class="chart-title">Estimated Meta spend on the New Mexico malpractice fight, Aug 2025 – Aug 2026</div>
+    <div class="chart-note">Bars show the midpoint of Meta's reported spend range; the error bar shows the full disclosed range. Citizens for a Healthy New Mexico appears at zero because it ran no ads.</div>
+    <div class="chart-wrap"><canvas id="chartSpend"></canvas></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Advertiser</th><th>Position</th><th>Spend (range)</th><th>Ads</th><th>Active window</th><th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Patient-Led NM</td>
+          <td><span class="pill pro">Pro-reform</span></td>
+          <td class="num">$22,100 – $31,450</td>
+          <td class="num">50</td>
+          <td class="num">Sep 2025 – Mar 2026</td>
+          <td>Provider-coalition vehicle; NM reached by all 50 ads</td>
+        </tr>
+        <tr>
+          <td class="name">New Mexico Safety Over Profit</td>
+          <td><span class="pill anti">Opposed HB 99</span></td>
+          <td class="num">$5,500 – $10,846</td>
+          <td class="num">54</td>
+          <td class="num">Dec 2025 – Mar 2026</td>
+          <td>501(c)(4); healthcare cluster only. Still active on other issues</td>
+        </tr>
+        <tr>
+          <td class="name">American Tort Reform Association</td>
+          <td><span class="pill pro">Pro-reform</span></td>
+          <td class="num">$400 – $895</td>
+          <td class="num">5</td>
+          <td class="num">Jul – Aug 2026</td>
+          <td>National trade association; NM creative only, post-signing</td>
+        </tr>
+        <tr>
+          <td class="name">NM House Republicans</td>
+          <td><span class="pill neutral">Credit-claiming</span></td>
+          <td class="num">$100 – $199</td>
+          <td class="num">1</td>
+          <td class="num">Aug 2026</td>
+          <td>Attributes reform to fighting "trial lawyers"</td>
+        </tr>
+        <tr>
+          <td class="name">NM House Democrats</td>
+          <td><span class="pill neutral">Credit-claiming</span></td>
+          <td class="num">$0 – $198</td>
+          <td class="num">2</td>
+          <td class="num">Feb 2026</td>
+          <td>Attributes HB 99 to the Democratic caucus</td>
+        </tr>
+        <tr>
+          <td class="name">Citizens for a Healthy New Mexico</td>
+          <td><span class="pill pro">Pro-reform</span></td>
+          <td class="num">$0</td>
+          <td class="num">0</td>
+          <td class="num">—</td>
+          <td>No archived ads on either Facebook Page</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout teal">
+    <h4>Scale check — is $31K a lot?</h4>
+    <p>For a single-state legislative fight, yes. Patient-Led NM's 2.8–3.3 million impressions landed in a state of roughly 2.1 million people, so the campaign delivered on the order of <strong>1.3 to 1.6 impressions per resident</strong> — enough for meaningful repetition against a target audience much smaller than the full population. (Impressions count ad views, not unique people; the same person seeing an ad ten times counts ten times.)</p>
+    <p>For context from this project's prior research: the entire field of GOTV advertisers in Texas spent $206K–$370K across a whole US Senate primary in a state 14 times New Mexico's size. A $22K–$31K single-issue buy inside one 30-day legislative session is a serious, well-resourced campaign at the state level — not a token presence.</p>
+  </div>
+</section>
+
+<!-- ============ 3. THE TIMELINE ============ -->
+<section>
+  <div class="section-num">03</div>
+  <h2 class="sec">Spend Against Events</h2>
+  <p class="lede">Patient-Led NM's buy tracks the legislative calendar almost perfectly: a fall awareness build, a January surge timed to White Coat Day, a deliberate pause through the floor votes, and a March victory lap that ends the campaign.</p>
+
+  <div class="chart-box">
+    <div class="chart-title">Monthly Meta spend with legislative events, Sep 2025 – Aug 2026</div>
+    <div class="chart-note">Bars are spend-range midpoints for newly launched ads in each month. Dashed lines mark real-world events. Note that ads launched in January continued <em>delivering</em> through February even though no new creative launched that month.</div>
+    <div class="chart-wrap tall"><canvas id="chartTimeline"></canvas></div>
+  </div>
+
+  <div class="callout">
+    <h4>The February gap is a tactic, not a retreat</h4>
+    <p>Patient-Led NM launched <strong>zero new ads in February 2026</strong> — the month HB 99 cleared the House 66–3, survived eleven Senate Judiciary amendments, and passed the Senate 40–2. That looks like abandonment until you check delivery: <strong>seven January ad objects worth $8,500–$11,193 kept running through February 20</strong>, including a single $3,500–$3,999 creative launched January 28, the group's largest single ad of the campaign.</p>
+    <p>The read: Patient-Led NM front-loaded its heaviest buy onto White Coat Day and let it run through the decisive votes rather than launching fresh creative into an active floor fight. Public pressure was applied before the votes; during them, the lobbying moved indoors.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item anti">
+      <div class="tl-date">Aug 23–25, 2025</div>
+      <div class="tl-title">Citizens for a Healthy NM opens with an op-ed wave</div>
+      <div class="tl-body">Three op-eds in three days — "Doctors are on the run, out of New Mexico," "My patients lost their doctor due to NM's malpractice law," and "New Mexico medicine needs progress over slogans" — followed by a fourth on Aug 25. No paid distribution accompanies them.</div>
+    </div>
+    <div class="tl-item pro">
+      <div class="tl-date">Sep 8, 2025</div>
+      <div class="tl-title">Patient-Led NM runs its first Meta ad</div>
+      <div class="tl-body">A $0–99 test buy introducing the frame: "Outdated policies and a hostile malpractice climate are pushing doctors away." Hashtag #ExposeTheCrisis.</div>
+    </div>
+    <div class="tl-item pro">
+      <div class="tl-date">Oct 2025</div>
+      <div class="tl-title">Scale-up: summits and the "248 physicians" statistic</div>
+      <div class="tl-body">15 ads, $4,600–$6,885 — the campaign's first real month. Creative splits between summit registration drives and the statistic that becomes the campaign's spine: "New Mexico has lost 248 physicians in 5 years — the only state in the U.S. with a net decline."</div>
+    </div>
+    <div class="tl-item pro">
+      <div class="tl-date">Nov 2025</div>
+      <div class="tl-title">Patient-story video series</div>
+      <div class="tl-body">$5,000–$6,794 behind six ads, nearly all promoting "our first patient story for Patient-Led NM." The campaign shifts from statistics to testimony.</div>
+    </div>
+    <div class="tl-item anti">
+      <div class="tl-date">Nov 11 – Dec 15, 2025</div>
+      <div class="tl-title">Citizens for a Healthy NM fields its physician survey</div>
+      <div class="tl-body">223 physicians surveyed through GAMA and NM Medical Society membership. Headline results: 34% likely to leave the state, 50% likely to retire early, 91% call New Mexico unfavorable for private practice.</div>
+    </div>
+    <div class="tl-item anti">
+      <div class="tl-date">Dec 10, 2025</div>
+      <div class="tl-title">The opposition arrives on Meta</div>
+      <div class="tl-body">New Mexico Safety Over Profit begins a pre-session buy — $2,600–$3,788 in December — with an introductory video and "safety before profit" branding, three weeks before the session opens.</div>
+    </div>
+    <div class="tl-item leg">
+      <div class="tl-date">Jan 20, 2026</div>
+      <div class="tl-title">2026 legislative session convenes</div>
+      <div class="tl-body">HB 99, sponsored by Reps. Christine Chandler (D-Los Alamos) and Gail Armstrong (R-Magdalena), is introduced. Citizens for a Healthy NM fields its statewide voter poll Jan 20–22.</div>
+    </div>
+    <div class="tl-item pro">
+      <div class="tl-date">Jan 28, 2026</div>
+      <div class="tl-title">White Coat Day — the campaign's peak</div>
+      <div class="tl-body">Doctors and medical students fill the Roundhouse lobbying for HB 99. Patient-Led NM's January buy hits $10,300–$14,086, the largest month of the campaign, including a single $3,500–$3,999 creative launched that day.</div>
+    </div>
+    <div class="tl-item anti">
+      <div class="tl-date">Jan 29 – Feb 2, 2026</div>
+      <div class="tl-title">Opposition counter-programs with Patient Advocacy Day</div>
+      <div class="tl-body">NM Safety Over Profit publishes its "WHO Test: FAILED" verdict on HB 99 and runs a series of named patient-harm testimonials from its own Patient Advocacy Day — a direct mirror of Patient-Led NM's testimony strategy.</div>
+    </div>
+    <div class="tl-item anti">
+      <div class="tl-date">Feb 2, 2026</div>
+      <div class="tl-title">Citizens for a Healthy NM breaks with the bill</div>
+      <div class="tl-body">Publishes "Latest on HB 99: Current Form Won't Stop the Bleed of Doctors from NM" — attacking the bill from the reform side for not going far enough, at the same moment Patient-Led NM's paid campaign is pushing it forward.</div>
+    </div>
+    <div class="tl-item leg">
+      <div class="tl-date">Feb 14–18, 2026</div>
+      <div class="tl-title">HB 99 clears both chambers</div>
+      <div class="tl-body">House passes 66–3 on Feb 14. Senate Judiciary adopts eleven amendments and advances it 8–1 on Feb 17. Senate passes 40–2 on Feb 18. Session adjourns Feb 19.</div>
+    </div>
+    <div class="tl-item leg">
+      <div class="tl-date">Mar 6, 2026</div>
+      <div class="tl-title">Governor Lujan Grisham signs HB 99</div>
+      <div class="tl-body">The law creates tiered punitive-damages caps — $1M for independent providers, $6M for locally owned hospitals, $15M for large systems, inflation-adjusted — and raises the evidentiary standard to "clear and convincing" with judicial review before punitive claims proceed.</div>
+    </div>
+    <div class="tl-item pro">
+      <div class="tl-date">Mar 5–12, 2026</div>
+      <div class="tl-title">Victory lap, then silence</div>
+      <div class="tl-body">Eleven ads, $1,700–$2,789, all running one creative: "Because patients, clinicians, businesses, and community partners spoke up, New Mexico took an important step toward protecting access to care statewide." The last ad runs March 12. The page has not advertised since.</div>
+    </div>
+    <div class="tl-item pro">
+      <div class="tl-date">Jul 28 – Aug 26, 2026</div>
+      <div class="tl-title">A national group takes the credit</div>
+      <div class="tl-body">The American Tort Reform Association folds New Mexico into a multi-state legislative-scorecard campaign: "Lawsuit abuse quietly drains the equivalent of 3 months' worth of groceries from NM families' budgets. Lawmakers passed a bill to help keep that money in your pocket."</div>
+    </div>
+    <div class="tl-item leg">
+      <div class="tl-date">Aug 14–29, 2026</div>
+      <div class="tl-title">House Republicans claim the win</div>
+      <div class="tl-body">"Trial lawyers have spent years pouring money into New Mexico politics and fighting reforms… Last session, we fought back and passed meaningful malpractice reform." Six months after the Democratic caucus ran the same claim.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. MESSAGING ============ -->
+<section>
+  <div class="section-num">04</div>
+  <h2 class="sec">The Framing War</h2>
+  <p class="lede">Both sides ran testimony-driven campaigns built on individual New Mexicans harmed by the healthcare system. They disagreed entirely about who did the harming.</p>
+
+  <div class="chart-box">
+    <div class="chart-title">Word frequency in ad copy — Patient-Led NM vs. New Mexico Safety Over Profit</div>
+    <div class="chart-note">Top terms by raw frequency across each advertiser's ad text. NM Safety Over Profit's counts run higher because its analyzed corpus spans 313 lifetime ads against Patient-Led NM's 50.</div>
+    <div class="chart-wrap tall"><canvas id="chartThemes"></canvas></div>
+  </div>
+
+  <p>Patient-Led NM's vocabulary is <strong>access and supply</strong>: <em>patients</em> (73), <em>care</em> (50), <em>reform</em> (36), <em>access</em> (33), <em>doctors</em> (29), <em>malpractice</em> (26). The problem is a shortage; the cause is a legal climate; the fix is legislative. Notably absent is any attack vocabulary — Patient-Led NM's paid copy never names trial lawyers as the villain, even though its allies do. That naming was left to the caucuses, ATRA, and the op-ed track.</p>
+
+  <p>New Mexico Safety Over Profit's vocabulary is <strong>accountability and harm</strong>: <em>victims</em> (181), <em>justice</em> (180), <em>profits</em> (158), <em>corporations</em> (153), <em>robbing</em> (144), <em>greed</em> (95). It never contests the doctor shortage directly in its highest-frequency terms; it reframes the bill as corporate liability relief. Its January 26 ad went further, citing an <em>Albuquerque Journal</em> report that "the debate over the number of practicing physicians is muddied by a lack of conclusive data" — an attack on the 248-physician statistic itself rather than on the policy.</p>
+
+  <h3 class="sub">Verbatim ad copy</h3>
+  <div class="ad-grid">
+    <div class="ad-card">
+      <div class="ad-meta"><span>Patient-Led NM · Oct 7, 2025</span><span>$700–$799</span></div>
+      <div class="ad-text">"🚨 New Mexico has lost 248 physicians in 5 years — the only state in the U.S. with a net decline. Patients are waiting m…"</div>
+      <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1321400796057964" target="_blank">View in Ad Library →</a></div>
+    </div>
+    <div class="ad-card">
+      <div class="ad-meta"><span>Patient-Led NM · Dec 2, 2025</span><span>$500–$599</span></div>
+      <div class="ad-text">"'We got through the pandemic, but then all the sudden malpractice laws began to change in 2021,' said Dr. Lawrence Andrade in his video sharing why he left New Mexico."</div>
+      <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1533128157769840" target="_blank">View in Ad Library →</a></div>
+    </div>
+    <div class="ad-card">
+      <div class="ad-meta"><span>Patient-Led NM · Jan 28, 2026</span><span>$600–$699</span></div>
+      <div class="ad-text">"New Mexico is losing doctors. Since 2021, our state has lost 248 practicing physicians. Why? Medical malpractice laws and skyrocketing premiums are making it difficult for doctors to stay here. We need common-sense reform…"</div>
+      <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1878511920217791" target="_blank">View in Ad Library →</a></div>
+    </div>
+    <div class="ad-card">
+      <div class="ad-meta"><span>Patient-Led NM · Mar 5, 2026</span><span>$700–$799</span></div>
+      <div class="ad-text">"Because patients, clinicians, businesses, and community partners spoke up, New Mexico took an important step toward protecting access to care statewide."</div>
+      <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=906690762277537" target="_blank">View in Ad Library →</a></div>
+    </div>
+    <div class="ad-card anti">
+      <div class="ad-meta"><span>NM Safety Over Profit · Jan 29, 2026</span><span>$0–$99</span></div>
+      <div class="ad-text">"We use the WHO Test to evaluate healthcare bills: Who benefits. Harm reduction. Outcomes. HB99 – NMSOP WHO Test: FAILED ❌ This bill does two things that hurt patients: it caps punitive damages and ends single payments…"</div>
+      <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=25755937937359250" target="_blank">View in Ad Library →</a></div>
+    </div>
+    <div class="ad-card anti">
+      <div class="ad-meta"><span>NM Safety Over Profit · Feb 1, 2026</span><span>$0–$99</span></div>
+      <div class="ad-text">"Yesterday in LHHS – champions for patient safety amended HB99 to protect patients' rights and independent doctors, NOT corporations that hurt New Mexicans."</div>
+      <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1866438903997541" target="_blank">View in Ad Library →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. DELIVERY ============ -->
+<section>
+  <div class="section-num">05</div>
+  <h2 class="sec">Where and to Whom the Ads Landed</h2>
+  <p class="lede">Patient-Led NM's delivery is tightly bounded to New Mexico. What spillover exists is consistent with border-market bleed, not with a multi-state strategy.</p>
+
+  <div class="chart-box">
+    <div class="chart-title">Regional delivery — number of Patient-Led NM ads reaching each state</div>
+    <div class="chart-note">All 50 ads reached New Mexico. Neighboring states appear on a minority of ads at negligible reach share, the expected signature of metro-boundary spillover around El Paso, the Four Corners, and the Colorado line.</div>
+    <div class="chart-wrap short"><canvas id="chartRegion"></canvas></div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Age distribution of Patient-Led NM ad delivery</div>
+    <div class="chart-note">Relative share, normalized from Meta's per-ad average reach percentages. Meta reports these at one-decimal precision, so this is a coarse indicator of shape only — treat the gaps between adjacent bands as noise.</div>
+    <div class="chart-wrap short"><canvas id="chartAge"></canvas></div>
+  </div>
+
+  <div class="callout red">
+    <h4>Delivery is not targeting</h4>
+    <p>Everything above describes <strong>who saw the ads</strong>, not what the advertiser selected. Patient-Led NM's delivery skews toward the 65+ band, but that skew has at least four plausible causes beyond a demographic selector: an uploaded supporter or patient list whose composition drives delivery; Meta's optimization finding older users most responsive to healthcare-access creative; the resonance of physician-shortage messaging with heavy healthcare consumers; and placement effects, since Facebook's own user base skews older than Instagram's.</p>
+    <p>Gender delivery split essentially evenly (0.5% average reach each for female and male), which is itself weak evidence against tight demographic targeting. What the data supports: <strong>the campaign reached older New Mexicans disproportionately.</strong> What it does not support: any claim about whom Patient-Led NM set out to reach.</p>
+  </div>
+</section>
+
+<!-- ============ 6. ANALYSIS ============ -->
+<section>
+  <div class="section-num">06</div>
+  <h2 class="sec">Strategic Assessment</h2>
+
+  <h3 class="sub">1. The split-channel structure is the campaign's defining feature</h3>
+  <p>Running a disclosed, "paid for by"-filed advertising vehicle alongside an undisclosed research-and-op-ed vehicle is a recognized advocacy structure, and it is efficient here for a specific reason. Meta's political-ad archive captures only what carries a disclaimer. By routing paid persuasion through Patient-Led NM — which names four founding organizations and files its disclaimers — the coalition accepts full transparency on the channel where transparency is mandatory anyway. Citizens for a Healthy New Mexico operates on channels with no disclosure regime at all: op-ed pages, commissioned polling, and owned media. The result is that <strong>the public record shows the transparent half of the effort and not the other half</strong>, and no rule was bent to produce that outcome.</p>
+
+  <h3 class="sub">2. Citizens for a Healthy NM was not on the same side of HB 99 as Patient-Led NM</h3>
+  <p>This is the finding most likely to be missed. On February 2, 2026 — mid-session, with the bill in the House Judiciary Committee — Citizens for a Healthy New Mexico published "Latest on HB 99: Current Form Won't Stop the Bleed of Doctors from NM." It was attacking the bill for insufficiency while Patient-Led NM's paid campaign was pushing it toward passage and NM Safety Over Profit was attacking it from the opposite direction. All three positions coexisted in the same two weeks. Anyone treating "the reform side" as a single bloc will misread the endgame: the coalition that produced the win was not unanimous about whether the win was worth having.</p>
+
+  <h3 class="sub">3. The campaign was built to end, and it ended</h3>
+  <p>Patient-Led NM's ad spend goes to zero eleven days after the governor's signature and stays there for 171 days. This is a legislative campaign in the strict sense — commissioned for one bill, one session, one outcome. There is no maintenance spend, no accountability program tracking implementation of the new damages caps, no early positioning for the 2027 session. Its website still carries a "Share Your Story" collection mechanism and a live events calendar, so the organization persists; the paid program does not.</p>
+
+  <h3 class="sub">4. Its opposition outlasted it</h3>
+  <p>New Mexico Safety Over Profit was outspent roughly 3.3 to 1 during the fight and lost the vote 66–3 and 40–2. It is nonetheless the only participant in this brief still buying New Mexico ads, having pivoted after March to private-equity consolidation in nursing homes, utilities, childcare, and urgent care. Its December 2025 pre-session buy shows the same pattern in reverse: it was on Meta three weeks before the session opened. It is running a standing issue-advocacy program that treats HB 99 as one engagement; Patient-Led NM ran a campaign that treated HB 99 as the whole war.</p>
+
+  <h3 class="sub">5. Where the paid air war was not the decisive channel</h3>
+  <p>HB 99 passed 66–3 and 40–2. Margins that lopsided are not produced by $31,000 of Facebook advertising. Reporting on the bill describes more than a year of negotiation and behind-the-scenes work ahead of the session, and the Senate Judiciary Committee alone adopted eleven amendments. The realistic function of Patient-Led NM's buy was to build a permission structure — visible public concern about doctor shortages, documented by a poll showing 91% of voters calling it a top priority — inside which legislators could vote for a bill the trial bar opposed. Judge it as air cover for an inside game, not as the thing that moved votes.</p>
+
+  <div class="callout teal">
+    <h4>What to watch next</h4>
+    <p><strong>Does Patient-Led NM come back?</strong> If HB 99's damages caps face a constitutional challenge — a live possibility given the tiered structure and New Mexico's litigation history — the coalition has a built, disclaimer-ready vehicle sitting dormant. A restart would signal a defensive phase.</p>
+    <p><strong>Does Citizens for a Healthy NM ever advertise?</strong> A first ad filing would force a "paid for by" disclosure and give the public its first look at the entity behind the op-eds and polling. Its continued absence from the archive is a choice, and it is the more informative outcome.</p>
+    <p><strong>Does the fight follow the governor's race?</strong> Ken Miyagishima ran malpractice reform as a signature primary issue with $7,300–$22,649 in page-wide Meta spend across the window. Sam Bregman and Deb Haaland both engaged healthcare access. If reform is contested again in 2027, the vehicles are already built.</p>
+  </div>
+</section>
+
+<!-- ============ METHODOLOGY ============ -->
+<div class="method">
+  <h3>Methodology &amp; Limitations</h3>
+  <p><strong>Data source.</strong> Meta Ad Library API, queried August 30, 2026. Window: August 30, 2025 – August 30, 2026. Country filter: United States. Advertisers resolved by Page ID before any page-scoped query.</p>
+  <p><strong>How the zero was verified.</strong> Citizens for a Healthy New Mexico's absence was confirmed three ways: (1) the Ad Library API returns no queryable ad object for either Facebook Page linked from healthynm.org; (2) the Ad Library web interface, queried with <em>all</em> ad types and <em>all</em> statuses for the United States, returns "This advertiser isn't running ads"; (3) keyword searches on the organization's name, its "Policy" entity name, and its site URL return no matching ads. Its founding-adjacent organizations — the NM Hospital Association and NM Medical Society — likewise have no political-archive presence.</p>
+  <p><strong>Clustering discipline.</strong> New Mexico Safety Over Profit's lifetime page total is $89,700–$131,687 across 313 ads dating to November 2024, but that corpus spans private equity, rideshare safety, and food safety alongside healthcare. The $5,500–$10,846 figure used throughout this brief is its December 2025 – March 2026 healthcare cluster only. The American Tort Reform Association's figure is likewise its New Mexico creative only, isolated from a multi-state buy. Attributing full page totals to a single issue would have overstated both by an order of magnitude.</p>
+  <p><strong>Known limitations.</strong></p>
+  <ul>
+    <li><strong>Spend is a range, never a number.</strong> Meta reports bands ($100–$199, $1,000–$1,499). Midpoints are used only for relative comparison and charting; every headline figure in this brief is stated as its full range.</li>
+    <li><strong>The archive captures only disclaimer-filed ads.</strong> Commercial ads, organic posts, and boosted content without a "paid for by" filing are invisible here. This is precisely why the $0 finding for Citizens for a Healthy New Mexico should be read as "no archived Meta advertising," not "no advertising anywhere." Google, connected TV, radio, print, and direct mail are entirely out of scope and were not measured.</li>
+    <li><strong>Delivery ≠ targeting.</strong> All demographic and geographic figures describe who saw an ad, not what the advertiser selected. See the callout in Section 5.</li>
+    <li><strong>Demographic precision is low.</strong> Meta returns per-ad average reach percentages at one decimal place, which for a 50-ad campaign compresses the age distribution into a handful of distinguishable values. The age chart shows shape, not magnitude.</li>
+    <li><strong>Monthly bars count new ad launches.</strong> An ad launched in January and delivering through February is booked to January. February 2026 shows zero new launches for Patient-Led NM but $8,500–$11,193 of January inventory still in delivery.</li>
+    <li><strong>Funding is not established.</strong> Neither organization's donors are documented in this brief. Patient-Led NM discloses four founding organizations; Citizens for a Healthy New Mexico discloses none. No inference about common funding or control between them is supported by the evidence gathered here.</li>
+  </ul>
+  <p><strong>Off-platform sourcing.</strong> Legislative history from the New Mexico Legislature, Office of the Governor, Source New Mexico, Searchlight New Mexico, New Mexico In Depth, and the <em>Albuquerque Journal</em>. Organizational details from patientlednm.org, healthynm.org, and the <em>Santa Fe New Mexican</em>'s reporting on Patient-Led NM's formation. Poll and survey figures are as self-reported by Citizens for a Healthy New Mexico, which does not name the firm that conducted either instrument.</p>
+</div>
+
+<footer>
+  Data source: Meta Ad Library API · Retrieved August 30, 2026 · Window: Aug 30, 2025 – Aug 30, 2026<br>
+  Spend and impression figures are ranges as reported by Meta, not exact amounts.<br>
+  Built by Above Public Affairs
+</footer>
+
+</div>
+
+<script>
+const FONT = "'IBM Plex Sans', sans-serif";
+const MONO = "'IBM Plex Mono', monospace";
+const C = {
+  teal:'#0d9488', tealDeep:'#115e59', red:'#c53030', redDeep:'#9b1c1c',
+  amber:'#b45309', purple:'#7c3aed', slate:'#475569', navy:'#1a2332',
+  grid:'#e4e0d8', muted:'#9c9590', body:'#3d3833', stone:'#a8a29e'
+};
+Chart.defaults.font.family = FONT;
+Chart.defaults.font.size = 11.5;
+Chart.defaults.color = C.body;
+
+const usd = v => '$' + v.toLocaleString('en-US');
+
+/* ---------- 1. Spend comparison ---------- */
+new Chart(document.getElementById('chartSpend'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Patient-Led NM',
+      'NM Safety Over Profit',
+      'American Tort Reform Assn.',
+      'NM House Republicans',
+      'NM House Democrats',
+      'Citizens for a Healthy NM'
+    ],
+    datasets: [{
+      label: 'Spend (range midpoint)',
+      data: [26775, 8173, 648, 150, 99, 0],
+      backgroundColor: [C.teal, C.red, C.tealDeep, C.slate, C.slate, C.stone],
+      borderRadius: 4,
+      barThickness: 30
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const ranges = [
+              '$22,100 – $31,450 · 50 ads',
+              '$5,500 – $10,846 · 54 ads',
+              '$400 – $895 · 5 ads',
+              '$100 – $199 · 1 ad',
+              '$0 – $198 · 2 ads',
+              'No ads on file'
+            ];
+            return ranges[ctx.dataIndex];
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        grid: { color: C.grid },
+        ticks: { font: { family: MONO, size: 10.5 }, callback: v => usd(v) },
+        title: { display: true, text: 'Estimated spend (midpoint of reported range)', font: { size: 11 }, color: C.muted }
+      },
+      y: { grid: { display: false }, ticks: { font: { size: 12 } } }
+    }
+  }
+});
+
+/* ---------- 2. Annotated timeline ---------- */
+const months = ['Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26','Jun 26','Jul 26','Aug 26'];
+new Chart(document.getElementById('chartTimeline'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [
+      {
+        label: 'Patient-Led NM',
+        data: [149, 5743, 5897, 550, 12193, 0, 2245, 0, 0, 0, 0, 0],
+        backgroundColor: C.teal, borderRadius: 3
+      },
+      {
+        label: 'NM Safety Over Profit',
+        data: [0, 0, 0, 3194, 2142, 1590, 1248, 0, 149, 149, 149, 297],
+        backgroundColor: C.red, borderRadius: 3
+      },
+      {
+        label: 'American Tort Reform Assn. (NM)',
+        data: [0,0,0,0,0,0,0,0,0,0, 249, 396],
+        backgroundColor: C.amber, borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    layout: { padding: { top: 30 } },
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, boxHeight: 12, padding: 16, font: { size: 12 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + usd(ctx.parsed.y) + ' (midpoint)' } },
+      annotation: {
+        annotations: {
+          whiteCoat: {
+            type: 'line', xMin: 4, xMax: 4,
+            borderColor: C.navy, borderWidth: 1.5, borderDash: [5,4],
+            label: {
+              display: true, content: 'White Coat Day',
+              position: 'start', backgroundColor: 'rgba(26,35,50,0.88)',
+              color: '#fff', font: { family: MONO, size: 9.5, weight: '600' },
+              padding: { x: 6, y: 3 }, yAdjust: -14
+            }
+          },
+          votes: {
+            type: 'line', xMin: 5, xMax: 5,
+            borderColor: C.amber, borderWidth: 1.5, borderDash: [5,4],
+            label: {
+              display: true, content: 'HB 99 passes 66–3 / 40–2',
+              position: 'start', backgroundColor: 'rgba(180,83,9,0.9)',
+              color: '#fff', font: { family: MONO, size: 9.5, weight: '600' },
+              padding: { x: 6, y: 3 }, yAdjust: -32
+            }
+          },
+          signed: {
+            type: 'line', xMin: 6, xMax: 6,
+            borderColor: C.tealDeep, borderWidth: 1.5, borderDash: [5,4],
+            label: {
+              display: true, content: 'Signed Mar 6',
+              position: 'start', backgroundColor: 'rgba(17,94,89,0.9)',
+              color: '#fff', font: { family: MONO, size: 9.5, weight: '600' },
+              padding: { x: 6, y: 3 }, yAdjust: -14
+            }
+          },
+          dark: {
+            type: 'line', xMin: 7, xMax: 7,
+            borderColor: C.muted, borderWidth: 1.5, borderDash: [3,3],
+            label: {
+              display: true, content: 'Patient-Led NM goes dark',
+              position: 'start', backgroundColor: 'rgba(156,149,144,0.92)',
+              color: '#fff', font: { family: MONO, size: 9.5, weight: '600' },
+              padding: { x: 6, y: 3 }, yAdjust: -14
+            }
+          }
+        }
+      }
+    },
+    scales: {
+      x: { stacked: true, grid: { display: false }, ticks: { font: { family: MONO, size: 10.5 } } },
+      y: {
+        stacked: true, beginAtZero: true, grid: { color: C.grid },
+        ticks: { font: { family: MONO, size: 10.5 }, callback: v => usd(v) },
+        title: { display: true, text: 'Spend on newly launched ads (midpoint)', font: { size: 11 }, color: C.muted }
+      }
+    }
+  }
+});
+
+/* ---------- 3. Messaging themes ---------- */
+new Chart(document.getElementById('chartThemes'), {
+  type: 'bar',
+  data: {
+    labels: ['victims','justice','profits','corporations','robbing','greed','patients','care','reform','access','doctors','malpractice'],
+    datasets: [
+      {
+        label: 'NM Safety Over Profit',
+        data: [181, 180, 158, 153, 144, 95, 29, 0, 0, 0, 0, 0],
+        backgroundColor: C.red, borderRadius: 3
+      },
+      {
+        label: 'Patient-Led NM',
+        data: [0, 0, 0, 0, 0, 0, 73, 50, 36, 33, 29, 26],
+        backgroundColor: C.teal, borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, boxHeight: 12, padding: 16, font: { size: 12 } } },
+      tooltip: {
+        filter: item => item.parsed.x > 0,
+        callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.x + ' occurrences' }
+      }
+    },
+    scales: {
+      x: {
+        stacked: true, beginAtZero: true, grid: { color: C.grid },
+        ticks: { font: { family: MONO, size: 10.5 } },
+        title: { display: true, text: 'Occurrences in ad copy', font: { size: 11 }, color: C.muted }
+      },
+      y: { stacked: true, grid: { display: false }, ticks: { font: { family: MONO, size: 11 } } }
+    }
+  }
+});
+
+/* ---------- 4. Regional delivery ---------- */
+new Chart(document.getElementById('chartRegion'), {
+  type: 'bar',
+  data: {
+    labels: ['New Mexico','Texas','Colorado','Arizona','All other states'],
+    datasets: [{
+      label: 'Ads reaching this state',
+      data: [50, 22, 16, 15, 1],
+      backgroundColor: [C.teal, C.stone, C.stone, C.stone, C.grid],
+      borderRadius: 4, barThickness: 34
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.parsed.y + ' of 50 ads' + (ctx.dataIndex === 0 ? ' · 0.9% avg reach share' : ' · <0.05% avg reach share'),
+          afterLabel: ctx => ctx.dataIndex === 4 ? 'Typically 1 ad each, across 49 additional regions' : ''
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 12 } } },
+      y: {
+        beginAtZero: true, max: 55, grid: { color: C.grid },
+        ticks: { font: { family: MONO, size: 10.5 }, stepSize: 10 },
+        title: { display: true, text: 'Number of ads reaching state', font: { size: 11 }, color: C.muted }
+      }
+    }
+  }
+});
+
+/* ---------- 5. Age distribution ---------- */
+new Chart(document.getElementById('chartAge'), {
+  type: 'bar',
+  data: {
+    labels: ['18–24','25–34','35–44','45–54','55–64','65+'],
+    datasets: [{
+      label: 'Relative share of delivery',
+      data: [20, 20, 10, 10, 10, 30],
+      backgroundColor: [C.stone, C.stone, C.stone, C.stone, C.stone, C.teal],
+      borderRadius: 4, barThickness: 42
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => '~' + ctx.parsed.y + '% of delivery (coarse — see note)' } }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { family: MONO, size: 11 } } },
+      y: {
+        beginAtZero: true, grid: { color: C.grid },
+        ticks: { font: { family: MONO, size: 10.5 }, callback: v => v + '%' },
+        title: { display: true, text: 'Normalized share of delivery', font: { size: 11 }, color: C.muted }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
