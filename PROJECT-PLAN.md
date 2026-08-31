@@ -43,7 +43,7 @@ The intelligence brief workflow (detailed in `CLAUDE.md`) follows these steps:
 ## Dependencies
 
 - **Meta Ad Library MCP** — The underlying MCP server providing API access (separate project)
-- **GitHub Pages** — Hosting for published reports at `https://thecantercompany.github.io/meta-ad-reports/`
+- **GitHub Pages** — Hosting for published reports at `https://above-public-affairs.github.io/meta-ad-reports/`
 
 ---
 
@@ -52,4 +52,4 @@ The intelligence brief workflow (detailed in `CLAUDE.md`) follows these steps:
 1. Generate HTML report following `CLAUDE.md` guidelines
 2. Save to `meta-ad-reports/[topic-slug].html`
 3. Commit and push to GitHub
-4. Report available at `https://thecantercompany.github.io/meta-ad-reports/[topic-slug].html`
+4. Report available at `https://above-public-affairs.github.io/meta-ad-reports/[topic-slug].html`

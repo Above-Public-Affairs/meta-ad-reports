@@ -22,7 +22,7 @@
 
 ## Published Reports
 
-Reports are published to: `https://thecantercompany.github.io/meta-ad-reports/`
+Reports are published to: `https://above-public-affairs.github.io/meta-ad-reports/`
 
 Check the repo root for current inventory. Most recent:
 

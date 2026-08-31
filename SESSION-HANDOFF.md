@@ -71,11 +71,19 @@ multi-entity reports.
 
 ## Next steps (if picked up again)
 
-- **PR #1 is open and unmerged.** Merging to `main` publishes the HTML at
-  `https://thecantercompany.github.io/meta-ad-reports/patient-led-nm-healthy-nm-ads.html`.
-  The `.webloc` shortcut points at that URL and will not resolve until then.
-- A copy of the PDF was placed at the top level of the project folder (outside
-  the git checkout) at the client's request, in addition to the committed copy.
+- **Shipped and live.** Merged to `main` (`9167fa8`) and published Aug 31, 2026;
+  GitHub Pages build green on that exact commit. Report:
+  `https://above-public-affairs.github.io/meta-ad-reports/patient-led-nm-healthy-nm-ads.html`
+  (PDF at the same path with `.pdf`). PR #1 merged.
+- **⚠️ Open cleanup: 16 stale `.webloc` shortcuts.** Every pre-existing shortcut in
+  `Report Shortcuts/` still points at `thecantercompany.github.io`, which **404s**.
+  The live host is `above-public-affairs.github.io`. Only this session's shortcut and
+  the four docs were corrected. The fix is one `sed` across the folder — see the
+  LESSONS entry "The published Pages host is above-public-affairs.github.io".
+- A copy of the PDF was placed at the top level of the project folder (outside the
+  git checkout) at the client's request, in addition to the committed copy.
+- The PDF build script still lives only in the session scratchpad at
+  `pdfbuild/build.sh` — committing it into the repo is a PROJECT-STATUS to-do.
 - Watch items named in the report: whether Patient-Led NM restarts if HB 99's
   damages caps are challenged, whether Citizens for a Healthy NM ever files a
   first ad (which would compel a "paid for by" disclosure), and whether the issue

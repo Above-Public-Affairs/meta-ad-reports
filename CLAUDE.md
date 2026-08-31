@@ -198,12 +198,12 @@ Write for an informed audience. The reader is a policy analyst, campaign strateg
    <plist version="1.0">
    <dict>
        <key>URL</key>
-       <string>https://thecantercompany.github.io/meta-ad-reports/[topic-slug].html</string>
+       <string>https://above-public-affairs.github.io/meta-ad-reports/[topic-slug].html</string>
    </dict>
    </plist>
    ```
    Save as `Report Shortcuts/[Human-Readable Title].webloc`
-4. **Public URL**: `https://thecantercompany.github.io/meta-ad-reports/[topic-slug].html`
+4. **Public URL**: `https://above-public-affairs.github.io/meta-ad-reports/[topic-slug].html`
 
 ### File Naming Convention
 - Lowercase, hyphenated: `texas-data-center-ads.html`, `texas-bess-ads.html`

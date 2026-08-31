@@ -68,3 +68,32 @@ Chrome from the GUI. A second attempt using a bounded recipe produced a correct
   across rows with `position: 'end'` + increasing `yAdjust`.
 
 **Applies to:** any request to deliver an HTML report or dashboard as a PDF.
+
+---
+
+## The published Pages host is `above-public-affairs.github.io`, not `thecantercompany.github.io`
+
+**What happened:** After publishing a report, the `.webloc` shortcut built per the
+documented recipe pointed at `https://thecantercompany.github.io/meta-ad-reports/...`
+— which returns **404**. The repo lives at `Above-Public-Affairs/meta-ad-reports`, so
+GitHub Pages serves it from `https://above-public-affairs.github.io/meta-ad-reports/`.
+The project's own `CLAUDE.md` and `PROJECT-PLAN.md` documented the wrong host, so the
+error was inherited rather than invented. There is no `CNAME` and no custom domain, and
+the old host does **not** redirect.
+
+**Consequence found:** all 16 pre-existing shortcuts in `Report Shortcuts/` point at the
+dead host. The reports themselves are fine and live on the correct host — only the
+shortcuts and the docs were wrong.
+
+**Fix / going forward:**
+- Public URL pattern is `https://above-public-affairs.github.io/meta-ad-reports/<slug>.html`.
+- **Verify the URL before writing the shortcut.** Get the real host from
+  `gh api repos/Above-Public-Affairs/meta-ad-reports/pages --jq .html_url` rather than
+  trusting the documented string, then `curl -o /dev/null -w '%{http_code}'` the final
+  file URL after the Pages build reports `built`.
+- Confirm the Pages build finished *and* was built from your commit before declaring a
+  publish done: `gh api .../pages/builds/latest --jq '.status, .commit'`. A green build
+  on someone else's commit is not your deploy.
+
+**Applies to:** every report publish in this project, and any Above repo whose Pages URL
+is written into a doc rather than read from the API.

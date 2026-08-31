@@ -10,6 +10,7 @@ All notable changes to Meta Ad Library Research Tool will be documented in this 
 
 ### Changed
 - Patient-Led NM brief restructured from an A-vs-B comparison of the two organizations into a single unified report covering both as two channels of one campaign, per client direction.
+- Corrected the documented GitHub Pages host from `thecantercompany.github.io` to `above-public-affairs.github.io` in CLAUDE.md, PROJECT-PLAN.md, PROJECT-STATUS.md, and SESSION-HANDOFF.md — the old host 404s and there is no redirect. Fixed this report's shortcut to match and added a LESSONS entry to read the host from the Pages API rather than trusting the documented string. **Note: the 16 pre-existing shortcuts in `Report Shortcuts/` still point at the dead host and remain to be swept.**
 
 ## [2026-08-26]
 
