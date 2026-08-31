@@ -2,10 +2,14 @@
 
 All notable changes to Meta Ad Library Research Tool will be documented in this file.
 
-## [2026-08-30]
+## [2026-08-31]
 
 ### Added
 - Patient-Led NM & Citizens for a Healthy New Mexico intelligence brief — one-year analysis (Aug 2025–Aug 2026) of the two organizations behind patientlednm.org and healthynm.org during New Mexico's HB 99 medical malpractice reform fight. Presented as a single unified campaign report covering both entities as two channels of one effort: Patient-Led NM (founded by the NM Medical Society, NM Hospital Association, Sacramento Mountains Foundation, and Greater Albuquerque Medical Association) carried all paid media — $22,100–$31,450 across 50 disclaimer-filed ads and 2.8–3.3M impressions — while Citizens for a Healthy New Mexico carried research and earned media (7 op-eds, a statewide voter poll, a 223-physician survey) with zero archived advertising and no disclosed funders, staff, or board. Covers the combined campaign cadence, the February launch gap (no new creatives during the floor votes, with $8,500–$11,193 of January inventory still delivering), Citizens for a Healthy NM's Feb 2 position that the amended bill would not stop physician departures, and the campaign's conclusion 11 days after the governor's signature. Contextualized against New Mexico Safety Over Profit, the American Tort Reform Association's post-signing NM creative, and both legislative caucuses' credit-claiming. Shipped as both an interactive HTML report and a 17-page print-ready PDF.
+- LESSONS.md — recipe for generating a print-ready PDF from a report, written after a headless-Chrome export hung and exhausted the machine's process table. Covers removing all network dependencies before rendering (inline Chart.js, plugins, and latin font subsets), using `chrome-headless-shell` under a mandatory watchdog instead of full Chrome, the `--run-all-compositor-stages-before-draw` flag to avoid, splicing inlined assets with literal string surgery rather than `re.sub`, and the two classes of print-CSS defect (page-break splits and colliding chart annotations) that are invisible on screen and only show up in the PDF.
+
+### Changed
+- Patient-Led NM brief restructured from an A-vs-B comparison of the two organizations into a single unified report covering both as two channels of one campaign, per client direction.
 
 ## [2026-08-26]
 
