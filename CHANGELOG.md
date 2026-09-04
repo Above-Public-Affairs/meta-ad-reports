@@ -2,6 +2,11 @@
 
 All notable changes to Meta Ad Library Research Tool will be documented in this file.
 
+## [2026-09-04]
+
+### Added
+- Santa Monica City Council 2026 — Meta Ad Spend intelligence brief. Covers the Nov 3, 2026 general election (three at-large seats) from Jan 1 – Sep 4, 2026. Finds only three advertisers with any disclosed Meta political ad activity in the race: Doug Trussler for Santa Monica City Council (42 ads, $4,900–$9,458, Jul 8–Aug 11), Santa Monica Neighbors (41 ads, $600–$4,659, Apr 8–May 1 — an issue-advocacy page attacking Mayor Torosis and the Ocean Avenue homeless-housing siting process, flagged as unattributed since no FPPC/Cal-Access or City Clerk filing was found under that name), and Eli Gill for Santa Monica City Council (5 ads, $400–$895, May 31–Aug 21). Documents that no other candidate or organization active in the race — including incumbents Caroline Torosis and Lana Negrete — has any 2026 Meta ad activity on record as of retrieval. Scoped to ad spend only, per client direction, without campaign-finance/fundraising comparison.
+
 ## [2026-08-31]
 
 ### Added

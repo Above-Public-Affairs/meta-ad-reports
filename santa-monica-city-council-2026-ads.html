@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Monica City Council 2026 — Meta Ad Spend</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --bg: #faf9f7;
+  --bg-card: #ffffff;
+  --bg-warm: #f5f3ef;
+  --bg-accent: #f0ece4;
+  --border: #e4e0d8;
+  --border-light: #ece9e2;
+  --text-primary: #1c1917;
+  --text-body: #3d3833;
+  --text-secondary: #6b6560;
+  --text-muted: #9c9590;
+  --navy: #1a2332;
+  --navy-mid: #2d3a4a;
+  --slate: #475569;
+  --stone: #a8a29e;
+  --blue: #2563eb;
+  --teal-deep: #115e59;
+  --teal: #0d9488;
+  --teal-light: #f0fdfa;
+  --amber-deep: #92400e;
+  --amber: #b45309;
+  --amber-light: #fffbeb;
+  --purple-deep: #5b21b6;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --red-deep: #9b1c1c;
+  --red: #c53030;
+  --red-light: #fef2f2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-body);
+  line-height: 1.65;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1140px; margin: 0 auto; padding: 48px 32px 64px; }
+
+/* ---------- Header ---------- */
+.header { border-bottom: 2px solid var(--navy); padding-bottom: 24px; margin-bottom: 36px; }
+.header-eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2px; color: var(--slate); margin-bottom: 12px;
+}
+.header h1 {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 37px; font-weight: 700;
+  color: var(--navy); line-height: 1.18; margin-bottom: 8px; letter-spacing: -0.4px;
+}
+.header h1 span {
+  display: block; font-size: 22px; font-weight: 400; color: var(--navy-mid); margin-top: 8px; letter-spacing: 0;
+}
+.header-meta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--text-muted); margin-top: 14px;
+}
+.header-meta span { margin-right: 20px; white-space: nowrap; }
+
+/* ---------- Executive summary ---------- */
+.exec { background: var(--navy); color: #e8eaed; border-radius: 12px; padding: 32px 34px; margin-bottom: 36px; }
+.exec h2 {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2px; color: #8ba3c7; margin-bottom: 16px;
+}
+.exec p { font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.62; margin-bottom: 14px; max-width: none; }
+.exec p:last-child { margin-bottom: 0; }
+.exec strong { color: #fff; font-weight: 600; }
+.exec .hl { color: #7dd3c0; font-weight: 600; }
+
+/* ---------- Stat cards ---------- */
+.top-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden; margin-bottom: 40px;
+}
+.stat-card { background: var(--bg-card); padding: 22px 20px; }
+.stat-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); margin-bottom: 10px;
+}
+.stat-value {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 26px; font-weight: 700;
+  color: var(--navy); line-height: 1.1; margin-bottom: 6px;
+}
+.stat-sub { font-size: 12.5px; color: var(--text-secondary); line-height: 1.45; }
+
+/* ---------- Sections ---------- */
+section { margin-bottom: 48px; }
+.section-num {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  color: var(--teal); letter-spacing: 1.5px; margin-bottom: 6px;
+}
+h2.sec {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 27px; font-weight: 700;
+  color: var(--navy); margin-bottom: 10px; line-height: 1.25;
+}
+h3.sub {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; font-weight: 600;
+  color: var(--navy-mid); margin: 28px 0 10px;
+}
+.lede { font-size: 16px; color: var(--text-body); margin-bottom: 22px; max-width: 78ch; }
+p { margin-bottom: 14px; max-width: 82ch; }
+a { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(37,99,235,0.3); }
+a:hover { border-bottom-color: var(--blue); }
+
+/* ---------- Charts ---------- */
+.chart-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; margin: 22px 0; }
+.chart-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 24px 26px; }
+.chart-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.chart-note { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 18px; max-width: none; }
+.chart-wrap { position: relative; height: 260px; }
+
+/* ---------- Callouts ---------- */
+.callout { border-left: 4px solid var(--amber); background: var(--amber-light); padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 24px 0; }
+.callout.red { border-left-color: var(--red); background: var(--red-light); }
+.callout.teal { border-left-color: var(--teal); background: var(--teal-light); }
+.callout h4 {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 10px; color: var(--amber-deep);
+}
+.callout.red h4 { color: var(--red-deep); }
+.callout.teal h4 { color: var(--teal-deep); }
+.callout p { margin-bottom: 10px; font-size: 14.5px; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ---------- Entity profile cards ---------- */
+.org-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 26px 28px; border-top: 4px solid var(--teal); margin-bottom: 20px;
+}
+.org-card.flagged { border-top-color: var(--red); }
+.org-card.gill { border-top-color: var(--slate); }
+.org-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 3px; }
+.org-name { font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; font-weight: 700; color: var(--navy); }
+.org-role {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px; padding: 4px 10px; border-radius: 20px;
+  background: var(--teal-light); color: var(--teal-deep); border: 1px solid #99f6e4; white-space: nowrap;
+}
+.org-card.flagged .org-role { background: var(--red-light); color: var(--red-deep); border-color: #fecaca; }
+.org-card.gill .org-role { background: var(--bg-accent); color: var(--slate); border-color: var(--border); }
+.org-url { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--text-muted); margin-bottom: 16px; }
+.org-url a { color: var(--text-secondary); border-bottom-color: var(--border); }
+.org-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; margin-bottom: 6px; }
+.org-row { display: flex; gap: 12px; padding: 9px 0; border-top: 1px solid var(--border-light); font-size: 13.5px; }
+.org-key {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); flex: 0 0 104px; padding-top: 2px;
+}
+.org-val { flex: 1; color: var(--text-body); }
+.org-val strong { color: var(--navy); font-weight: 600; }
+
+/* ---------- Ad quotes ---------- */
+.ad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0 4px; }
+.ad-card { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; border-left: 3px solid var(--teal); }
+.org-card.flagged .ad-card { border-left-color: var(--red); }
+.org-card.gill .ad-card { border-left-color: var(--slate); }
+.ad-meta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--text-muted);
+  margin-bottom: 10px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+}
+.ad-text { font-family: 'Source Serif 4', Georgia, serif; font-size: 14.5px; line-height: 1.55; color: var(--text-primary); margin-bottom: 12px; white-space: pre-line; }
+.ad-link { font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+
+/* ---------- Timeline ---------- */
+.timeline { margin: 26px 0; position: relative; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 22px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -27px; top: 6px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--bg-card); border: 2px solid var(--slate);
+}
+.tl-item.trussler::before { border-color: var(--teal); background: var(--teal); }
+.tl-item.neighbors::before { border-color: var(--red); background: var(--red); }
+.tl-item.gill::before { border-color: var(--slate); background: var(--slate); }
+.tl-date {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
+}
+.tl-title { font-weight: 600; color: var(--navy); margin-bottom: 3px; font-size: 15px; }
+.tl-body { font-size: 13.5px; color: var(--text-body); max-width: 76ch; }
+.tl-legend { display: flex; gap: 20px; flex-wrap: wrap; font-size: 12px; color: var(--text-secondary); margin-bottom: 20px; }
+.tl-legend span { display: flex; align-items: center; gap: 7px; }
+.tl-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; margin: 22px 0; border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 13.5px; }
+th {
+  background: var(--bg-warm); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary);
+  text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td.num { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; white-space: nowrap; }
+td.name { font-weight: 600; color: var(--navy); }
+
+/* ---------- Methodology ---------- */
+.method { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 10px; padding: 26px 28px; margin-top: 40px; }
+.method h3 {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.6px; color: var(--slate); margin-bottom: 14px;
+}
+.method p, .method li { font-size: 13.5px; color: var(--text-body); max-width: none; }
+.method ul { margin: 10px 0 14px 20px; }
+.method li { margin-bottom: 7px; }
+
+footer {
+  margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--border);
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--text-muted); line-height: 1.7;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .container { padding: 30px 18px 48px; }
+  .header h1 { font-size: 27px; }
+  .header h1 span { font-size: 17px; }
+  .top-stats { grid-template-columns: repeat(2, 1fr); }
+  .ad-grid, .org-rows, .chart-row { grid-template-columns: 1fr; }
+  .exec { padding: 24px 22px; }
+  .exec p { font-size: 16px; }
+  .chart-box { padding: 18px 16px; }
+  .org-key { flex: 0 0 92px; }
+}
+
+/* ---------- Print / PDF ---------- */
+@page { size: Letter; margin: 14mm 12mm; }
+@media print {
+  body { background: #fff; font-size: 10.5pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .container { max-width: 100%; padding: 0; }
+  .header h1 { font-size: 26pt; }
+  .header h1 span { font-size: 15pt; }
+  h2.sec { font-size: 18pt; }
+  .exec p { font-size: 12pt; }
+  .stat-value { font-size: 18pt; }
+  section { margin-bottom: 26px; }
+  .chart-box, .org-card, .callout, .method, .ad-card, .table-wrap, .tl-item,
+  .top-stats, .stat-card, .org-row { break-inside: avoid; page-break-inside: avoid; }
+  section, .exec { break-inside: auto; }
+  h2.sec, h3.sub { break-after: avoid; page-break-after: avoid; }
+  a { color: #1a2332; border-bottom: none; }
+  footer { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+  <div class="header-eyebrow">Meta Ad Library Intelligence Brief</div>
+  <h1>Santa Monica City Council — 2026 Meta Ad Spend
+    <span>Nov 3, 2026 general election, three at-large seats</span>
+  </h1>
+  <div class="header-meta">
+    <span>Window: Jan 1 – Sep 4, 2026</span>
+    <span>Geography: Santa Monica, CA</span>
+    <span>Retrieved: Sep 4, 2026</span>
+  </div>
+</header>
+
+<div class="exec">
+  <h2>Executive Summary</h2>
+  <p>As of September 4, 2026, three Facebook/Instagram pages account for all disclosed Meta political ad activity found in the Santa Monica City Council race: <strong>Doug Trussler for Santa Monica City Council</strong>, <strong>Eli Gill for Santa Monica City Council</strong>, and <strong>Santa Monica Neighbors</strong> — an issue-advocacy page with no candidate committee attached. Combined, they've put <span class="hl">$5.9K–$15.0K</span> behind <span class="hl">88 ads</span> and roughly <span class="hl">725K–897K impressions</span>, running in three distinct, non-overlapping windows between April 8 and August 21, 2026.</p>
+  <p><strong>Doug Trussler</strong> is the dominant advertiser by spend — 42 ads and $4,900–$9,458, more than half the combined total — running Jul 8–Aug 11 on downtown decline, crime/homelessness, and the city's budget deficit. <strong>Santa Monica Neighbors</strong> ran nearly as many ads (41) for far less money ($600–$4,659), entirely in a three-week window in April, well before candidate filing closed. <strong>Eli Gill</strong> has run 5 low-spend ads from late May through August.</p>
+  <p>No other candidate or organization active in this race — including incumbents Caroline Torosis and Lana Negrete — has any Meta ad activity on record for this cycle as of this report's retrieval date.</p>
+</div>
+
+<div class="top-stats">
+  <div class="stat-card">
+    <div class="stat-label">Combined spend</div>
+    <div class="stat-value">$5.9K–$15.0K</div>
+    <div class="stat-sub">88 ads across 3 advertisers</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Impressions delivered</div>
+    <div class="stat-value">725K–897K</div>
+    <div class="stat-sub">Combined across all 88 ads</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Active window</div>
+    <div class="stat-value">Apr 8 – Aug 21</div>
+    <div class="stat-sub">2026, three non-overlapping runs</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Leading advertiser</div>
+    <div class="stat-value">Trussler</div>
+    <div class="stat-sub">42 ads · $4.9K–$9.5K</div>
+  </div>
+</div>
+
+<!-- ============ 1. SPEND ============ -->
+<section>
+  <div class="section-num">01</div>
+  <h2 class="sec">Spend by Advertiser</h2>
+  <p class="lede">Trussler's committee spent the most; Santa Monica Neighbors ran nearly as many ads for a fraction of the money — a sign of many small-dollar boosted posts rather than a sustained paid campaign.</p>
+
+  <div class="chart-row">
+    <div class="chart-box">
+      <div class="chart-title">Spend range by advertiser</div>
+      <div class="chart-note">Meta reports spend as a range, not an exact figure. Bars show the full disclosed range.</div>
+      <div class="chart-wrap"><canvas id="spendChart"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">Share of ads</div>
+      <div class="chart-note">88 ads total across the three pages.</div>
+      <div class="chart-wrap"><canvas id="shareChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Advertiser</th><th>Spend (range)</th><th>Ads</th><th>Impressions (range)</th><th>Active dates</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Doug Trussler for Santa Monica City Council</td><td class="num">$4,900 – $9,458</td><td class="num">42</td><td class="num">557,300 – 676,758</td><td class="num">Jul 8 – Aug 11, 2026</td></tr>
+        <tr><td class="name">Santa Monica Neighbors</td><td class="num">$600 – $4,659</td><td class="num">41</td><td class="num">117,400 – 161,359</td><td class="num">Apr 8 – May 1, 2026</td></tr>
+        <tr><td class="name">Eli Gill for Santa Monica City Council</td><td class="num">$400 – $895</td><td class="num">5</td><td class="num">50,100 – 58,995</td><td class="num">May 31 – Aug 21, 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 2. TIMELINE ============ -->
+<section>
+  <div class="section-num">02</div>
+  <h2 class="sec">Timeline of Activity</h2>
+  <p class="lede">The three advertisers never overlapped. Each ran in its own window, back to back, from before candidate filing closed through the present.</p>
+
+  <div class="tl-legend">
+    <span><span class="tl-dot" style="background:var(--red)"></span> Santa Monica Neighbors</span>
+    <span><span class="tl-dot" style="background:var(--slate)"></span> Eli Gill</span>
+    <span><span class="tl-dot" style="background:var(--teal)"></span> Doug Trussler</span>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item neighbors">
+      <div class="tl-date">Apr 8, 2026</div>
+      <div class="tl-title">Santa Monica Neighbors begins advertising</div>
+      <div class="tl-body">First ads run — civic-education messaging and criticism of the Ocean Avenue homeless-housing siting process. Candidate filing does not open for another three months (Jul 13).</div>
+    </div>
+    <div class="tl-item neighbors">
+      <div class="tl-date">Apr 11, 2026</div>
+      <div class="tl-title">Santa Monica Neighbors targets Mayor Torosis</div>
+      <div class="tl-body">Ads highlighting Torosis's outside LA County income begin running alongside the civic-education creative.</div>
+    </div>
+    <div class="tl-item neighbors">
+      <div class="tl-date">May 1, 2026</div>
+      <div class="tl-title">Santa Monica Neighbors goes quiet</div>
+      <div class="tl-body">Last ad in the page's 41-ad run. No further activity found through the report's retrieval date.</div>
+    </div>
+    <div class="tl-item gill">
+      <div class="tl-date">May 31, 2026</div>
+      <div class="tl-title">Eli Gill's campaign begins advertising</div>
+      <div class="tl-body">First ad ("nobody likes a politician, I'm not one") launches roughly six weeks before the Aug 7 filing deadline.</div>
+    </div>
+    <div class="tl-item trussler">
+      <div class="tl-date">Jul 8, 2026</div>
+      <div class="tl-title">Doug Trussler's campaign begins advertising</div>
+      <div class="tl-body">Launches with three creative threads: downtown/Third Street Promenade decline, crime and homelessness, and a personal biography ad. Runs through Aug 11–12.</div>
+    </div>
+    <div class="tl-item trussler">
+      <div class="tl-date">Aug 11, 2026</div>
+      <div class="tl-title">Trussler launches a second wave</div>
+      <div class="tl-body">New creative on the city's $35 million budget deficit and youth sports; the budget-deficit ad remains active as of this report.</div>
+    </div>
+    <div class="tl-item gill">
+      <div class="tl-date">Aug 21, 2026</div>
+      <div class="tl-title">Gill's most recent ad</div>
+      <div class="tl-body">A general platform ad ("safer, more affordable, more vibrant, and better run") remains active as of this report — the most recent ad launch found in the race.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. ADVERTISER PROFILES ============ -->
+<section>
+  <div class="section-num">03</div>
+  <h2 class="sec">Advertiser Profiles</h2>
+
+  <div class="org-card">
+    <div class="org-head">
+      <div class="org-name">Doug Trussler for Santa Monica City Council</div>
+      <div class="org-role">Candidate committee</div>
+    </div>
+    <div class="org-url">doug4santamonica.com &middot; <a href="https://www.facebook.com/1116009231601182" target="_blank">Facebook page</a></div>
+    <div class="org-rows">
+      <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">Trussler for Santa Monica City Council 2026</div></div>
+      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$4,900 – $9,458</strong></div></div>
+      <div class="org-row"><div class="org-key">Ads / Impressions</div><div class="org-val">42 ads &middot; 557,300–676,758 impressions</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Jul 8 – Aug 11, 2026</div></div>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card">
+        <div class="ad-meta"><span>Jul 8–Aug 11 &middot; $300–$399 &middot; 30K–35K impr.</span></div>
+        <div class="ad-text">"This is what Third Street Promenade looked like on Memorial Day weekend. Empty. A holiday weekend... Santa Monica deserves better than this."</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1736548877389122" target="_blank">View ad →</a></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-meta"><span>Aug 11 &middot; $500–$599 &middot; 60K–70K impr.</span></div>
+        <div class="ad-text">"Budgets aren't just spreadsheets. They affect every service our city provides. In this video, I explain what Santa Monica's $35 million deficit actually means..."</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1039734585335483" target="_blank">View ad →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="org-card flagged">
+    <div class="org-head">
+      <div class="org-name">Santa Monica Neighbors</div>
+      <div class="org-role">⚠ Unattributed</div>
+    </div>
+    <div class="org-url"><a href="https://www.facebook.com/1034237963110844" target="_blank">Facebook page</a> &middot; <a href="https://santamonicaneighbors.com" target="_blank">santamonicaneighbors.com</a></div>
+    <div class="org-rows">
+      <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">"Santa Monica Neighbors" (disclaimer name only)</div></div>
+      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$600 – $4,659</strong></div></div>
+      <div class="org-row"><div class="org-key">Ads / Impressions</div><div class="org-val">41 ads &middot; 117,400–161,359 impressions</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Apr 8 – May 1, 2026</div></div>
+    </div>
+    <div class="callout red">
+      <h4>Flagged — no committee filing found</h4>
+      <p>Meta's disclaimer field lists only "Santa Monica Neighbors" — not a named individual or a registered candidate/PAC committee. No matching filing was found under this name in an FPPC/Cal-Access or City Clerk search, and it is a distinct entity from the city's seven officially recognized neighborhood associations (Friends of Sunset Park, North of Montana, Ocean Park, Pico, Mid City, Northeast Neighbors, Wilshire Montana). Its website describes it as a grassroots group "unaffiliated with any political group" but names no founders, staff, or funders. Treat this as an unattributed advocacy page, not a candidate's own messaging.</p>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card">
+        <div class="ad-meta"><span>Apr 11–14 &middot; $100–$199 &middot; 10K–15K impr.</span></div>
+        <div class="ad-text">"Earning over $300K from LA County while serving as Santa Monica's mayor, who does Caroline Torosis really work for?"</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=2398907497290283" target="_blank">View ad →</a></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-meta"><span>Apr 16–26 &middot; $0–$99 &middot; 15K–20K impr.</span></div>
+        <div class="ad-text">"Residents only learned about the Ocean Avenue housing proposal months after City Hall did. When decisions affect our neighborhoods, residents should never be the last to know."</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1715217196524680" target="_blank">View ad →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="org-card gill">
+    <div class="org-head">
+      <div class="org-name">Eli Gill for Santa Monica City Council</div>
+      <div class="org-role">Candidate committee</div>
+    </div>
+    <div class="org-url"><a href="https://www.facebook.com/969874029547865" target="_blank">Facebook page</a></div>
+    <div class="org-rows">
+      <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">Eli Gill for City Council 2026</div></div>
+      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$400 – $895</strong></div></div>
+      <div class="org-row"><div class="org-key">Ads / Impressions</div><div class="org-val">5 ads &middot; 50,100–58,995 impressions</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">May 31 – Aug 21, 2026</div></div>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card">
+        <div class="ad-meta"><span>Jun 16–26 &middot; $0–$99 &middot; 5K–6K impr.</span></div>
+        <div class="ad-text">"Nobody likes a politician. I'm not one. I'm running for the love of the city. Let's make this city the best it can be, together!"</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1246771257395769" target="_blank">View ad →</a></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-meta"><span>Aug 21 &middot; $400–$499 &middot; 35K–40K impr.</span></div>
+        <div class="ad-text">"Santa Monica can be safer, more affordable, more vibrant, and better run. I'm Eli Gill, and I'm running for City Council because I want our city to work better..."</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=2243396283185866" target="_blank">View ad →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHODOLOGY ============ -->
+<div class="method">
+  <h3>Methodology &amp; Limitations</h3>
+  <p><strong>Data source.</strong> Meta Ad Library API, queried September 4, 2026. Window: January 1 – September 4, 2026. Country filter: United States; region filter: California. Advertisers were located via candidate-name and page-name keyword searches, plus a broad "Santa Monica City Council" keyword scan across California, then resolved to Page IDs before any page-scoped query.</p>
+  <p><strong>Candidates and organizations checked with no 2026 Meta ad activity found.</strong> Mayor Caroline Torosis, Lana Negrete, Ericka Lesley, Phil Brock, Danny Ivanov, Brett Morrow, Ashley Oelsen, Derrick Townsend, Ryan Blomberg, Lindsay Davis, and Wade Kelley were each searched directly by name; Santa Monicans for Renters' Rights (SMRR), the Santa Monica Police Officers Association, Santa Monica Fire Fighters IAFF Local 1109, and Santa Monica Forward were checked directly by Page ID. None returned any ad delivered in 2026 as of this report's retrieval date. This does not mean these candidates or groups aren't campaigning — only that no Meta-disclosed political ad from them was found.</p>
+  <p><strong>Known limitations.</strong></p>
+  <ul>
+    <li><strong>Spend is a range, never a number.</strong> Meta reports bands (e.g., $100–$199). Every figure in this report is stated as its full disclosed range; no midpoint estimates are presented as totals.</li>
+    <li><strong>The archive captures only disclaimer-filed ads.</strong> Mail, yard signs, earned media, unpaid social posts, and any ad run without a "paid for by" disclaimer are invisible here. A candidate with zero Meta ads may still be spending heavily through other channels.</li>
+    <li><strong>Keyword coverage is not exhaustive.</strong> A committee whose ad text and page name never contain the candidate's name, "Santa Monica," or "City Council" could be missed by this search approach.</li>
+    <li><strong>"Still running" ads are ongoing.</strong> Trussler's Aug 11 budget-deficit ad and Gill's Aug 21 platform ad remained active as of retrieval; their final spend and impression totals will be higher than reported here.</li>
+    <li><strong>This report covers Meta ad spend only.</strong> It does not incorporate campaign finance filings, fundraising totals, or other paid media, which were out of scope for this pull.</li>
+  </ul>
+</div>
+
+<footer>
+  Data source: Meta Ad Library API · Retrieved September 4, 2026 · Window: Jan 1 – Sep 4, 2026<br>
+  Spend and impression figures are ranges as reported by Meta, not exact amounts.<br>
+  Built by Above Public Affairs
+</footer>
+
+</div>
+
+<script>
+const FONT = "'IBM Plex Sans', sans-serif";
+const MONO = "'IBM Plex Mono', monospace";
+const C = { teal:'#0d9488', slate:'#475569', red:'#c53030', grid:'#e4e0d8', muted:'#9c9590', body:'#3d3833' };
+Chart.defaults.font.family = FONT;
+Chart.defaults.font.size = 11.5;
+Chart.defaults.color = C.body;
+Chart.defaults.animation = false;
+
+new Chart(document.getElementById('spendChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Doug Trussler', 'Santa Monica Neighbors', 'Eli Gill'],
+    datasets: [{
+      data: [[4900,9458],[600,4659],[400,895]],
+      backgroundColor: [C.teal, C.red, C.slate],
+      borderRadius: 4,
+      barThickness: 34
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (ctx) => '$' + ctx.raw[0].toLocaleString() + ' – $' + ctx.raw[1].toLocaleString() } }
+    },
+    scales: {
+      x: { grid: { color: C.grid }, ticks: { callback: (v) => '$' + (v/1000) + 'K' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById('shareChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Trussler (42)', 'SM Neighbors (41)', 'Gill (5)'],
+    datasets: [{ data: [42,41,5], backgroundColor: [C.teal, C.red, C.slate], borderColor: '#fff', borderWidth: 2 }]
+  },
+  options: {
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 14, font: { size: 11.5 } } } },
+    cutout: '58%'
+  }
+});
+</script>
+</body>
+</html>
