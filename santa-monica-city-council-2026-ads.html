@@ -244,6 +244,15 @@ footer {
 .delta-new { color: var(--navy); font-weight: 600; }
 @media (max-width: 860px) { .delta-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Ad index ---------- */
+.idx-head { display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; margin:26px 0 8px; }
+.idx-name { font-family:'Source Serif 4',Georgia,serif; font-size:19px; font-weight:600; color:var(--navy); }
+.idx-meta { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-muted); }
+table.idx { font-size:12.5px; }
+table.idx td { padding:8px 14px; }
+table.idx td.theme { color:var(--text-body); }
+table.idx a { font-family:'IBM Plex Mono',monospace; font-size:11px; white-space:nowrap; }
+
 /* ---------- Grid children must be allowed to shrink ---------- */
 .chart-row > *, .delta-grid > *, .ad-grid > *, .org-rows > *, .top-stats > * { min-width: 0; }
 .chart-wrap { min-width: 0; }
@@ -286,7 +295,7 @@ footer {
 <div class="container">
 
 <header class="header">
-  <div class="header-eyebrow">Meta Ad Library Intelligence Brief &middot; Updated</div>
+  <div class="header-eyebrow">Meta Ad Library Intelligence Brief</div>
   <h1>Santa Monica City Council &mdash; 2026 Meta Ad Spend
     <span>Nov 3, 2026 general election, three at-large seats</span>
   </h1>
@@ -299,62 +308,62 @@ footer {
 
 <div class="exec">
   <h2>Executive Summary</h2>
-  <p><strong>No one in the Santa Monica City Council race has launched a new Meta ad in 24 days.</strong> The last new creative in this contest went live on <span class="hl">August 21, 2026</span> &mdash; seven weeks before ballots go out for the November 3 general election. Every advertiser found in this race has gone quiet.</p>
-  <p>Across the full cycle, four pages account for all disclosed Meta political ad activity touching this race: <strong>Doug Trussler for Santa Monica City Council</strong>, <strong>Eli Gill for Santa Monica City Council</strong>, <strong>Santa Monica Neighbors</strong> &mdash; an issue-advocacy page with no committee filing attached &mdash; and <strong>L.A. Local Network</strong>, a new local-news page running paid content promotion. Combined, they account for <span class="hl">$7.5K&ndash;$16.7K</span> behind <span class="hl">89 ads</span> and roughly <span class="hl">875K&ndash;1.08M impressions</span>.</p>
-  <p><strong>Doug Trussler</strong> remains the dominant advertiser at $6,300&ndash;$10,858 across 42 ads &mdash; roughly 65&ndash;84% of all disclosed spend in the race &mdash; concentrated in two waves on July 8 and August 11. <strong>Santa Monica Neighbors</strong> ran 41 ads for far less money ($600&ndash;$4,659), entirely in April, well before candidate filing opened. <strong>Eli Gill</strong> has run 5 low-spend ads. Incumbents Caroline Torosis and Lana Negrete, along with every local labor and advocacy committee checked, still show <strong>zero</strong> Meta ad activity this cycle.</p>
+  <p>With 50 days to the November 3 election, the Santa Monica City Council race is being contested on Meta almost entirely by <strong>one candidate</strong>, at a total disclosed spend that would be unremarkable for a single state legislative district. Four pages account for all Meta political ad activity touching this race, together disclosing <span class="hl">$7,500&ndash;$16,810</span> across <span class="hl">90 ads</span> and roughly <span class="hl">875K&ndash;1.08M impressions</span>.</p>
+  <p><strong>Doug Trussler</strong> is the dominant advertiser at $6,300&ndash;$10,858 across 42 ads &mdash; between 65% and 84% of all disclosed spend in the race &mdash; launched in two waves on July 8 and August 11. <strong>Eli Gill</strong> is the only candidate who has put new creative into market recently, launching a new ad on <span class="hl">September 14</span>, and now totals 6 ads at $600&ndash;$1,194. <strong>Santa Monica Neighbors</strong>, an issue-advocacy page, ran a concentrated 41-ad burst in April on the Ocean Avenue housing siting process and Mayor Torosis's outside income, and has not advertised since May 1. <strong>L.A. Local Network</strong>, a local-news page, promoted one story about a council zoning vote.</p>
+  <p>The more striking finding is who is <strong>absent</strong>. Santa Monicans for Renters' Rights, the police and firefighter associations, Santa Monica Forward, the city employees' PAC, and incumbents Caroline Torosis and Lana Negrete have run <strong>zero</strong> Meta political ads in 2026. The institutions that have historically organized Santa Monica elections are not using this channel at all.</p>
 </div>
 
 <div class="top-stats">
   <div class="stat-card">
     <div class="stat-label">Combined spend</div>
-    <div class="stat-value">$7.5K&ndash;$16.7K</div>
-    <div class="stat-sub">89 ads across 4 advertisers</div>
+    <div class="stat-value">$7.5K&ndash;$16.8K</div>
+    <div class="stat-sub">90 ads across 4 advertisers</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Impressions delivered</div>
     <div class="stat-value">875K&ndash;1.08M</div>
-    <div class="stat-sub">Combined across all 89 ads</div>
+    <div class="stat-sub">Combined across all 90 ads</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">Days since last new ad</div>
-    <div class="stat-value">24</div>
-    <div class="stat-sub">Last launch Aug 21 &middot; 50 days to Election Day</div>
+    <div class="stat-label">Still delivering</div>
+    <div class="stat-value">23 ads</div>
+    <div class="stat-sub">Active in Sep &middot; 20 Trussler, 3 Gill</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Leading advertiser</div>
     <div class="stat-value">Trussler</div>
-    <div class="stat-sub">42 ads &middot; $6.3K&ndash;$10.9K</div>
+    <div class="stat-sub">42 ads &middot; 65&ndash;84% of race spend</div>
   </div>
 </div>
 
-<!-- ============ 0. WHAT CHANGED ============ -->
+<!-- ============ 1. STATE OF PLAY ============ -->
 <section>
   <div class="section-num">01</div>
-  <h2 class="sec">What Changed Since September 4</h2>
-  <p class="lede">This edition re-queries the same universe ten days after the first pull. <strong>No advertiser launched a single new ad.</strong> Every dollar of movement below comes from ads that were already running and kept accruing spend &mdash; not from new creative, and not from new entrants.</p>
+  <h2 class="sec">State of Play</h2>
+  <p class="lede">This edition re-queries the universe ten days after the September 4 pull. Paid activity in this race has been <strong>continuous, not episodic</strong> &mdash; 23 ads were still delivering in September &mdash; but new creative has been sparse since Trussler's August 11 wave.</p>
 
   <div class="delta-grid">
     <div class="delta-card">
-      <div class="delta-name">Doug Trussler</div>
-      <div class="delta-row"><span class="delta-key">Spend</span><span class="delta-old">$4.9K&ndash;$9.5K</span><span class="delta-arrow">&rarr;</span><span class="delta-new">$6.3K&ndash;$10.9K</span></div>
-      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-new">42 &mdash; no change</span></div>
-    </div>
-    <div class="delta-card">
       <div class="delta-name">Eli Gill</div>
-      <div class="delta-row"><span class="delta-key">Spend</span><span class="delta-old">$400&ndash;$895</span><span class="delta-arrow">&rarr;</span><span class="delta-new">$600&ndash;$1,095</span></div>
-      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-new">5 &mdash; no change</span></div>
+      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-old">5</span><span class="delta-arrow">&rarr;</span><span class="delta-new">6 &mdash; new ad Sep 14</span></div>
+      <div class="delta-row"><span class="delta-key">Spend</span><span class="delta-old">$400&ndash;$895</span><span class="delta-arrow">&rarr;</span><span class="delta-new">$600&ndash;$1,194</span></div>
+    </div>
+    <div class="delta-card flat">
+      <div class="delta-name">Doug Trussler</div>
+      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-new">42 &mdash; no new creative</span></div>
+      <div class="delta-row"><span class="delta-key">Spend</span><span class="delta-old">$4.9K&ndash;$9.5K</span><span class="delta-arrow">&rarr;</span><span class="delta-new">$6.3K&ndash;$10.9K</span></div>
     </div>
     <div class="delta-card flat">
       <div class="delta-name">Santa Monica Neighbors</div>
+      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-new">41 &mdash; none since May 1</span></div>
       <div class="delta-row"><span class="delta-key">Spend</span><span class="delta-new">$600&ndash;$4,659 &mdash; no change</span></div>
-      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-new">41 &mdash; dormant since May 1</span></div>
     </div>
   </div>
 
   <div class="callout">
-    <h4>The finding is the silence</h4>
-    <p>A municipal race with three at-large seats, a contested policy environment, and a November 3 election date would normally see paid activity building through September. Instead, the last new ad in this contest launched August 21 &mdash; two weeks after the August 7 filing deadline, and the race has been dark on Meta ever since.</p>
-    <p>Three readings are consistent with this pattern, and the Ad Library alone cannot distinguish among them: campaigns are <strong>holding budget</strong> for an October push timed to vote-by-mail (California ballots begin going out roughly October 5); campaigns are <strong>spending elsewhere</strong> &mdash; mail, digital outside Meta, canvass &mdash; which the archive cannot see; or the field is simply <strong>under-resourced on paid media</strong> this cycle. Watch the first week of October: if paid activity does not resume then, the third reading gains weight.</p>
+    <h4>Reading the spend increases correctly</h4>
+    <p>Trussler's disclosed spend rose roughly $1,400 between the two pulls without a single new ad. That is <strong>accrual on ads already in market</strong>, not new buying: 20 of his 42 ads were still delivering in September. Meta reports lifetime spend per ad as a widening range while the ad runs, so a static creative set produces a rising total.</p>
+    <p>The practical implication for anyone tracking this race: <strong>ad count and spend move independently here.</strong> Watching only the spend line would suggest an accelerating campaign; watching only launch dates would suggest a stalled one. Neither is right on its own.</p>
   </div>
 </section>
 
@@ -362,7 +371,7 @@ footer {
 <section>
   <div class="section-num">02</div>
   <h2 class="sec">Spend by Advertiser</h2>
-  <p class="lede">Trussler's committee has spent the most by a wide margin. Santa Monica Neighbors ran nearly as many ads for a fraction of the money &mdash; a pattern of many small-dollar boosted posts rather than a sustained paid campaign.</p>
+  <p class="lede">Trussler's committee has spent the most by a wide margin. Santa Monica Neighbors ran nearly as many ads for a fraction of the money &mdash; 35 of its 41 ads fall in the $0&ndash;$99 band, a pattern of many small boosted posts rather than a sustained paid campaign.</p>
 
   <div class="chart-row">
     <div class="chart-box">
@@ -372,7 +381,7 @@ footer {
     </div>
     <div class="chart-box">
       <div class="chart-title">Share of ads</div>
-      <div class="chart-note">89 Santa Monica&ndash;relevant ads across the four pages.</div>
+      <div class="chart-note">90 Santa Monica&ndash;relevant ads across the four pages.</div>
       <div class="chart-wrap"><canvas id="shareChart"></canvas></div>
     </div>
   </div>
@@ -382,19 +391,19 @@ footer {
       <thead><tr><th>Advertiser</th><th>Type</th><th>Spend (range)</th><th>Ads</th><th>Impressions (range)</th><th>Active dates</th></tr></thead>
       <tbody>
         <tr><td class="name">Doug Trussler for Santa Monica City Council</td><td>Candidate committee</td><td class="num">$6,300 &ndash; $10,858</td><td class="num">42</td><td class="num">682,300 &ndash; 823,758</td><td class="num">Jul 8 &ndash; Aug 11, 2026</td></tr>
-        <tr><td class="name">Santa Monica Neighbors</td><td>Unattributed advocacy</td><td class="num">$600 &ndash; $4,659</td><td class="num">41</td><td class="num">117,400 &ndash; 161,359</td><td class="num">Apr 8 &ndash; May 1, 2026</td></tr>
-        <tr><td class="name">Eli Gill for Santa Monica City Council</td><td>Candidate committee</td><td class="num">$600 &ndash; $1,095</td><td class="num">5</td><td class="num">65,100 &ndash; 78,995</td><td class="num">May 31 &ndash; Aug 21, 2026</td></tr>
+        <tr><td class="name">Santa Monica Neighbors</td><td>Issue advocacy</td><td class="num">$600 &ndash; $4,659</td><td class="num">41</td><td class="num">117,400 &ndash; 161,359</td><td class="num">Apr 8 &ndash; May 1, 2026</td></tr>
+        <tr><td class="name">Eli Gill for Santa Monica City Council</td><td>Candidate committee</td><td class="num">$600 &ndash; $1,194</td><td class="num">6</td><td class="num">65,100 &ndash; 79,094</td><td class="num">May 31 &ndash; Sep 14, 2026</td></tr>
         <tr><td class="name">L.A. Local Network</td><td>News publisher</td><td class="num">$0 &ndash; $99</td><td class="num">1</td><td class="num">10,000 &ndash; 14,999</td><td class="num">Sep 9, 2026</td></tr>
-        <tr><td class="name">Total</td><td>&mdash;</td><td class="num"><strong>$7,500 &ndash; $16,711</strong></td><td class="num"><strong>89</strong></td><td class="num"><strong>874,800 &ndash; 1,079,111</strong></td><td class="num">Apr 8 &ndash; Sep 9, 2026</td></tr>
+        <tr><td class="name">Total</td><td>&mdash;</td><td class="num"><strong>$7,500 &ndash; $16,810</strong></td><td class="num"><strong>90</strong></td><td class="num"><strong>874,800 &ndash; 1,079,210</strong></td><td class="num">Apr 8 &ndash; Sep 14, 2026</td></tr>
       </tbody>
     </table>
   </div>
 
-  <h3 class="sub">Monthly activity and the September blackout</h3>
-  <p>Spend is attributed to the month an ad <em>began</em> delivering; Meta does not report month-by-month spend for an ad that runs across a boundary. Bars use range midpoints for comparability &mdash; the authoritative figures are the ranges in the table above.</p>
+  <h3 class="sub">Activity by launch month</h3>
+  <p>Spend is attributed to the month an ad <em>began</em> delivering; Meta does not report month-by-month spend for an ad that runs across a boundary. Bars use range midpoints for comparability &mdash; the authoritative figures are the ranges in the table above, and every individual ad is listed in the index at the end of this report.</p>
   <div class="chart-box">
     <div class="chart-title">Estimated spend by launch month</div>
-    <div class="chart-note">Midpoint estimates, stacked by advertiser. Shaded band marks the period with no new ad launches.</div>
+    <div class="chart-note">Midpoint estimates, stacked by advertiser. Ads launched in one month frequently continued delivering for weeks afterward.</div>
     <div class="chart-wrap" style="height:320px"><canvas id="monthChart"></canvas></div>
   </div>
 </section>
@@ -403,7 +412,7 @@ footer {
 <section>
   <div class="section-num">03</div>
   <h2 class="sec">Timeline of Activity</h2>
-  <p class="lede">The three race advertisers never overlapped. Each ran in its own window, back to back &mdash; and then all of them stopped.</p>
+  <p class="lede">The three race advertisers launched in separate, non-overlapping windows &mdash; though their ads continued delivering well past each launch date.</p>
 
   <div class="tl-legend">
     <span><span class="tl-dot" style="background:var(--red)"></span> Santa Monica Neighbors</span>
@@ -415,28 +424,28 @@ footer {
   <div class="timeline">
     <div class="tl-item neighbors">
       <div class="tl-date">Apr 8, 2026</div>
-      <div class="tl-title">Santa Monica Neighbors begins advertising</div>
-      <div class="tl-body">First ads run &mdash; civic-education messaging and criticism of the Ocean Avenue homeless-housing siting process. Candidate filing does not open for another three months.</div>
+      <div class="tl-title">Santa Monica Neighbors begins a 41-ad burst</div>
+      <div class="tl-body">Three creative threads launch together: a "Civic Education Series," and two on the Ocean Avenue homeless-housing siting process (<a href="https://www.facebook.com/ads/library/?id=1404662588130341" target="_blank">notice to residents</a>, <a href="https://www.facebook.com/ads/library/?id=1688545842478819" target="_blank">"neighbors were shocked"</a>). Candidate filing does not open for another three months.</div>
     </div>
     <div class="tl-item neighbors">
-      <div class="tl-date">Apr 11, 2026</div>
-      <div class="tl-title">Santa Monica Neighbors targets Mayor Torosis</div>
-      <div class="tl-body">Ads highlighting Torosis's outside LA County income begin running alongside the civic-education creative.</div>
+      <div class="tl-date">Apr 9&ndash;11, 2026</div>
+      <div class="tl-title">The Torosis thread appears</div>
+      <div class="tl-body">Six ads question Mayor Caroline Torosis's outside LA County income (<a href="https://www.facebook.com/ads/library/?id=2398907497290283" target="_blank">largest of the six</a>, $100&ndash;$199). This is the page's only candidate-focused messaging, and it runs roughly seven months before Election Day.</div>
     </div>
     <div class="tl-item neighbors">
       <div class="tl-date">May 1, 2026</div>
-      <div class="tl-title">Santa Monica Neighbors goes quiet</div>
-      <div class="tl-body">Last ad in the page's 41-ad run. No further activity through this report's retrieval date &mdash; more than four months of dormancy.</div>
+      <div class="tl-title">Santa Monica Neighbors stops advertising</div>
+      <div class="tl-body"><a href="https://www.facebook.com/ads/library/?id=2594583614271168" target="_blank">Last ad</a> of the run. The page has not advertised since &mdash; more than four months.</div>
     </div>
     <div class="tl-item gill">
       <div class="tl-date">May 31, 2026</div>
       <div class="tl-title">Eli Gill's campaign begins advertising</div>
-      <div class="tl-body">First ad ("nobody likes a politician, I'm not one") launches roughly six weeks before the Aug 7 filing deadline.</div>
+      <div class="tl-body">Launches with <a href="https://www.facebook.com/ads/library/?id=2024870521768042" target="_blank">"nobody likes a politician, I'm not one"</a> roughly six weeks before the Aug 7 filing deadline.</div>
     </div>
     <div class="tl-item trussler">
       <div class="tl-date">Jul 8, 2026</div>
       <div class="tl-title">Trussler wave one &mdash; 12 ads, $2,800&ndash;$4,368</div>
-      <div class="tl-body">Launches with three creative threads: downtown/Third Street Promenade decline, crime and homelessness, and a personal biography ad. The Promenade creative carries the single largest ad buy in the race at $1,500&ndash;$1,999.</div>
+      <div class="tl-body">Three threads: downtown decline, crime and homelessness, and biography. The <a href="https://www.facebook.com/ads/library/?id=1683653616201135" target="_blank">Third Street Promenade ad</a> carries the single largest buy in the race at $1,500&ndash;$1,999 and 150K&ndash;175K impressions. These ads kept delivering through mid-August.</div>
     </div>
     <div class="tl-item trussler">
       <div class="tl-date">Aug 7, 2026</div>
@@ -446,22 +455,22 @@ footer {
     <div class="tl-item trussler">
       <div class="tl-date">Aug 11, 2026</div>
       <div class="tl-title">Trussler wave two &mdash; 30 ads, $3,500&ndash;$6,490</div>
-      <div class="tl-body">A larger, more fragmented buy four days after filing closes. Four new creative threads: the city's "$35 million deficit," a response to the annual homeless count, youth sports at John Adams Middle School, and a "Santa Monica comeback" pier/Promenade spot.</div>
+      <div class="tl-body">A larger, more fragmented buy four days after filing closes, adding four threads: the <a href="https://www.facebook.com/ads/library/?id=1039734585335483" target="_blank">"$35 million deficit"</a>, a <a href="https://www.facebook.com/ads/library/?id=27804202782578257" target="_blank">response to the annual homeless count</a>, <a href="https://www.facebook.com/ads/library/?id=28169251439337116" target="_blank">youth sports</a>, and a <a href="https://www.facebook.com/ads/library/?id=1236524198599818" target="_blank">"Santa Monica comeback"</a> spot. Twenty of these were still delivering in September.</div>
     </div>
     <div class="tl-item gill">
       <div class="tl-date">Aug 21, 2026</div>
-      <div class="tl-title">Gill's platform ad &mdash; the last new ad in the race</div>
-      <div class="tl-body">A general platform ad ("safer, more affordable, more vibrant, and better run") at $600&ndash;$699. Nothing new has launched from any advertiser since.</div>
-    </div>
-    <div class="tl-item silence">
-      <div class="tl-date">Aug 21 &ndash; Sep 14, 2026</div>
-      <div class="tl-title">24 days with no new ads</div>
-      <div class="tl-body">No candidate committee, advocacy page, labor organization, or independent-expenditure committee launched a Meta ad in this race during this period.</div>
+      <div class="tl-title">Gill's platform ad &mdash; his largest buy</div>
+      <div class="tl-body"><a href="https://www.facebook.com/ads/library/?id=2243396283185866" target="_blank">"Safer, more affordable, more vibrant, and better run"</a> at $600&ndash;$699 and 50K&ndash;60K impressions &mdash; more than half his disclosed spend in one ad.</div>
     </div>
     <div class="tl-item news">
       <div class="tl-date">Sep 9, 2026</div>
       <div class="tl-title">L.A. Local Network promotes coverage of the council's zoning vote</div>
-      <div class="tl-body">A new local-news page runs a $0&ndash;$99 ad summarizing the council's adoption of Realignment Plan zoning changes for city-owned downtown land &mdash; roughly 1,800 new homes citywide, with the Expo/Bundy corridor temporarily shielded from a state density law. The only paid Meta content about Santa Monica council decisions in the blackout period came from a news publisher, not a campaign.</div>
+      <div class="tl-body">A local-news page runs a <a href="https://www.facebook.com/ads/library/?id=1739930600603532" target="_blank">$0&ndash;$99 ad</a> summarizing the council's adoption of Realignment Plan zoning changes for city-owned downtown land &mdash; roughly 1,800 new homes citywide, with the Expo/Bundy corridor temporarily shielded from a state density law.</div>
+    </div>
+    <div class="tl-item gill">
+      <div class="tl-date">Sep 14, 2026</div>
+      <div class="tl-title">Gill launches "Big Dad Energy" &mdash; newest ad in the race</div>
+      <div class="tl-body"><a href="https://www.facebook.com/ads/library/?id=1401119371445912" target="_blank">"Santa Monica could use a little more Big Dad Energy. See a problem. Fix it. Take responsibility. Get things done."</a> A tonal departure from his earlier platform messaging, and the only new creative from any advertiser since August 21.</div>
     </div>
   </div>
 </section>
@@ -481,11 +490,11 @@ footer {
       <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">Trussler for Santa Monica City Council 2026</div></div>
       <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$6,300 &ndash; $10,858</strong></div></div>
       <div class="org-row"><div class="org-key">Ads / Impr.</div><div class="org-val">42 ads &middot; 682,300&ndash;823,758 impressions</div></div>
-      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Jul 8 &ndash; Aug 11, 2026 (dark since)</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Launched Jul 8 &amp; Aug 11 &middot; 20 still delivering</div></div>
     </div>
     <div class="ad-grid">
       <div class="ad-card">
-        <div class="ad-meta"><span>Jul 8&ndash;Aug 11 &middot; $1,500&ndash;$1,999 &middot; 150K&ndash;175K impr.</span></div>
+        <div class="ad-meta"><span>Jul 8 &middot; $1,500&ndash;$1,999 &middot; 150K&ndash;175K impr.</span></div>
         <div class="ad-text">"This is what Third Street Promenade looked like on Memorial Day weekend. Empty. A holiday weekend. In Santa Monica&hellip; Does this look normal?"</div>
         <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1683653616201135" target="_blank">View ad &rarr;</a></div>
       </div>
@@ -515,30 +524,37 @@ footer {
   <div class="org-card flagged">
     <div class="org-head">
       <div class="org-name">Santa Monica Neighbors</div>
-      <div class="org-role">&#9888; Unattributed</div>
+      <div class="org-role">Issue advocacy &middot; funders undisclosed</div>
     </div>
     <div class="org-url"><a href="https://www.facebook.com/1034237963110844" target="_blank">Facebook page</a> &middot; <a href="https://santamonicaneighbors.com" target="_blank">santamonicaneighbors.com</a></div>
     <div class="org-rows">
       <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">"Santa Monica Neighbors" (disclaimer name only)</div></div>
       <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$600 &ndash; $4,659</strong></div></div>
       <div class="org-row"><div class="org-key">Ads / Impr.</div><div class="org-val">41 ads &middot; 117,400&ndash;161,359 impressions</div></div>
-      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Apr 8 &ndash; May 1, 2026 (dark since)</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Apr 8 &ndash; May 1, 2026 (none since)</div></div>
     </div>
-    <div class="callout red">
-      <h4>Flagged &mdash; no committee filing found</h4>
-      <p>Meta's disclaimer field lists only "Santa Monica Neighbors" &mdash; not a named individual or a registered candidate/PAC committee. No matching filing was found under this name in an FPPC/Cal-Access or City Clerk search, and it is a distinct entity from the city's seven officially recognized neighborhood associations (Friends of Sunset Park, North of Montana, Ocean Park, Pico, Mid City, Northeast Neighbors, Wilshire Montana). Its website describes it as a grassroots group "unaffiliated with any political group" but names no founders, staff, or funders. Treat this as an unattributed advocacy page, not a candidate's own messaging.</p>
-      <p><strong>Update, Sep 14:</strong> the page has now been dormant for more than four months. Its entire run predates the opening of candidate filing, and it has not returned as the election approaches.</p>
+    <div class="callout teal">
+      <h4>Why this page has no committee filing &mdash; and probably doesn't need one</h4>
+      <p>An earlier edition of this report flagged the absence of an FPPC or City Clerk filing for this page. On review of the applicable thresholds, <strong>that framing was wrong</strong>: on the available evidence this page most likely had no obligation to register at all. Three reasons:</p>
+      <p><strong>1. The ads are issue advocacy, not express advocacy.</strong> California triggers independent-expenditure committee registration for spending that supports or opposes a candidate. Under <a href="https://www.fppc.ca.gov/" target="_blank">FPPC</a> Regulation 18225, that means either express words &mdash; "vote for," "elect," "defeat" &mdash; or, <em>within 60 days of an election</em>, content that taken as a whole unambiguously urges an electoral result. These ads ran April 8 &ndash; May 1, roughly <strong>six to seven months</strong> before the November 3 election, contain no express words of advocacy, and ran before candidate filing had even opened. Torosis was a sitting mayor, not yet a candidate.</p>
+      <p><strong>2. The spend may never have crossed the threshold.</strong> Registration attaches at $1,000 in independent expenditures. Meta discloses this page's total only as the range <strong>$600&ndash;$4,659</strong>, which straddles that line. Thirty-five of its 41 ads sit in the $0&ndash;$99 band. The Ad Library cannot resolve whether $1,000 was reached.</p>
+      <p><strong>3. The "paid for by" label is Meta's rule, not California's.</strong> Meta requires authorization and a disclaimer for any ad touching elections, legislation, or social issues &mdash; <a href="https://transparency.meta.com/policies/ad-standards/SIEP-advertising/SIEP/" target="_blank">explicitly including issue advocacy that asks for no votes</a>. The presence of a disclaimer therefore says nothing about whether a legal filing was required. Reading a platform label as evidence of a campaign-finance obligation conflates two separate systems.</p>
+    </div>
+    <div class="callout">
+      <h4>What remains a fair observation</h4>
+      <p>No founders, staff, officers, or funders are named on the group's website or in its ad disclaimers, and no public reporting identifies them. It is a distinct entity from the city's seven recognized neighborhood associations (Friends of Sunset Park, North of Montana, Ocean Park, Pico, Mid City, Northeast Neighbors, Wilshire Montana), which receive city grant funding and have identifiable leadership.</p>
+      <p>That opacity is worth noting &mdash; someone spent money to shape opinion about a sitting mayor and a housing siting decision, and residents cannot tell who. But it reflects how US disclosure law treats issue advocacy outside the pre-election window, <strong>not</strong> evidence of evasion or non-compliance. Should this page resume advertising after September 4 &mdash; inside the 60-day window &mdash; the express-advocacy analysis would change materially.</p>
     </div>
     <div class="ad-grid">
       <div class="ad-card">
-        <div class="ad-meta"><span>Apr 11&ndash;14 &middot; $100&ndash;$199 &middot; 10K&ndash;15K impr.</span></div>
+        <div class="ad-meta"><span>Apr 11 &middot; $100&ndash;$199 &middot; 10K&ndash;15K impr.</span></div>
         <div class="ad-text">"Earning over $300K from LA County while serving as Santa Monica's mayor, who does Caroline Torosis really work for?"</div>
         <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=2398907497290283" target="_blank">View ad &rarr;</a></div>
       </div>
       <div class="ad-card">
-        <div class="ad-meta"><span>Apr 16&ndash;26 &middot; $0&ndash;$99 &middot; 15K&ndash;20K impr.</span></div>
+        <div class="ad-meta"><span>Apr 8 &middot; $100&ndash;$199 &middot; 15K&ndash;20K impr.</span></div>
         <div class="ad-text">"Residents only learned about the Ocean Avenue housing proposal months after City Hall did. When decisions affect our neighborhoods, residents should never be the last to know."</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1715217196524680" target="_blank">View ad &rarr;</a></div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1404662588130341" target="_blank">View ad &rarr;</a></div>
       </div>
     </div>
   </div>
@@ -551,15 +567,15 @@ footer {
     <div class="org-url"><a href="https://www.facebook.com/969874029547865" target="_blank">Facebook page</a></div>
     <div class="org-rows">
       <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">Eli Gill for City Council 2026</div></div>
-      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$600 &ndash; $1,095</strong></div></div>
-      <div class="org-row"><div class="org-key">Ads / Impr.</div><div class="org-val">5 ads &middot; 65,100&ndash;78,995 impressions</div></div>
-      <div class="org-row"><div class="org-key">Active</div><div class="org-val">May 31 &ndash; Aug 21, 2026 (dark since)</div></div>
+      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$600 &ndash; $1,194</strong></div></div>
+      <div class="org-row"><div class="org-key">Ads / Impr.</div><div class="org-val">6 ads &middot; 65,100&ndash;79,094 impressions</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">May 31 &ndash; Sep 14, 2026 &middot; 3 still delivering</div></div>
     </div>
     <div class="ad-grid">
       <div class="ad-card">
-        <div class="ad-meta"><span>Jun 16&ndash;26 &middot; $0&ndash;$99 &middot; 5K&ndash;6K impr.</span></div>
-        <div class="ad-text">"Nobody likes a politician. I'm not one. I'm running for the love of the city. Let's make this city the best it can be, together!"</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1246771257395769" target="_blank">View ad &rarr;</a></div>
+        <div class="ad-meta"><span>Sep 14 &middot; $0&ndash;$99 &middot; newest ad in the race</span></div>
+        <div class="ad-text">"Santa Monica could use a little more Big Dad Energy. See a problem. Fix it. Take responsibility. Get things done."</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1401119371445912" target="_blank">View ad &rarr;</a></div>
       </div>
       <div class="ad-card">
         <div class="ad-meta"><span>Aug 21 &middot; $600&ndash;$699 &middot; 50K&ndash;60K impr.</span></div>
@@ -582,20 +598,15 @@ footer {
       <div class="org-row"><div class="org-key">Active</div><div class="org-val">Sep 9, 2026</div></div>
     </div>
     <div class="callout">
-      <h4>New this edition &mdash; and counted narrowly</h4>
-      <p>L.A. Local Network is a Greater Los Angeles local-news page that launched paid promotion on <strong>August 14, 2026</strong>. Page-wide it has run <strong>6 ads totaling $400&ndash;$994</strong>; the other five concern Manhattan Beach property values, La Brea-area fossil finds, Greystone Mansion, and the Eaton Fire &mdash; none related to Santa Monica.</p>
-      <p><strong>Only its single Santa Monica ad is counted in this report's totals.</strong> It is content promotion by a publisher, not advocacy by a campaign or committee, and it takes no position on the council race. It is included because it is the only paid Meta content about Santa Monica council decisions that ran during the campaign blackout.</p>
+      <h4>Counted narrowly, and here's why</h4>
+      <p>L.A. Local Network is a Greater Los Angeles local-news page that began paid promotion on <strong>August 14, 2026</strong>. Page-wide it has run <strong>6 ads totaling $400&ndash;$994</strong>; the other five cover Manhattan Beach property values, La Brea-area fossil finds, Greystone Mansion, and the Eaton Fire &mdash; none related to Santa Monica.</p>
+      <p><strong>Only its single Santa Monica ad counts toward this report's totals.</strong> It is content promotion by a publisher, not advocacy by a campaign or committee, and it takes no position on the council race.</p>
     </div>
     <div class="ad-grid">
       <div class="ad-card">
         <div class="ad-meta"><span>Sep 9 &middot; $0&ndash;$99 &middot; 10K&ndash;15K impr.</span></div>
         <div class="ad-text">"Santa Monica's City Council adopted zoning changes clearing the way for denser development on city-owned downtown land, part of a Realignment Plan envisioning roughly 1,800 new homes citywide, while temporarily shielding the Expo/Bundy corridor from a state density law."</div>
         <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1739930600603532" target="_blank">View ad &rarr;</a></div>
-      </div>
-      <div class="ad-card">
-        <div class="ad-meta"><span>Aug 14 &middot; $400&ndash;$499 &middot; page-launch ad</span></div>
-        <div class="ad-text">"Greater Los Angeles, meet your local news network. LA Local Network is live, bringing you local coverage of sports, business&hellip;"</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1530564828376410" target="_blank">View ad &rarr;</a></div>
       </div>
     </div>
   </div>
@@ -604,7 +615,7 @@ footer {
 <!-- ============ 5. WHO ISN'T ADVERTISING ============ -->
 <section>
   <div class="section-num">05</div>
-  <h2 class="sec">Who Still Isn't Advertising</h2>
+  <h2 class="sec">Who Isn't Advertising</h2>
   <p class="lede">Re-verified by direct Page ID query on September 14, 2026. Each of these pages exists and has run Meta political ads in prior cycles &mdash; all return <strong>zero ads delivered in 2026</strong>.</p>
 
   <div class="table-wrap">
@@ -627,20 +638,118 @@ footer {
 
   <div class="callout teal">
     <h4>What zero means &mdash; and doesn't</h4>
-    <p>Absence from the Meta political archive is not absence from the race. It means only that no ad with a "paid for by" disclaimer was filed and delivered. Labor committees in particular often concentrate spending in mail and member-to-member communication, which never reaches this archive. The most defensible reading of the table above is that <strong>the institutional actors in Santa Monica politics have not chosen Meta as a persuasion channel this cycle</strong> &mdash; not that they are inactive.</p>
+    <p>Absence from the Meta political archive is not absence from the race. It means only that no ad with a "paid for by" disclaimer was filed and delivered. Labor committees in particular often concentrate spending in mail and member-to-member communication, which never reaches this archive. The defensible reading is that <strong>the institutional actors in Santa Monica politics have not chosen Meta as a persuasion channel this cycle</strong> &mdash; not that they are inactive.</p>
   </div>
+</section>
+
+<!-- ============ 6. AD INDEX ============ -->
+<section>
+  <div class="section-num">06</div>
+  <h2 class="sec">Complete Ad Index</h2>
+  <p class="lede">Every ad counted in this report, with a direct link to its Meta Ad Library record so any figure here can be checked at source. Sorted by disclosed spend within each advertiser. Per-advertiser totals tie exactly to the page-level figures Meta reports.</p>
+  <div class="idx-head"><div class="idx-name">Doug Trussler for Santa Monica City Council</div><div class="idx-meta">42 ads &middot; $6,300&ndash;$10,858 &middot; Page ID 1116009231601182</div></div><div class="table-wrap"><table class="idx"><thead><tr><th>Launched</th><th>Creative theme</th><th>Spend</th><th>Ad Library</th></tr></thead><tbody><tr><td class="num">Jul 8</td><td class="theme">Third Street Promenade decline</td><td class="num">$1,500&ndash;$1,999</td><td><a href="https://www.facebook.com/ads/library/?id=1683653616201135" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Crime & homelessness</td><td class="num">$400&ndash;$499</td><td><a href="https://www.facebook.com/ads/library/?id=1049709054252951" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Crime & homelessness</td><td class="num">$300&ndash;$399</td><td><a href="https://www.facebook.com/ads/library/?id=1101295586409976" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Third Street Promenade decline</td><td class="num">$300&ndash;$399</td><td><a href="https://www.facebook.com/ads/library/?id=1736548877389122" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Crime & homelessness</td><td class="num">$200&ndash;$299</td><td><a href="https://www.facebook.com/ads/library/?id=2259278751578053" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Third Street Promenade decline</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=1702339527550558" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Crime & homelessness</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=2055106212025305" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Biography — Tanzania to Santa Monica</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=3940277156115096" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Biography — Tanzania to Santa Monica</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=4570420326505598" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Biography — Tanzania to Santa Monica</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=992434150325065" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Biography — Tanzania to Santa Monica</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1791340622229050" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jul 8</td><td class="theme">Third Street Promenade decline</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1570069687981066" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">$35 million budget deficit</td><td class="num">$700&ndash;$799</td><td><a href="https://www.facebook.com/ads/library/?id=1039734585335483" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">“Santa Monica comeback”</td><td class="num">$600&ndash;$699</td><td><a href="https://www.facebook.com/ads/library/?id=1236524198599818" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">$35 million budget deficit</td><td class="num">$500&ndash;$599</td><td><a href="https://www.facebook.com/ads/library/?id=2181119636082333" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">“Santa Monica comeback”</td><td class="num">$400&ndash;$499</td><td><a href="https://www.facebook.com/ads/library/?id=1075219521623649" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Youth sports</td><td class="num">$200&ndash;$299</td><td><a href="https://www.facebook.com/ads/library/?id=28169251439337116" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">“Santa Monica comeback”</td><td class="num">$200&ndash;$299</td><td><a href="https://www.facebook.com/ads/library/?id=2548054322330773" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Youth sports</td><td class="num">$200&ndash;$299</td><td><a href="https://www.facebook.com/ads/library/?id=4040735772897593" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">$35 million budget deficit</td><td class="num">$200&ndash;$299</td><td><a href="https://www.facebook.com/ads/library/?id=1357671692610472" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Youth sports</td><td class="num">$200&ndash;$299</td><td><a href="https://www.facebook.com/ads/library/?id=2182416899346264" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">$35 million budget deficit</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=1455441523282296" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Homeless count response</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=1359756596349893" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">“Santa Monica comeback”</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=1054172510726147" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Homeless count response</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=27804202782578257" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Youth sports</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1047933938219136" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Homeless count response</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1093563409995280" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">“Santa Monica comeback”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1042760145023937" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Homeless count response</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1077005294858383" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Youth sports</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1698111367937378" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">$35 million budget deficit</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1042324695353209" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Homeless count response</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1534359005038635" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Homeless count response</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=2320323611834117" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">“Santa Monica comeback”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=978961181870587" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">“Santa Monica comeback”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1593411118847704" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">$35 million budget deficit</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1615458349938365" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">$35 million budget deficit</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1437252938453069" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Homeless count response</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=2769837580101717" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">$35 million budget deficit</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1057330943414733" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Homeless count response</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1595504118935391" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">“Santa Monica comeback”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=2292043421542053" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 11</td><td class="theme">Youth sports</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1054503587229248" target="_blank" rel="noopener">View ad &rarr;</a></td></tr></tbody></table></div>
+  <div class="idx-head"><div class="idx-name">Santa Monica Neighbors</div><div class="idx-meta">41 ads &middot; $600&ndash;$4,659 &middot; Page ID 1034237963110844</div></div><div class="table-wrap"><table class="idx"><thead><tr><th>Launched</th><th>Creative theme</th><th>Spend</th><th>Ad Library</th></tr></thead><tbody><tr><td class="num">Apr 11</td><td class="theme">Torosis LA County income</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=2398907497290283" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=1678771259809735" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=839455571790094" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 8</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=1404662588130341" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 8</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=1688545842478819" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 8</td><td class="theme">Civic Education Series</td><td class="num">$100&ndash;$199</td><td><a href="https://www.facebook.com/ads/library/?id=2501439180258389" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 11</td><td class="theme">Torosis LA County income</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=935523006063873" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 11</td><td class="theme">Torosis LA County income</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1467850568136283" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Torosis LA County income</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1312166757643727" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Torosis LA County income</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1286112493474411" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Torosis LA County income</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1342587317448966" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 16</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1485396156299754" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 13</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=3526522680835990" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=807157852458586" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=988168170322952" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">May 1</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=2594583614271168" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 11</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1466606508333336" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=4369532663293811" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1546941226852876" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=976361164812905" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1751264875842197" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Civic Education Series</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1475307860657422" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 16</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1715217196524680" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 13</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=974025238494882" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1629364595010096" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 30</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=925157280143158" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=932198136090044" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=969917848880923" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=2396448670783252" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 8</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1582046336193192" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 8</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=4332800376933476" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 8</td><td class="theme">Ocean Ave — notice to residents</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1253813943531200" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 15</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=26346026848373249" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 14</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=931353979530097" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=931205269695607" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1616042086165805" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 10</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=4394234087485252" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 29</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=26718971401070207" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1941543066566177" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=2009474723247067" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Apr 9</td><td class="theme">Ocean Ave — “neighbors were shocked”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1720244995454143" target="_blank" rel="noopener">View ad &rarr;</a></td></tr></tbody></table></div>
+  <div class="idx-head"><div class="idx-name">Eli Gill for Santa Monica City Council</div><div class="idx-meta">6 ads &middot; $600&ndash;$1,194 &middot; Page ID 969874029547865</div></div><div class="table-wrap"><table class="idx"><thead><tr><th>Launched</th><th>Creative theme</th><th>Spend</th><th>Ad Library</th></tr></thead><tbody><tr><td class="num">Aug 21</td><td class="theme">Platform — “safer, more affordable”</td><td class="num">$600&ndash;$699</td><td><a href="https://www.facebook.com/ads/library/?id=2243396283185866" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Sep 14</td><td class="theme">“Big Dad Energy”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1401119371445912" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Aug 21</td><td class="theme">Platform — “safer, more affordable”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1471683521456650" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">Jun 16</td><td class="theme">“Nobody likes a politician”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1246771257395769" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">May 31</td><td class="theme">“Nobody likes a politician”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=28169903362598345" target="_blank" rel="noopener">View ad &rarr;</a></td></tr>
+        <tr><td class="num">May 31</td><td class="theme">“Nobody likes a politician”</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=2024870521768042" target="_blank" rel="noopener">View ad &rarr;</a></td></tr></tbody></table></div>
+  <div class="idx-head"><div class="idx-name">L.A. Local Network</div><div class="idx-meta">1 ad &middot; $0&ndash;$99 &middot; Page ID 1298862009966283</div></div><p style="font-size:13px;color:var(--text-secondary);margin:6px 0 0">Santa Monica ad only. The page ran five further ads ($400&ndash;$895 combined) on unrelated Los Angeles-area topics, which are excluded from this report.</p><div class="table-wrap"><table class="idx"><thead><tr><th>Launched</th><th>Creative theme</th><th>Spend</th><th>Ad Library</th></tr></thead><tbody><tr><td class="num">Sep 9</td><td class="theme">Council adopts Realignment Plan zoning changes</td><td class="num">$0&ndash;$99</td><td><a href="https://www.facebook.com/ads/library/?id=1739930600603532" target="_blank" rel="noopener">View ad &rarr;</a></td></tr></tbody></table></div>
 </section>
 
 <!-- ============ METHODOLOGY ============ -->
 <div class="method">
   <h3>Methodology &amp; Limitations</h3>
-  <p><strong>Data source.</strong> Meta Ad Library API, queried <strong>September 14, 2026</strong>. Window: January 1 &ndash; September 14, 2026. Country filter: United States; region filter: California. Advertisers were located via candidate-name and page-name keyword searches, plus a broad "Santa Monica" and "Santa Monica City Council" keyword scan across California, then resolved to Page IDs before any page-scoped query. This edition supersedes the September 4, 2026 edition; section 01 documents what changed between the two pulls.</p>
-  <p><strong>Advertisers found and excluded.</strong> <em>Tom Shadrach for City Council</em> (Page ID 118238817535406, 43 ads) surfaced in keyword scans but is a Cape Coral, Florida council candidate &mdash; excluded as out of geography. <em>Southern California Association of NonProfit Housing</em>, <em>ClientEarth USA</em>, and <em>Union of Concerned Scientists</em> matched the California regional filter but run national issue campaigns unrelated to this race &mdash; excluded as out of scope. <em>L.A. Local Network</em> is included, but only its single Santa Monica ad counts toward report totals; its five unrelated ads are excluded.</p>
+  <p><strong>Data source.</strong> Meta Ad Library API, queried <strong>September 14, 2026</strong>. Window: January 1 &ndash; September 14, 2026. Country filter: United States; region filter: California. Advertisers were located via candidate-name and page-name keyword searches, plus a broad "Santa Monica" and "Santa Monica City Council" keyword scan across California, then resolved to Page IDs before any page-scoped query. Delivery status was confirmed with a separate active-status query.</p>
+  <p><strong>Advertisers found and excluded.</strong> <em>Tom Shadrach for City Council</em> (Page ID 118238817535406, 43 ads) surfaced in keyword scans but is a Cape Coral, Florida council candidate &mdash; excluded as out of geography. <em>Southern California Association of NonProfit Housing</em>, <em>ClientEarth USA</em>, and <em>Union of Concerned Scientists</em> matched the California regional filter but run national issue campaigns unrelated to this race &mdash; excluded as out of scope. <em>L.A. Local Network</em> is included, but only its single Santa Monica ad counts toward report totals.</p>
   <p><strong>Known limitations.</strong></p>
   <ul>
-    <li><strong>Spend is a range, never a number.</strong> Meta reports bands (e.g., $100&ndash;$199). Every headline figure in this report is stated as its full disclosed range. Midpoints appear only in the monthly chart, which is labeled as estimated.</li>
-    <li><strong>Monthly attribution is approximate.</strong> Meta reports lifetime spend per ad, not spend per month. The monthly chart attributes each ad's spend to the month it began delivering, so an ad running July 8 through August 11 is counted entirely in July.</li>
-    <li><strong>The archive captures only disclaimer-filed ads.</strong> Mail, yard signs, earned media, unpaid social posts, and any ad run without a "paid for by" disclaimer are invisible here. A candidate with zero Meta ads may still be spending heavily through other channels. The 24-day blackout is a Meta-specific finding, not evidence that campaigns have stopped spending.</li>
+    <li><strong>Spend is a range, never a number.</strong> Meta reports bands (e.g., $100&ndash;$199). Every headline figure here is stated as its full disclosed range. Midpoints appear only in the monthly chart, which is labeled as estimated.</li>
+    <li><strong>Launch date is not delivery period.</strong> Meta reports lifetime spend per ad, not spend per month, and an ad's disclosed total keeps rising while it runs. An advertiser can show increasing spend with no new creative &mdash; as Trussler did between the September 4 and September 14 pulls. Ad counts and spend totals must be read together.</li>
+    <li><strong>The archive captures only disclaimer-filed ads.</strong> Mail, yard signs, earned media, unpaid social posts, and any ad run without a "paid for by" disclaimer are invisible here. A candidate with zero Meta ads may still be spending heavily through other channels.</li>
+    <li><strong>A Meta disclaimer is not a campaign-finance filing.</strong> Meta requires authorization and a "paid for by" label for any ad touching elections, legislation, or social issues, including pure issue advocacy. Its presence or absence says nothing about obligations under California or Santa Monica law.</li>
     <li><strong>Keyword coverage is not exhaustive.</strong> A committee whose ad text and page name never contain a candidate's name, "Santa Monica," or "City Council" could be missed by this search approach.</li>
     <li><strong>Delivery is not targeting.</strong> This report makes no claims about whom advertisers targeted. Ad Library data reports where ads were delivered, which reflects Meta's optimization as much as any advertiser selection.</li>
     <li><strong>This report covers Meta ad spend only.</strong> It does not incorporate campaign finance filings, fundraising totals, or other paid media, which were out of scope for this pull.</li>
@@ -669,7 +778,7 @@ new Chart(document.getElementById('spendChart'), {
   data: {
     labels: ['Doug Trussler', 'Santa Monica Neighbors', 'Eli Gill', 'L.A. Local Network'],
     datasets: [{
-      data: [[6300,10858],[600,4659],[600,1095],[0,99]],
+      data: [[6300,10858],[600,4659],[600,1194],[0,99]],
       backgroundColor: [C.teal, C.red, C.slate, C.purple],
       borderRadius: 4,
       barThickness: 28
@@ -692,8 +801,8 @@ new Chart(document.getElementById('spendChart'), {
 new Chart(document.getElementById('shareChart'), {
   type: 'doughnut',
   data: {
-    labels: ['Trussler (42)', 'SM Neighbors (41)', 'Gill (5)', 'LA Local Network (1)'],
-    datasets: [{ data: [42,41,5,1], backgroundColor: [C.teal, C.red, C.slate, C.purple], borderColor: '#fff', borderWidth: 2 }]
+    labels: ['Trussler (42)', 'SM Neighbors (41)', 'Gill (6)', 'LA Local Network (1)'],
+    datasets: [{ data: [42,41,6,1], backgroundColor: [C.teal, C.red, C.slate, C.purple], borderColor: '#fff', borderWidth: 2 }]
   },
   options: {
     maintainAspectRatio: false,
@@ -708,7 +817,7 @@ new Chart(document.getElementById('monthChart'), {
     labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
     datasets: [
       { label: 'Santa Monica Neighbors', data: [2630, 0, 0, 0, 0, 0], backgroundColor: C.red },
-      { label: 'Eli Gill',               data: [0, 50, 99, 0, 699, 0], backgroundColor: C.slate },
+      { label: 'Eli Gill',               data: [0, 99, 50, 0, 699, 50], backgroundColor: C.slate },
       { label: 'Doug Trussler',          data: [0, 0, 0, 3584, 4995, 0], backgroundColor: C.teal },
       { label: 'L.A. Local Network',     data: [0, 0, 0, 0, 0, 50], backgroundColor: C.purple }
     ]
@@ -726,18 +835,6 @@ new Chart(document.getElementById('monthChart'), {
       },
       annotation: {
         annotations: {
-          blackout: {
-            type: 'box',
-            xMin: 4.65, xMax: 5.5,
-            backgroundColor: 'rgba(168,162,158,0.16)',
-            borderColor: 'rgba(168,162,158,0.5)',
-            borderWidth: 1,
-            label: {
-              display: true, content: ['24-day', 'blackout'], position: {x:'center', y:'center'},
-              color: '#6b6560', font: { family: MONO, size: 10, weight: '600' },
-              backgroundColor: 'rgba(250,249,247,0.85)'
-            }
-          },
           filingOpens: {
             type: 'line', xMin: 3.39, xMax: 3.39,
             borderColor: C.muted, borderWidth: 1.5, borderDash: [5,4],
