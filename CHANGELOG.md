@@ -2,6 +2,19 @@
 
 All notable changes to Meta Ad Library Research Tool will be documented in this file.
 
+## [2026-09-14]
+
+### Changed
+- Santa Monica City Council 2026 brief refreshed through Sep 14, 2026 (supersedes the Sep 4 edition). **Headline finding of the refresh is the silence:** no advertiser in the race has launched a new ad since Aug 21, 2026 — a 24-day blackout with 50 days to Election Day. Spend rose only through accrual on already-running ads: Trussler $4,900–$9,458 → $6,300–$10,858 (42 ads, unchanged), Gill $400–$895 → $600–$1,095 (5 ads, unchanged), Santa Monica Neighbors unchanged at $600–$4,659 and now dormant four months. Combined totals now $7,500–$16,711 across 89 ads and 874,800–1,079,111 impressions.
+- Added **L.A. Local Network** (Page ID 1298862009966283, funded by Surround Sound News) as a fourth advertiser, per client direction. Only its single Santa Monica ad ($0–$99, Sep 9, on the council's Realignment Plan zoning adoption) counts toward report totals; its five unrelated LA-area ads are excluded and the narrow scope is disclosed on the profile card. It is a news publisher running content promotion, not a race advertiser — the only paid Meta content about Santa Monica council decisions during the campaign blackout.
+- Re-verified the zero-activity list by direct Page ID query and promoted it to its own section with a table: Torosis, Negrete, SMRR, SM Firefighters IAFF Local 1109, SMPOA, Santa Monica Forward, Coalition of SM City Employees PAC, and Santa Monicans for a Real Positive Future all still return 0 ads delivered in 2026.
+- Added an annotated monthly spend chart (Chart.js annotation plugin) with candidate-filing event lines and a shaded band marking the ad blackout, plus a "What Changed Since September 4" delta section.
+- Added sourced budget context to Trussler's profile: his highest-spending creative campaigns on a "$35 million deficit" while the city's finance director reported an $8.95M projected surplus, reversing the $29.6M deficit projected in Oct 2025. Both figures presented as published, with the caveat that they may describe different years or funds.
+- Documented the two excluded keyword-scan hits — Tom Shadrach for City Council (Cape Coral, FL) and SCANPH / ClientEarth / Union of Concerned Scientists (national issue campaigns) — in the methodology.
+
+### Fixed
+- Horizontal overflow at mobile widths in the Santa Monica report: grid children (chart boxes, stat cards, ad cards, org rows) had default `min-width: auto`, so a Chart.js canvas held its container wider than a 375px viewport and the page scrolled sideways. Added `min-width: 0` on grid children and `max-width: 100%` on chart canvases; verified scrollWidth now equals viewport width at 375px.
+
 ## [2026-09-04]
 
 ### Added
