@@ -2,6 +2,19 @@
 
 All notable changes to Meta Ad Library Research Tool will be documented in this file.
 
+## [2026-09-14b]
+
+### Fixed
+- **Retracted the "24-day blackout" framing** from the Santa Monica brief published earlier today. It was wrong twice over. First, the ads never stopped: 20 Trussler ads and 3 Gill ads were still actively delivering through the period, which is precisely why disclosed spend kept rising. "Blackout" described a gap in *new creative launches*, but the word implies dark screens, and a reader would reasonably take it to mean the race had gone quiet. Second, an active-status query surfaced a **new Eli Gill ad launched Sep 14** ("Big Dad Energy"), so the "nothing new since Aug 21" claim was also false. Root cause: `compare_advertisers` with the default `ALL` status reported Gill's date range as ending Aug 21 and returned 5 ads; the same-day ad only appeared on an explicit `ACTIVE`-status query. **Lesson: never characterize an advertiser as dormant from a date range alone — confirm with an `ad_active_status: ACTIVE` query before making any claim about a campaign going quiet.**
+- Corrected Eli Gill throughout: 5 → **6 ads**, $400–$895 → **$600–$1,194**, date range now May 31 – Sep 14. Report totals now **90 ads, $7,500–$16,810, 874,800–1,079,210 impressions**.
+- Report reframed around what the data actually supports: one candidate (Trussler) carries 65–84% of disclosed spend, total race spend is very small, and the city's institutional actors are entirely absent from Meta. Replaced the "days since last new ad" stat with "still delivering: 23 ads," and added a callout explaining that ad count and spend move independently — spend accrues on ads already in market.
+
+### Changed
+- **Recategorized Santa Monica Neighbors** from "⚠ Unattributed / flagged — no committee filing found" to **"Issue advocacy · funders undisclosed."** The prior framing implied a compliance failure that the evidence does not support. Research into the actual thresholds found three reasons the page likely had no obligation to register: (1) under FPPC Reg. 18225, IE-committee registration attaches to *express advocacy* — express words, or content within **60 days** of an election that unambiguously urges a result — while these ads ran Apr 8–May 1, six to seven months out, with no express words, before candidate filing had opened and while Torosis was a sitting mayor rather than a candidate; (2) registration attaches at **$1,000** in independent expenditures and Meta discloses only the range **$600–$4,659**, which straddles that line (35 of 41 ads are $0–$99); (3) **a Meta "paid for by" disclaimer is a platform requirement, not a legal filing** — Meta mandates authorization for any ad touching elections, legislation, or social issues, explicitly including issue advocacy that asks for no votes. The funding opacity is still noted as a transparency observation, with the caveat that the analysis would change if the page resumes advertising inside the 60-day window. Added a matching methodology bullet so the disclaimer/filing distinction isn't conflated elsewhere.
+
+### Added
+- **Complete Ad Index** (section 06) — all 90 ads with launch date, creative theme, disclosed spend, and a direct Meta Ad Library link, grouped by advertiser and sorted by spend, so every figure in the report can be checked at source. Each block's totals tie exactly to the page-level figures Meta reports ($6,300–$10,858 / $600–$4,659 / $600–$1,194 / $0–$99), which independently confirms the index is complete. Inline Ad Library links also added throughout the timeline; the report now carries 112 ad links.
+
 ## [2026-09-14]
 
 ### Changed
