@@ -6,6 +6,7 @@
 <title>Santa Monica City Council 2026 — Meta Ad Spend</title>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
 <style>
 :root {
   --bg: #faf9f7;
@@ -223,6 +224,31 @@ footer {
   font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--text-muted); line-height: 1.7;
 }
 
+/* ---------- News-publisher variant ---------- */
+.org-card.news { border-top-color: var(--purple); }
+.org-card.news .org-role { background: var(--purple-light); color: var(--purple-deep); border-color: #ddd6fe; }
+.org-card.news .ad-card { border-left-color: var(--purple); }
+.tl-item.news::before { border-color: var(--purple); background: var(--purple); }
+.tl-item.silence::before { border-color: var(--stone); background: var(--bg-card); }
+
+/* ---------- Change-since-last-pull cards ---------- */
+.delta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0; }
+.delta-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; border-left: 3px solid var(--teal); }
+.delta-card.flat { border-left-color: var(--stone); }
+.delta-name { font-weight: 600; color: var(--navy); font-size: 14.5px; margin-bottom: 12px; }
+.delta-row { display: flex; align-items: baseline; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; margin-bottom: 7px; flex-wrap: wrap; }
+.delta-key { color: var(--text-muted); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.8px; flex: 0 0 100%; margin-bottom: -2px; }
+.delta-old { color: var(--text-muted); text-decoration: line-through; }
+.delta-arrow { color: var(--teal); font-weight: 600; }
+.delta-card.flat .delta-arrow { color: var(--stone); }
+.delta-new { color: var(--navy); font-weight: 600; }
+@media (max-width: 860px) { .delta-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Grid children must be allowed to shrink ---------- */
+.chart-row > *, .delta-grid > *, .ad-grid > *, .org-rows > *, .top-stats > * { min-width: 0; }
+.chart-wrap { min-width: 0; }
+.chart-wrap canvas { max-width: 100%; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .container { padding: 30px 18px 48px; }
@@ -260,52 +286,83 @@ footer {
 <div class="container">
 
 <header class="header">
-  <div class="header-eyebrow">Meta Ad Library Intelligence Brief</div>
-  <h1>Santa Monica City Council — 2026 Meta Ad Spend
+  <div class="header-eyebrow">Meta Ad Library Intelligence Brief &middot; Updated</div>
+  <h1>Santa Monica City Council &mdash; 2026 Meta Ad Spend
     <span>Nov 3, 2026 general election, three at-large seats</span>
   </h1>
   <div class="header-meta">
-    <span>Window: Jan 1 – Sep 4, 2026</span>
+    <span>Window: Jan 1 &ndash; Sep 14, 2026</span>
     <span>Geography: Santa Monica, CA</span>
-    <span>Retrieved: Sep 4, 2026</span>
+    <span>Retrieved: Sep 14, 2026</span>
   </div>
 </header>
 
 <div class="exec">
   <h2>Executive Summary</h2>
-  <p>As of September 4, 2026, three Facebook/Instagram pages account for all disclosed Meta political ad activity found in the Santa Monica City Council race: <strong>Doug Trussler for Santa Monica City Council</strong>, <strong>Eli Gill for Santa Monica City Council</strong>, and <strong>Santa Monica Neighbors</strong> — an issue-advocacy page with no candidate committee attached. Combined, they've put <span class="hl">$5.9K–$15.0K</span> behind <span class="hl">88 ads</span> and roughly <span class="hl">725K–897K impressions</span>, running in three distinct, non-overlapping windows between April 8 and August 21, 2026.</p>
-  <p><strong>Doug Trussler</strong> is the dominant advertiser by spend — 42 ads and $4,900–$9,458, more than half the combined total — running Jul 8–Aug 11 on downtown decline, crime/homelessness, and the city's budget deficit. <strong>Santa Monica Neighbors</strong> ran nearly as many ads (41) for far less money ($600–$4,659), entirely in a three-week window in April, well before candidate filing closed. <strong>Eli Gill</strong> has run 5 low-spend ads from late May through August.</p>
-  <p>No other candidate or organization active in this race — including incumbents Caroline Torosis and Lana Negrete — has any Meta ad activity on record for this cycle as of this report's retrieval date.</p>
+  <p><strong>No one in the Santa Monica City Council race has launched a new Meta ad in 24 days.</strong> The last new creative in this contest went live on <span class="hl">August 21, 2026</span> &mdash; seven weeks before ballots go out for the November 3 general election. Every advertiser found in this race has gone quiet.</p>
+  <p>Across the full cycle, four pages account for all disclosed Meta political ad activity touching this race: <strong>Doug Trussler for Santa Monica City Council</strong>, <strong>Eli Gill for Santa Monica City Council</strong>, <strong>Santa Monica Neighbors</strong> &mdash; an issue-advocacy page with no committee filing attached &mdash; and <strong>L.A. Local Network</strong>, a new local-news page running paid content promotion. Combined, they account for <span class="hl">$7.5K&ndash;$16.7K</span> behind <span class="hl">89 ads</span> and roughly <span class="hl">875K&ndash;1.08M impressions</span>.</p>
+  <p><strong>Doug Trussler</strong> remains the dominant advertiser at $6,300&ndash;$10,858 across 42 ads &mdash; roughly 65&ndash;84% of all disclosed spend in the race &mdash; concentrated in two waves on July 8 and August 11. <strong>Santa Monica Neighbors</strong> ran 41 ads for far less money ($600&ndash;$4,659), entirely in April, well before candidate filing opened. <strong>Eli Gill</strong> has run 5 low-spend ads. Incumbents Caroline Torosis and Lana Negrete, along with every local labor and advocacy committee checked, still show <strong>zero</strong> Meta ad activity this cycle.</p>
 </div>
 
 <div class="top-stats">
   <div class="stat-card">
     <div class="stat-label">Combined spend</div>
-    <div class="stat-value">$5.9K–$15.0K</div>
-    <div class="stat-sub">88 ads across 3 advertisers</div>
+    <div class="stat-value">$7.5K&ndash;$16.7K</div>
+    <div class="stat-sub">89 ads across 4 advertisers</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Impressions delivered</div>
-    <div class="stat-value">725K–897K</div>
-    <div class="stat-sub">Combined across all 88 ads</div>
+    <div class="stat-value">875K&ndash;1.08M</div>
+    <div class="stat-sub">Combined across all 89 ads</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">Active window</div>
-    <div class="stat-value">Apr 8 – Aug 21</div>
-    <div class="stat-sub">2026, three non-overlapping runs</div>
+    <div class="stat-label">Days since last new ad</div>
+    <div class="stat-value">24</div>
+    <div class="stat-sub">Last launch Aug 21 &middot; 50 days to Election Day</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Leading advertiser</div>
     <div class="stat-value">Trussler</div>
-    <div class="stat-sub">42 ads · $4.9K–$9.5K</div>
+    <div class="stat-sub">42 ads &middot; $6.3K&ndash;$10.9K</div>
   </div>
 </div>
 
-<!-- ============ 1. SPEND ============ -->
+<!-- ============ 0. WHAT CHANGED ============ -->
 <section>
   <div class="section-num">01</div>
+  <h2 class="sec">What Changed Since September 4</h2>
+  <p class="lede">This edition re-queries the same universe ten days after the first pull. <strong>No advertiser launched a single new ad.</strong> Every dollar of movement below comes from ads that were already running and kept accruing spend &mdash; not from new creative, and not from new entrants.</p>
+
+  <div class="delta-grid">
+    <div class="delta-card">
+      <div class="delta-name">Doug Trussler</div>
+      <div class="delta-row"><span class="delta-key">Spend</span><span class="delta-old">$4.9K&ndash;$9.5K</span><span class="delta-arrow">&rarr;</span><span class="delta-new">$6.3K&ndash;$10.9K</span></div>
+      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-new">42 &mdash; no change</span></div>
+    </div>
+    <div class="delta-card">
+      <div class="delta-name">Eli Gill</div>
+      <div class="delta-row"><span class="delta-key">Spend</span><span class="delta-old">$400&ndash;$895</span><span class="delta-arrow">&rarr;</span><span class="delta-new">$600&ndash;$1,095</span></div>
+      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-new">5 &mdash; no change</span></div>
+    </div>
+    <div class="delta-card flat">
+      <div class="delta-name">Santa Monica Neighbors</div>
+      <div class="delta-row"><span class="delta-key">Spend</span><span class="delta-new">$600&ndash;$4,659 &mdash; no change</span></div>
+      <div class="delta-row"><span class="delta-key">Ads</span><span class="delta-new">41 &mdash; dormant since May 1</span></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>The finding is the silence</h4>
+    <p>A municipal race with three at-large seats, a contested policy environment, and a November 3 election date would normally see paid activity building through September. Instead, the last new ad in this contest launched August 21 &mdash; two weeks after the August 7 filing deadline, and the race has been dark on Meta ever since.</p>
+    <p>Three readings are consistent with this pattern, and the Ad Library alone cannot distinguish among them: campaigns are <strong>holding budget</strong> for an October push timed to vote-by-mail (California ballots begin going out roughly October 5); campaigns are <strong>spending elsewhere</strong> &mdash; mail, digital outside Meta, canvass &mdash; which the archive cannot see; or the field is simply <strong>under-resourced on paid media</strong> this cycle. Watch the first week of October: if paid activity does not resume then, the third reading gains weight.</p>
+  </div>
+</section>
+
+<!-- ============ 2. SPEND ============ -->
+<section>
+  <div class="section-num">02</div>
   <h2 class="sec">Spend by Advertiser</h2>
-  <p class="lede">Trussler's committee spent the most; Santa Monica Neighbors ran nearly as many ads for a fraction of the money — a sign of many small-dollar boosted posts rather than a sustained paid campaign.</p>
+  <p class="lede">Trussler's committee has spent the most by a wide margin. Santa Monica Neighbors ran nearly as many ads for a fraction of the money &mdash; a pattern of many small-dollar boosted posts rather than a sustained paid campaign.</p>
 
   <div class="chart-row">
     <div class="chart-box">
@@ -315,40 +372,51 @@ footer {
     </div>
     <div class="chart-box">
       <div class="chart-title">Share of ads</div>
-      <div class="chart-note">88 ads total across the three pages.</div>
+      <div class="chart-note">89 Santa Monica&ndash;relevant ads across the four pages.</div>
       <div class="chart-wrap"><canvas id="shareChart"></canvas></div>
     </div>
   </div>
 
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Advertiser</th><th>Spend (range)</th><th>Ads</th><th>Impressions (range)</th><th>Active dates</th></tr></thead>
+      <thead><tr><th>Advertiser</th><th>Type</th><th>Spend (range)</th><th>Ads</th><th>Impressions (range)</th><th>Active dates</th></tr></thead>
       <tbody>
-        <tr><td class="name">Doug Trussler for Santa Monica City Council</td><td class="num">$4,900 – $9,458</td><td class="num">42</td><td class="num">557,300 – 676,758</td><td class="num">Jul 8 – Aug 11, 2026</td></tr>
-        <tr><td class="name">Santa Monica Neighbors</td><td class="num">$600 – $4,659</td><td class="num">41</td><td class="num">117,400 – 161,359</td><td class="num">Apr 8 – May 1, 2026</td></tr>
-        <tr><td class="name">Eli Gill for Santa Monica City Council</td><td class="num">$400 – $895</td><td class="num">5</td><td class="num">50,100 – 58,995</td><td class="num">May 31 – Aug 21, 2026</td></tr>
+        <tr><td class="name">Doug Trussler for Santa Monica City Council</td><td>Candidate committee</td><td class="num">$6,300 &ndash; $10,858</td><td class="num">42</td><td class="num">682,300 &ndash; 823,758</td><td class="num">Jul 8 &ndash; Aug 11, 2026</td></tr>
+        <tr><td class="name">Santa Monica Neighbors</td><td>Unattributed advocacy</td><td class="num">$600 &ndash; $4,659</td><td class="num">41</td><td class="num">117,400 &ndash; 161,359</td><td class="num">Apr 8 &ndash; May 1, 2026</td></tr>
+        <tr><td class="name">Eli Gill for Santa Monica City Council</td><td>Candidate committee</td><td class="num">$600 &ndash; $1,095</td><td class="num">5</td><td class="num">65,100 &ndash; 78,995</td><td class="num">May 31 &ndash; Aug 21, 2026</td></tr>
+        <tr><td class="name">L.A. Local Network</td><td>News publisher</td><td class="num">$0 &ndash; $99</td><td class="num">1</td><td class="num">10,000 &ndash; 14,999</td><td class="num">Sep 9, 2026</td></tr>
+        <tr><td class="name">Total</td><td>&mdash;</td><td class="num"><strong>$7,500 &ndash; $16,711</strong></td><td class="num"><strong>89</strong></td><td class="num"><strong>874,800 &ndash; 1,079,111</strong></td><td class="num">Apr 8 &ndash; Sep 9, 2026</td></tr>
       </tbody>
     </table>
   </div>
+
+  <h3 class="sub">Monthly activity and the September blackout</h3>
+  <p>Spend is attributed to the month an ad <em>began</em> delivering; Meta does not report month-by-month spend for an ad that runs across a boundary. Bars use range midpoints for comparability &mdash; the authoritative figures are the ranges in the table above.</p>
+  <div class="chart-box">
+    <div class="chart-title">Estimated spend by launch month</div>
+    <div class="chart-note">Midpoint estimates, stacked by advertiser. Shaded band marks the period with no new ad launches.</div>
+    <div class="chart-wrap" style="height:320px"><canvas id="monthChart"></canvas></div>
+  </div>
 </section>
 
-<!-- ============ 2. TIMELINE ============ -->
+<!-- ============ 3. TIMELINE ============ -->
 <section>
-  <div class="section-num">02</div>
+  <div class="section-num">03</div>
   <h2 class="sec">Timeline of Activity</h2>
-  <p class="lede">The three advertisers never overlapped. Each ran in its own window, back to back, from before candidate filing closed through the present.</p>
+  <p class="lede">The three race advertisers never overlapped. Each ran in its own window, back to back &mdash; and then all of them stopped.</p>
 
   <div class="tl-legend">
     <span><span class="tl-dot" style="background:var(--red)"></span> Santa Monica Neighbors</span>
     <span><span class="tl-dot" style="background:var(--slate)"></span> Eli Gill</span>
     <span><span class="tl-dot" style="background:var(--teal)"></span> Doug Trussler</span>
+    <span><span class="tl-dot" style="background:var(--purple)"></span> L.A. Local Network</span>
   </div>
 
   <div class="timeline">
     <div class="tl-item neighbors">
       <div class="tl-date">Apr 8, 2026</div>
       <div class="tl-title">Santa Monica Neighbors begins advertising</div>
-      <div class="tl-body">First ads run — civic-education messaging and criticism of the Ocean Avenue homeless-housing siting process. Candidate filing does not open for another three months (Jul 13).</div>
+      <div class="tl-body">First ads run &mdash; civic-education messaging and criticism of the Ocean Avenue homeless-housing siting process. Candidate filing does not open for another three months.</div>
     </div>
     <div class="tl-item neighbors">
       <div class="tl-date">Apr 11, 2026</div>
@@ -358,7 +426,7 @@ footer {
     <div class="tl-item neighbors">
       <div class="tl-date">May 1, 2026</div>
       <div class="tl-title">Santa Monica Neighbors goes quiet</div>
-      <div class="tl-body">Last ad in the page's 41-ad run. No further activity found through the report's retrieval date.</div>
+      <div class="tl-body">Last ad in the page's 41-ad run. No further activity through this report's retrieval date &mdash; more than four months of dormancy.</div>
     </div>
     <div class="tl-item gill">
       <div class="tl-date">May 31, 2026</div>
@@ -367,25 +435,40 @@ footer {
     </div>
     <div class="tl-item trussler">
       <div class="tl-date">Jul 8, 2026</div>
-      <div class="tl-title">Doug Trussler's campaign begins advertising</div>
-      <div class="tl-body">Launches with three creative threads: downtown/Third Street Promenade decline, crime and homelessness, and a personal biography ad. Runs through Aug 11–12.</div>
+      <div class="tl-title">Trussler wave one &mdash; 12 ads, $2,800&ndash;$4,368</div>
+      <div class="tl-body">Launches with three creative threads: downtown/Third Street Promenade decline, crime and homelessness, and a personal biography ad. The Promenade creative carries the single largest ad buy in the race at $1,500&ndash;$1,999.</div>
+    </div>
+    <div class="tl-item trussler">
+      <div class="tl-date">Aug 7, 2026</div>
+      <div class="tl-title">Candidate filing closes</div>
+      <div class="tl-body">The November 3 ballot for three at-large council seats is set.</div>
     </div>
     <div class="tl-item trussler">
       <div class="tl-date">Aug 11, 2026</div>
-      <div class="tl-title">Trussler launches a second wave</div>
-      <div class="tl-body">New creative on the city's $35 million budget deficit and youth sports; the budget-deficit ad remains active as of this report.</div>
+      <div class="tl-title">Trussler wave two &mdash; 30 ads, $3,500&ndash;$6,490</div>
+      <div class="tl-body">A larger, more fragmented buy four days after filing closes. Four new creative threads: the city's "$35 million deficit," a response to the annual homeless count, youth sports at John Adams Middle School, and a "Santa Monica comeback" pier/Promenade spot.</div>
     </div>
     <div class="tl-item gill">
       <div class="tl-date">Aug 21, 2026</div>
-      <div class="tl-title">Gill's most recent ad</div>
-      <div class="tl-body">A general platform ad ("safer, more affordable, more vibrant, and better run") remains active as of this report — the most recent ad launch found in the race.</div>
+      <div class="tl-title">Gill's platform ad &mdash; the last new ad in the race</div>
+      <div class="tl-body">A general platform ad ("safer, more affordable, more vibrant, and better run") at $600&ndash;$699. Nothing new has launched from any advertiser since.</div>
+    </div>
+    <div class="tl-item silence">
+      <div class="tl-date">Aug 21 &ndash; Sep 14, 2026</div>
+      <div class="tl-title">24 days with no new ads</div>
+      <div class="tl-body">No candidate committee, advocacy page, labor organization, or independent-expenditure committee launched a Meta ad in this race during this period.</div>
+    </div>
+    <div class="tl-item news">
+      <div class="tl-date">Sep 9, 2026</div>
+      <div class="tl-title">L.A. Local Network promotes coverage of the council's zoning vote</div>
+      <div class="tl-body">A new local-news page runs a $0&ndash;$99 ad summarizing the council's adoption of Realignment Plan zoning changes for city-owned downtown land &mdash; roughly 1,800 new homes citywide, with the Expo/Bundy corridor temporarily shielded from a state density law. The only paid Meta content about Santa Monica council decisions in the blackout period came from a news publisher, not a campaign.</div>
     </div>
   </div>
 </section>
 
-<!-- ============ 3. ADVERTISER PROFILES ============ -->
+<!-- ============ 4. ADVERTISER PROFILES ============ -->
 <section>
-  <div class="section-num">03</div>
+  <div class="section-num">04</div>
   <h2 class="sec">Advertiser Profiles</h2>
 
   <div class="org-card">
@@ -396,50 +479,66 @@ footer {
     <div class="org-url">doug4santamonica.com &middot; <a href="https://www.facebook.com/1116009231601182" target="_blank">Facebook page</a></div>
     <div class="org-rows">
       <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">Trussler for Santa Monica City Council 2026</div></div>
-      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$4,900 – $9,458</strong></div></div>
-      <div class="org-row"><div class="org-key">Ads / Impressions</div><div class="org-val">42 ads &middot; 557,300–676,758 impressions</div></div>
-      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Jul 8 – Aug 11, 2026</div></div>
+      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$6,300 &ndash; $10,858</strong></div></div>
+      <div class="org-row"><div class="org-key">Ads / Impr.</div><div class="org-val">42 ads &middot; 682,300&ndash;823,758 impressions</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Jul 8 &ndash; Aug 11, 2026 (dark since)</div></div>
     </div>
     <div class="ad-grid">
       <div class="ad-card">
-        <div class="ad-meta"><span>Jul 8–Aug 11 &middot; $300–$399 &middot; 30K–35K impr.</span></div>
-        <div class="ad-text">"This is what Third Street Promenade looked like on Memorial Day weekend. Empty. A holiday weekend... Santa Monica deserves better than this."</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1736548877389122" target="_blank">View ad →</a></div>
+        <div class="ad-meta"><span>Jul 8&ndash;Aug 11 &middot; $1,500&ndash;$1,999 &middot; 150K&ndash;175K impr.</span></div>
+        <div class="ad-text">"This is what Third Street Promenade looked like on Memorial Day weekend. Empty. A holiday weekend. In Santa Monica&hellip; Does this look normal?"</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1683653616201135" target="_blank">View ad &rarr;</a></div>
       </div>
       <div class="ad-card">
-        <div class="ad-meta"><span>Aug 11 &middot; $500–$599 &middot; 60K–70K impr.</span></div>
-        <div class="ad-text">"Budgets aren't just spreadsheets. They affect every service our city provides. In this video, I explain what Santa Monica's $35 million deficit actually means..."</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1039734585335483" target="_blank">View ad →</a></div>
+        <div class="ad-meta"><span>Aug 11 &middot; $700&ndash;$799 &middot; 80K&ndash;90K impr.</span></div>
+        <div class="ad-text">"Budgets aren't just spreadsheets. They affect every service our city provides. In this video, I explain what Santa Monica's $35 million deficit actually means&hellip;"</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1039734585335483" target="_blank">View ad &rarr;</a></div>
       </div>
+      <div class="ad-card">
+        <div class="ad-meta"><span>Aug 11 &middot; $600&ndash;$699 &middot; 50K&ndash;60K impr.</span></div>
+        <div class="ad-text">"Actually preparing for the Santa Monica comeback&hellip; #santamonicapier #thirdstreetpromenade"</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1236524198599818" target="_blank">View ad &rarr;</a></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-meta"><span>Aug 11 &middot; $0&ndash;$99 &middot; 4K&ndash;5K impr.</span></div>
+        <div class="ad-text">"I applaud the City for the progress reflected in this year's homeless count &mdash; but progress on paper is not the same as progress on our streets."</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=27804202782578257" target="_blank">View ad &rarr;</a></div>
+      </div>
+    </div>
+    <div class="callout">
+      <h4>Context on the "$35 million deficit" claim</h4>
+      <p>Trussler's highest-spending August creative is built around Santa Monica's "$35 million deficit." The city's own reporting describes a different trajectory: Finance Director Oscar Santiago told council members that the current fiscal year is projected to close with an <strong>$8.95 million surplus</strong>, reversing the <strong>$29.6 million</strong> structural deficit projected in October 2025 when the Realignment Plan was adopted, with the general fund now projected to run surpluses through fiscal year 2030 (<a href="https://www.smdp.com/santa-monica-general-fund-reaches-structural-balance-as-city-unveils-909m-spending-plan/" target="_blank">Santa Monica Daily Press</a>).</p>
+      <p>The ad does not specify which fiscal year, fund, or scenario its $35 million figure describes, and the Ad Library does not carry that detail. Both figures are reported here as published; they may refer to different budget years or measures.</p>
     </div>
   </div>
 
   <div class="org-card flagged">
     <div class="org-head">
       <div class="org-name">Santa Monica Neighbors</div>
-      <div class="org-role">⚠ Unattributed</div>
+      <div class="org-role">&#9888; Unattributed</div>
     </div>
     <div class="org-url"><a href="https://www.facebook.com/1034237963110844" target="_blank">Facebook page</a> &middot; <a href="https://santamonicaneighbors.com" target="_blank">santamonicaneighbors.com</a></div>
     <div class="org-rows">
       <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">"Santa Monica Neighbors" (disclaimer name only)</div></div>
-      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$600 – $4,659</strong></div></div>
-      <div class="org-row"><div class="org-key">Ads / Impressions</div><div class="org-val">41 ads &middot; 117,400–161,359 impressions</div></div>
-      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Apr 8 – May 1, 2026</div></div>
+      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$600 &ndash; $4,659</strong></div></div>
+      <div class="org-row"><div class="org-key">Ads / Impr.</div><div class="org-val">41 ads &middot; 117,400&ndash;161,359 impressions</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Apr 8 &ndash; May 1, 2026 (dark since)</div></div>
     </div>
     <div class="callout red">
-      <h4>Flagged — no committee filing found</h4>
-      <p>Meta's disclaimer field lists only "Santa Monica Neighbors" — not a named individual or a registered candidate/PAC committee. No matching filing was found under this name in an FPPC/Cal-Access or City Clerk search, and it is a distinct entity from the city's seven officially recognized neighborhood associations (Friends of Sunset Park, North of Montana, Ocean Park, Pico, Mid City, Northeast Neighbors, Wilshire Montana). Its website describes it as a grassroots group "unaffiliated with any political group" but names no founders, staff, or funders. Treat this as an unattributed advocacy page, not a candidate's own messaging.</p>
+      <h4>Flagged &mdash; no committee filing found</h4>
+      <p>Meta's disclaimer field lists only "Santa Monica Neighbors" &mdash; not a named individual or a registered candidate/PAC committee. No matching filing was found under this name in an FPPC/Cal-Access or City Clerk search, and it is a distinct entity from the city's seven officially recognized neighborhood associations (Friends of Sunset Park, North of Montana, Ocean Park, Pico, Mid City, Northeast Neighbors, Wilshire Montana). Its website describes it as a grassroots group "unaffiliated with any political group" but names no founders, staff, or funders. Treat this as an unattributed advocacy page, not a candidate's own messaging.</p>
+      <p><strong>Update, Sep 14:</strong> the page has now been dormant for more than four months. Its entire run predates the opening of candidate filing, and it has not returned as the election approaches.</p>
     </div>
     <div class="ad-grid">
       <div class="ad-card">
-        <div class="ad-meta"><span>Apr 11–14 &middot; $100–$199 &middot; 10K–15K impr.</span></div>
+        <div class="ad-meta"><span>Apr 11&ndash;14 &middot; $100&ndash;$199 &middot; 10K&ndash;15K impr.</span></div>
         <div class="ad-text">"Earning over $300K from LA County while serving as Santa Monica's mayor, who does Caroline Torosis really work for?"</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=2398907497290283" target="_blank">View ad →</a></div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=2398907497290283" target="_blank">View ad &rarr;</a></div>
       </div>
       <div class="ad-card">
-        <div class="ad-meta"><span>Apr 16–26 &middot; $0–$99 &middot; 15K–20K impr.</span></div>
+        <div class="ad-meta"><span>Apr 16&ndash;26 &middot; $0&ndash;$99 &middot; 15K&ndash;20K impr.</span></div>
         <div class="ad-text">"Residents only learned about the Ocean Avenue housing proposal months after City Hall did. When decisions affect our neighborhoods, residents should never be the last to know."</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1715217196524680" target="_blank">View ad →</a></div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1715217196524680" target="_blank">View ad &rarr;</a></div>
       </div>
     </div>
   </div>
@@ -452,43 +551,105 @@ footer {
     <div class="org-url"><a href="https://www.facebook.com/969874029547865" target="_blank">Facebook page</a></div>
     <div class="org-rows">
       <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">Eli Gill for City Council 2026</div></div>
-      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$400 – $895</strong></div></div>
-      <div class="org-row"><div class="org-key">Ads / Impressions</div><div class="org-val">5 ads &middot; 50,100–58,995 impressions</div></div>
-      <div class="org-row"><div class="org-key">Active</div><div class="org-val">May 31 – Aug 21, 2026</div></div>
+      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$600 &ndash; $1,095</strong></div></div>
+      <div class="org-row"><div class="org-key">Ads / Impr.</div><div class="org-val">5 ads &middot; 65,100&ndash;78,995 impressions</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">May 31 &ndash; Aug 21, 2026 (dark since)</div></div>
     </div>
     <div class="ad-grid">
       <div class="ad-card">
-        <div class="ad-meta"><span>Jun 16–26 &middot; $0–$99 &middot; 5K–6K impr.</span></div>
+        <div class="ad-meta"><span>Jun 16&ndash;26 &middot; $0&ndash;$99 &middot; 5K&ndash;6K impr.</span></div>
         <div class="ad-text">"Nobody likes a politician. I'm not one. I'm running for the love of the city. Let's make this city the best it can be, together!"</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1246771257395769" target="_blank">View ad →</a></div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1246771257395769" target="_blank">View ad &rarr;</a></div>
       </div>
       <div class="ad-card">
-        <div class="ad-meta"><span>Aug 21 &middot; $400–$499 &middot; 35K–40K impr.</span></div>
-        <div class="ad-text">"Santa Monica can be safer, more affordable, more vibrant, and better run. I'm Eli Gill, and I'm running for City Council because I want our city to work better..."</div>
-        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=2243396283185866" target="_blank">View ad →</a></div>
+        <div class="ad-meta"><span>Aug 21 &middot; $600&ndash;$699 &middot; 50K&ndash;60K impr.</span></div>
+        <div class="ad-text">"Santa Monica can be safer, more affordable, more vibrant, and better run. I'm Eli Gill, and I'm running for City Council because I want our city to work better&hellip;"</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=2243396283185866" target="_blank">View ad &rarr;</a></div>
       </div>
     </div>
+  </div>
+
+  <div class="org-card news">
+    <div class="org-head">
+      <div class="org-name">L.A. Local Network</div>
+      <div class="org-role">News publisher</div>
+    </div>
+    <div class="org-url"><a href="https://www.facebook.com/1298862009966283" target="_blank">Facebook page</a></div>
+    <div class="org-rows">
+      <div class="org-row"><div class="org-key">Funded by</div><div class="org-val">Surround Sound News</div></div>
+      <div class="org-row"><div class="org-key">Spend</div><div class="org-val"><strong>$0 &ndash; $99</strong> <span style="color:var(--text-muted)">(Santa Monica ad only)</span></div></div>
+      <div class="org-row"><div class="org-key">Ads / Impr.</div><div class="org-val">1 Santa Monica ad &middot; 10,000&ndash;14,999 impressions</div></div>
+      <div class="org-row"><div class="org-key">Active</div><div class="org-val">Sep 9, 2026</div></div>
+    </div>
+    <div class="callout">
+      <h4>New this edition &mdash; and counted narrowly</h4>
+      <p>L.A. Local Network is a Greater Los Angeles local-news page that launched paid promotion on <strong>August 14, 2026</strong>. Page-wide it has run <strong>6 ads totaling $400&ndash;$994</strong>; the other five concern Manhattan Beach property values, La Brea-area fossil finds, Greystone Mansion, and the Eaton Fire &mdash; none related to Santa Monica.</p>
+      <p><strong>Only its single Santa Monica ad is counted in this report's totals.</strong> It is content promotion by a publisher, not advocacy by a campaign or committee, and it takes no position on the council race. It is included because it is the only paid Meta content about Santa Monica council decisions that ran during the campaign blackout.</p>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card">
+        <div class="ad-meta"><span>Sep 9 &middot; $0&ndash;$99 &middot; 10K&ndash;15K impr.</span></div>
+        <div class="ad-text">"Santa Monica's City Council adopted zoning changes clearing the way for denser development on city-owned downtown land, part of a Realignment Plan envisioning roughly 1,800 new homes citywide, while temporarily shielding the Expo/Bundy corridor from a state density law."</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1739930600603532" target="_blank">View ad &rarr;</a></div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-meta"><span>Aug 14 &middot; $400&ndash;$499 &middot; page-launch ad</span></div>
+        <div class="ad-text">"Greater Los Angeles, meet your local news network. LA Local Network is live, bringing you local coverage of sports, business&hellip;"</div>
+        <div class="ad-link"><a href="https://www.facebook.com/ads/library/?id=1530564828376410" target="_blank">View ad &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. WHO ISN'T ADVERTISING ============ -->
+<section>
+  <div class="section-num">05</div>
+  <h2 class="sec">Who Still Isn't Advertising</h2>
+  <p class="lede">Re-verified by direct Page ID query on September 14, 2026. Each of these pages exists and has run Meta political ads in prior cycles &mdash; all return <strong>zero ads delivered in 2026</strong>.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Page</th><th>Page ID</th><th>Prior-cycle activity</th><th>2026 ads</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Councilmember Caroline Torosis for Santa Monica</td><td class="num">658781247609839</td><td>2020, 2022 cycles</td><td class="num">0</td></tr>
+        <tr><td class="name">Lana Negrete for Santa Monica</td><td class="num">101531106093255</td><td>Prior council races</td><td class="num">0</td></tr>
+        <tr><td class="name">Santa Monicans for Renters' Rights (SMRR)</td><td class="num">111902069109</td><td>Multiple cycles</td><td class="num">0</td></tr>
+        <tr><td class="name">Santa Monica Fire Fighters, IAFF Local 1109</td><td class="num">141701195873645</td><td>Multiple cycles</td><td class="num">0</td></tr>
+        <tr><td class="name">Santa Monica Police Officers Association</td><td class="num">101274116098484</td><td>Prior cycles</td><td class="num">0</td></tr>
+        <tr><td class="name">Santa Monica Forward</td><td class="num">312698695583099</td><td>Prior cycles</td><td class="num">0</td></tr>
+        <tr><td class="name">Coalition of Santa Monica City Employees PAC</td><td class="num">509808062556301</td><td>Prior cycles</td><td class="num">0</td></tr>
+        <tr><td class="name">Santa Monicans for a Real Positive Future</td><td class="num">441746619023445</td><td>Prior cycles</td><td class="num">0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Candidates and prospective candidates searched by name with no 2026 Meta ad activity found: <strong>Caroline Torosis, Lana Negrete, Ericka Lesley, Phil Brock, Danny Ivanov, Brett Morrow, Ashley Oelsen, Derrick Townsend, Ryan Blomberg, Lindsay Davis, and Wade Kelley.</strong></p>
+
+  <div class="callout teal">
+    <h4>What zero means &mdash; and doesn't</h4>
+    <p>Absence from the Meta political archive is not absence from the race. It means only that no ad with a "paid for by" disclaimer was filed and delivered. Labor committees in particular often concentrate spending in mail and member-to-member communication, which never reaches this archive. The most defensible reading of the table above is that <strong>the institutional actors in Santa Monica politics have not chosen Meta as a persuasion channel this cycle</strong> &mdash; not that they are inactive.</p>
   </div>
 </section>
 
 <!-- ============ METHODOLOGY ============ -->
 <div class="method">
   <h3>Methodology &amp; Limitations</h3>
-  <p><strong>Data source.</strong> Meta Ad Library API, queried September 4, 2026. Window: January 1 – September 4, 2026. Country filter: United States; region filter: California. Advertisers were located via candidate-name and page-name keyword searches, plus a broad "Santa Monica City Council" keyword scan across California, then resolved to Page IDs before any page-scoped query.</p>
-  <p><strong>Candidates and organizations checked with no 2026 Meta ad activity found.</strong> Mayor Caroline Torosis, Lana Negrete, Ericka Lesley, Phil Brock, Danny Ivanov, Brett Morrow, Ashley Oelsen, Derrick Townsend, Ryan Blomberg, Lindsay Davis, and Wade Kelley were each searched directly by name; Santa Monicans for Renters' Rights (SMRR), the Santa Monica Police Officers Association, Santa Monica Fire Fighters IAFF Local 1109, and Santa Monica Forward were checked directly by Page ID. None returned any ad delivered in 2026 as of this report's retrieval date. This does not mean these candidates or groups aren't campaigning — only that no Meta-disclosed political ad from them was found.</p>
+  <p><strong>Data source.</strong> Meta Ad Library API, queried <strong>September 14, 2026</strong>. Window: January 1 &ndash; September 14, 2026. Country filter: United States; region filter: California. Advertisers were located via candidate-name and page-name keyword searches, plus a broad "Santa Monica" and "Santa Monica City Council" keyword scan across California, then resolved to Page IDs before any page-scoped query. This edition supersedes the September 4, 2026 edition; section 01 documents what changed between the two pulls.</p>
+  <p><strong>Advertisers found and excluded.</strong> <em>Tom Shadrach for City Council</em> (Page ID 118238817535406, 43 ads) surfaced in keyword scans but is a Cape Coral, Florida council candidate &mdash; excluded as out of geography. <em>Southern California Association of NonProfit Housing</em>, <em>ClientEarth USA</em>, and <em>Union of Concerned Scientists</em> matched the California regional filter but run national issue campaigns unrelated to this race &mdash; excluded as out of scope. <em>L.A. Local Network</em> is included, but only its single Santa Monica ad counts toward report totals; its five unrelated ads are excluded.</p>
   <p><strong>Known limitations.</strong></p>
   <ul>
-    <li><strong>Spend is a range, never a number.</strong> Meta reports bands (e.g., $100–$199). Every figure in this report is stated as its full disclosed range; no midpoint estimates are presented as totals.</li>
-    <li><strong>The archive captures only disclaimer-filed ads.</strong> Mail, yard signs, earned media, unpaid social posts, and any ad run without a "paid for by" disclaimer are invisible here. A candidate with zero Meta ads may still be spending heavily through other channels.</li>
-    <li><strong>Keyword coverage is not exhaustive.</strong> A committee whose ad text and page name never contain the candidate's name, "Santa Monica," or "City Council" could be missed by this search approach.</li>
-    <li><strong>"Still running" ads are ongoing.</strong> Trussler's Aug 11 budget-deficit ad and Gill's Aug 21 platform ad remained active as of retrieval; their final spend and impression totals will be higher than reported here.</li>
+    <li><strong>Spend is a range, never a number.</strong> Meta reports bands (e.g., $100&ndash;$199). Every headline figure in this report is stated as its full disclosed range. Midpoints appear only in the monthly chart, which is labeled as estimated.</li>
+    <li><strong>Monthly attribution is approximate.</strong> Meta reports lifetime spend per ad, not spend per month. The monthly chart attributes each ad's spend to the month it began delivering, so an ad running July 8 through August 11 is counted entirely in July.</li>
+    <li><strong>The archive captures only disclaimer-filed ads.</strong> Mail, yard signs, earned media, unpaid social posts, and any ad run without a "paid for by" disclaimer are invisible here. A candidate with zero Meta ads may still be spending heavily through other channels. The 24-day blackout is a Meta-specific finding, not evidence that campaigns have stopped spending.</li>
+    <li><strong>Keyword coverage is not exhaustive.</strong> A committee whose ad text and page name never contain a candidate's name, "Santa Monica," or "City Council" could be missed by this search approach.</li>
+    <li><strong>Delivery is not targeting.</strong> This report makes no claims about whom advertisers targeted. Ad Library data reports where ads were delivered, which reflects Meta's optimization as much as any advertiser selection.</li>
     <li><strong>This report covers Meta ad spend only.</strong> It does not incorporate campaign finance filings, fundraising totals, or other paid media, which were out of scope for this pull.</li>
   </ul>
 </div>
 
 <footer>
-  Data source: Meta Ad Library API · Retrieved September 4, 2026 · Window: Jan 1 – Sep 4, 2026<br>
-  Spend and impression figures are ranges as reported by Meta, not exact amounts.<br>
+  Data source: Meta Ad Library API &middot; Retrieved September 14, 2026 &middot; Window: Jan 1 &ndash; Sep 14, 2026<br>
+  Supersedes the September 4, 2026 edition. Spend and impression figures are ranges as reported by Meta, not exact amounts.<br>
   Built by Above Public Affairs
 </footer>
 
@@ -497,7 +658,7 @@ footer {
 <script>
 const FONT = "'IBM Plex Sans', sans-serif";
 const MONO = "'IBM Plex Mono', monospace";
-const C = { teal:'#0d9488', slate:'#475569', red:'#c53030', grid:'#e4e0d8', muted:'#9c9590', body:'#3d3833' };
+const C = { teal:'#0d9488', slate:'#475569', red:'#c53030', purple:'#7c3aed', grid:'#e4e0d8', muted:'#9c9590', body:'#3d3833', stone:'#a8a29e' };
 Chart.defaults.font.family = FONT;
 Chart.defaults.font.size = 11.5;
 Chart.defaults.color = C.body;
@@ -506,19 +667,20 @@ Chart.defaults.animation = false;
 new Chart(document.getElementById('spendChart'), {
   type: 'bar',
   data: {
-    labels: ['Doug Trussler', 'Santa Monica Neighbors', 'Eli Gill'],
+    labels: ['Doug Trussler', 'Santa Monica Neighbors', 'Eli Gill', 'L.A. Local Network'],
     datasets: [{
-      data: [[4900,9458],[600,4659],[400,895]],
-      backgroundColor: [C.teal, C.red, C.slate],
+      data: [[6300,10858],[600,4659],[600,1095],[0,99]],
+      backgroundColor: [C.teal, C.red, C.slate, C.purple],
       borderRadius: 4,
-      barThickness: 34
+      barThickness: 28
     }]
   },
   options: {
     indexAxis: 'y',
+    maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
-      tooltip: { callbacks: { label: (ctx) => '$' + ctx.raw[0].toLocaleString() + ' – $' + ctx.raw[1].toLocaleString() } }
+      tooltip: { callbacks: { label: (ctx) => '$' + ctx.raw[0].toLocaleString() + ' - $' + ctx.raw[1].toLocaleString() } }
     },
     scales: {
       x: { grid: { color: C.grid }, ticks: { callback: (v) => '$' + (v/1000) + 'K' } },
@@ -530,12 +692,77 @@ new Chart(document.getElementById('spendChart'), {
 new Chart(document.getElementById('shareChart'), {
   type: 'doughnut',
   data: {
-    labels: ['Trussler (42)', 'SM Neighbors (41)', 'Gill (5)'],
-    datasets: [{ data: [42,41,5], backgroundColor: [C.teal, C.red, C.slate], borderColor: '#fff', borderWidth: 2 }]
+    labels: ['Trussler (42)', 'SM Neighbors (41)', 'Gill (5)', 'LA Local Network (1)'],
+    datasets: [{ data: [42,41,5,1], backgroundColor: [C.teal, C.red, C.slate, C.purple], borderColor: '#fff', borderWidth: 2 }]
   },
   options: {
-    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 14, font: { size: 11.5 } } } },
+    maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 12, font: { size: 11 } } } },
     cutout: '58%'
+  }
+});
+
+new Chart(document.getElementById('monthChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    datasets: [
+      { label: 'Santa Monica Neighbors', data: [2630, 0, 0, 0, 0, 0], backgroundColor: C.red },
+      { label: 'Eli Gill',               data: [0, 50, 99, 0, 699, 0], backgroundColor: C.slate },
+      { label: 'Doug Trussler',          data: [0, 0, 0, 3584, 4995, 0], backgroundColor: C.teal },
+      { label: 'L.A. Local Network',     data: [0, 0, 0, 0, 0, 50], backgroundColor: C.purple }
+    ]
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: { padding: { top: 34 } },
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 10, padding: 12, font: { size: 11 } } },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => ctx.raw === 0 ? null : ctx.dataset.label + ': ~$' + ctx.raw.toLocaleString(),
+          footer: () => 'Midpoint estimate; see table for ranges'
+        }
+      },
+      annotation: {
+        annotations: {
+          blackout: {
+            type: 'box',
+            xMin: 4.65, xMax: 5.5,
+            backgroundColor: 'rgba(168,162,158,0.16)',
+            borderColor: 'rgba(168,162,158,0.5)',
+            borderWidth: 1,
+            label: {
+              display: true, content: ['24-day', 'blackout'], position: {x:'center', y:'center'},
+              color: '#6b6560', font: { family: MONO, size: 10, weight: '600' },
+              backgroundColor: 'rgba(250,249,247,0.85)'
+            }
+          },
+          filingOpens: {
+            type: 'line', xMin: 3.39, xMax: 3.39,
+            borderColor: C.muted, borderWidth: 1.5, borderDash: [5,4],
+            label: {
+              display: true, content: 'Filing opens Jul 13', position: 'end',
+              color: '#6b6560', font: { family: MONO, size: 9.5 },
+              backgroundColor: 'rgba(250,249,247,0.92)', padding: 4, yAdjust: -22
+            }
+          },
+          filingCloses: {
+            type: 'line', xMin: 4.19, xMax: 4.19,
+            borderColor: C.muted, borderWidth: 1.5, borderDash: [5,4],
+            label: {
+              display: true, content: 'Filing closes Aug 7', position: 'end',
+              color: '#6b6560', font: { family: MONO, size: 9.5 },
+              backgroundColor: 'rgba(250,249,247,0.92)', padding: 4, yAdjust: -6
+            }
+          }
+        }
+      }
+    },
+    scales: {
+      x: { stacked: true, grid: { display: false } },
+      y: { stacked: true, grid: { color: C.grid }, ticks: { callback: (v) => '$' + (v/1000).toFixed(1) + 'K' } }
+    }
   }
 });
 </script>
